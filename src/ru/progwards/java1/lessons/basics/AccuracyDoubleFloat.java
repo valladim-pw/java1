@@ -20,7 +20,7 @@ public class AccuracyDoubleFloat {
 		float volume = index * pi * R;
 		return volume;
 	}
-	public static double calculateAccuracy(double radius){
-		return volumeBallFloat((float) radius) - volumeBallDouble((float) radius);
+	public static double calculateAccuracy(double radius) {
+		return volumeBallDouble(radius) - volumeBallFloat((float)radius);
 	}
 }
