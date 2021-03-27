@@ -6,15 +6,22 @@ public class DIntArray {
 	public static void main(String[] args) {
 		DIntArray newInt = new DIntArray();
 		System.out.println(Arrays.toString(newInt.integers));
-		newInt.add(57);
+		newInt.add(-11);
+		newInt.add(16);
+		newInt.add(-25);
+		newInt.add(-57);
+		newInt.add(36);
+		newInt.add(-2);
 		System.out.println(Arrays.toString(newInt.integers));
+		System.out.println(newInt.at(1));
 		newInt.atInsert(3, 99);
 		System.out.println(Arrays.toString(newInt.integers));
-		newInt.atDelete(7);
+		System.out.println(newInt.at(3));
+		newInt.atDelete(1);
 		System.out.println(Arrays.toString(newInt.integers));
-		System.out.println(newInt.at(5));
+		System.out.println(newInt.at(1));
 	}
-	private int[] integers = {11, -10, 9, 8, 33, 20, -4};
+	private int[] integers = {};
 	public DIntArray(){
 	}
 	public void add(int num){
