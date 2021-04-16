@@ -10,9 +10,9 @@ public class Food implements CompareWeight{
 	}
 	public CompareResult compareWeight(CompareWeight smthHasWeigt){
 		CompareResult compareResult;
-		if(Double.compare(this.weight, ((Animal) smthHasWeigt).calculateFoodWeight()) == 1)
+		if(Double.compare(this.getWeight(), ((Animal) smthHasWeigt).calculateFoodWeight()) == 1)
 			compareResult  = CompareResult.GREATER;
-		else if(Double.compare(this.weight, ((Animal) smthHasWeigt).calculateFoodWeight()) == -1)
+		else if(Double.compare(this.getWeight(), ((Animal) smthHasWeigt).calculateFoodWeight()) == -1)
 			compareResult  = CompareResult.LESS;
 		else
 			compareResult = CompareResult.EQUAL;
