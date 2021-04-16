@@ -1,7 +1,5 @@
 package ru.progwards.java1.lessons.interfaces;
 
-import java.util.Arrays;
-
 public class Animal implements FoodCompare,CompareWeight {
 	public static void main(String[] args) {
 		Animal animal = new Animal(150);
@@ -17,7 +15,7 @@ public class Animal implements FoodCompare,CompareWeight {
 		System.out.println(animal.calculateFoodWeight());
 		System.out.println(food.compareWeight(animal));
 		CompareWeight[] weights = {animal, animal2, cow, hamster, duck};
-		sort(weights);
+		ArraySort.sort(weights);
 	}
 	double weight;
 	AnimalKind animalKind;
@@ -118,19 +116,6 @@ public class Animal implements FoodCompare,CompareWeight {
 				return true;
 			else
 				return false;
-	}
-	public static void sort(CompareWeight[] a){
-		for(int i = 0; i < a.length; i++){
-			CompareWeight obj;
-			for(int j = i + 1; j < a.length; j++){
-				if(a[i].compareWeight(a[j]) == CompareResult.GREATER){
-					obj = a[i];
-					a[i] = a[j];
-					a[j] = obj;
-				}
-			}
-		}
-		System.out.println(Arrays.toString(a));
 	}
 	@Override
 	public String toString() {
