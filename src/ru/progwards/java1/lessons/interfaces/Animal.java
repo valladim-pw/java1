@@ -1,0 +1,142 @@
+package ru.progwards.java1.lessons.interfaces;
+
+import java.util.Arrays;
+
+public class Animal implements FoodCompare,CompareWeight {
+	public static void main(String[] args) {
+		Animal animal = new Animal(150);
+		Animal animal2 = new Animal(980);
+		Duck duck = new Duck(1.5);
+		Cow cow = new Cow(1000);
+		Hamster hamster = new Hamster(0.5);
+		System.out.println(duck.getFoodPrice());
+		System.out.println(cow.compareFoodPrice(hamster));
+		System.out.println(hamster.compareFoodPrice(duck));
+		System.out.println(animal.compareWeight(animal2));
+		Food food = new Food(3);
+		System.out.println(animal.calculateFoodWeight());
+		System.out.println(food.compareWeight(animal));
+		CompareWeight[] weights = {animal, animal2, cow, hamster, duck};
+		sort(weights);
+	}
+	double weight;
+	AnimalKind animalKind;
+	FoodKind foodKind;
+	double foodCoeff;
+	double eatWeight;
+	enum AnimalKind{
+		ANIMAL,
+		COW,
+		HAMSTER,
+		DUCK
+	}
+	enum FoodKind{
+		UNKNOWN,
+		HAY,
+		CORN
+	}
+	public Animal(double weight){
+		this.weight = weight;
+	}
+	public AnimalKind getKind(){
+		animalKind = AnimalKind.ANIMAL;
+		switch(animalKind){
+			case COW:
+				animalKind = AnimalKind.COW;
+				break;
+			case HAMSTER:
+				animalKind = AnimalKind.HAMSTER;
+				break;
+			case DUCK:
+				animalKind = AnimalKind.DUCK;
+				break;
+			default:
+				animalKind = AnimalKind.ANIMAL;
+		}
+		return animalKind;
+	}
+	public FoodKind getFoodKind() {
+		foodKind = FoodKind.UNKNOWN;
+		switch(foodKind){
+			case HAY:
+				foodKind = FoodKind.HAY;
+				break;
+			case CORN:
+				foodKind = FoodKind.CORN;
+				break;
+			default:
+				foodKind = FoodKind.UNKNOWN;
+		}
+		return foodKind;
+	}
+	public double getWeight(){
+		return weight;
+	}
+	public double getFoodCoeff(){
+		foodCoeff = 0.02;
+		return foodCoeff;
+	}
+	public double calculateFoodWeight(){
+		foodCoeff = getFoodCoeff();
+		eatWeight = weight * foodCoeff;
+		return eatWeight;
+	}
+	public double getFood1kgPrice(){
+		switch(getFoodKind()){
+			case HAY:
+				return 20;
+			case CORN:
+				return 50;
+			default:
+				return 0;
+		}
+	}
+	public double getFoodPrice(){
+		return calculateFoodWeight() * getFood1kgPrice();
+	}
+	@Override
+	public int compareFoodPrice(Animal animal){
+		return Double.compare(this.getFoodPrice(), animal.getFoodPrice());
+	}
+	@Override
+	public CompareResult compareWeight(CompareWeight smthHasWeigt){
+		CompareResult compareResult;
+		if(Double.compare(this.weight, ((Animal) smthHasWeigt).getWeight()) == 1)
+			compareResult  = CompareResult.GREATER;
+		else if(Double.compare(this.weight, ((Animal) smthHasWeigt).getWeight()) == -1)
+			compareResult  = CompareResult.LESS;
+		else
+			compareResult = CompareResult.EQUAL;
+		return compareResult;
+	}
+	@Override
+	public boolean equals(Object anObject){
+			if (this == anObject) return true;
+			if (anObject == null || getClass() != anObject.getClass()) return false;
+			Animal animal = (Animal) anObject;
+			if(Double.compare(animal.weight, weight) == 0)
+				return true;
+			else
+				return false;
+	}
+	public static void sort(CompareWeight[] a){
+		for(int i = 0; i < a.length; i++){
+			CompareWeight obj;
+			for(int j = i + 1; j < a.length; j++){
+				if(a[i].compareWeight(a[j]) == CompareResult.GREATER){
+					obj = a[i];
+					a[i] = a[j];
+					a[j] = obj;
+				}
+			}
+		}
+		System.out.println(Arrays.toString(a));
+	}
+	@Override
+	public String toString() {
+		return getKind() + "-" + getWeight();
+	}
+	public String toStringFull() {
+		return "I am "+getKind()+", eat "+getFoodKind()+"|"+calculateFoodWeight()+"|"+getFood1kgPrice()+"|"+getFoodPrice();
+	}
+}
