@@ -11,9 +11,13 @@ public class Animal implements FoodCompare,CompareWeight {
 		System.out.println(cow.compareFoodPrice(hamster));
 		System.out.println(hamster.compareFoodPrice(duck));
 		System.out.println(animal.compareWeight(animal2));
-		Food food = new Food(3);
-		System.out.println(animal.calculateFoodWeight());
-		System.out.println(food.compareWeight(animal));
+		Food food1 = new Food(-40);
+		Food food2 = new Food(13);
+		Food food3 = new Food(1);
+		Food food4 = new Food(7);
+		System.out.println(food1.compareWeight(food2));
+		CompareWeight[] foodWeights = {food1, food2, food3, food4};
+		ArraySort.sort(foodWeights);
 		CompareWeight[] weights = {animal, animal2, cow, hamster, duck};
 		ArraySort.sort(weights);
 	}
@@ -119,7 +123,7 @@ public class Animal implements FoodCompare,CompareWeight {
 	}
 	@Override
 	public String toString() {
-		return getKind() + "-" + getWeight();
+		return getKind() + ": " + getWeight();
 	}
 	public String toStringFull() {
 		return "I am "+getKind()+", eat "+getFoodKind()+"|"+calculateFoodWeight()+"|"+getFood1kgPrice()+"|"+getFoodPrice();
