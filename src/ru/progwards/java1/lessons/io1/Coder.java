@@ -38,7 +38,6 @@ public class Coder {
 						}
 					}
 					fileWriter.write(code);
-					//System.out.println(Arrays.toString(code));
 				} finally {
 					try {	scanner.close();} catch (Throwable ignored){}
 					try { fileWriter.close();} catch (Throwable ignored){}
@@ -60,6 +59,6 @@ public class Coder {
 	
 	public static void main(String[] args) {
 		char[] code = {};
-		codeFile("inFile.txt", "outFile.txt", code, null);
+		codeFile("inFile1.txt", "outFile1.txt", code, null);
 	}
 }

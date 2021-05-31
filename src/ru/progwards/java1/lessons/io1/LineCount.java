@@ -16,19 +16,17 @@ public class LineCount {
 					String str = scanner.nextLine();
 					if(str.length() == 0)
 						count++;
-					//System.out.println(count + ": " + str + "-" + str.length());
 				}
 			} finally {
 				try {fileReader.close();} catch (Throwable ignored){}
 				try {scanner.close();} catch (Throwable ignored){}
 			}
 		} catch (IOException e){
-			//System.out.println(e);
 			return -1;
 		}
 		return count;
 	}
 	public static void main(String[] args) {
-		System.out.println(calcEmpty("inFile.txt"));
+		System.out.println(calcEmpty("inFile1.txt"));
 	}
 }

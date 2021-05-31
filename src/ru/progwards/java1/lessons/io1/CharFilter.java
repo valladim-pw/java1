@@ -47,9 +47,9 @@ public class CharFilter {
 		}
 	}
 	public static void main(String[] args) {
-		String obscene = " -,.()";
+		String filter = " -,.()";
 		try{
-			filterFile("inFileChar.txt", "outFileChar.txt", obscene);
+			filterFile("inFile2.txt", "outFile2.txt", filter);
 		} catch(IOException e){
 			System.out.println(e);
 		}
