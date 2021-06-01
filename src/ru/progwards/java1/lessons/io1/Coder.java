@@ -11,6 +11,7 @@ public class Coder {
 		int coef;
 		int fileLength = 0;
 		String msg;
+		String result = "";
 		try {
 			FileWriter logFile = new FileWriter(logName, true);
 			try {
@@ -22,10 +23,10 @@ public class Coder {
 					fileLength += str.length();
 				}
 				char[] buf = new char[fileLength];
-				if (code.length != 0 && code[0] != 0)
+				if (code.length != 0 && code[0] > 0)
 					coef = code[0];
 				else
-					coef = 500;
+					coef = 15;
 				code = new char[buf.length];
 				try {
 					fileReader = new FileReader(inFileName);
@@ -34,10 +35,12 @@ public class Coder {
 							i--;
 						} else {
 							ch += coef;
-							code[i] = Character.toLowerCase((char) ch);
+							code[i] = (char) ch;
+							String c = Integer.toString(code[i]);
+							result += c + " ";
 						}
 					}
-					fileWriter.write(code);
+					fileWriter.write(result);
 				} finally {
 					try {	scanner.close();} catch (Throwable ignored){}
 					try { fileWriter.close();} catch (Throwable ignored){}
@@ -59,6 +62,6 @@ public class Coder {
 	
 	public static void main(String[] args) {
 		char[] code = {};
-		codeFile("inFile1.txt", "outFile1.txt", code, null);
+		codeFile("inFile1.txt", "outFile1.txt", code, "logFile.txt");
 	}
 }
