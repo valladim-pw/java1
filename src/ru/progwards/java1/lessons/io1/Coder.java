@@ -27,9 +27,6 @@ public class Coder {
 			FileOutputStream writer = new FileOutputStream(outFileName);
 			
 			try	{
-				Arrays.fill(code, '!');
-				for (int i = 48; i < 58; i++)
-					code[i] = (char) (i + 16);
 				byte[] bytes = reader.readAllBytes();
 				for (int i = 0; i < bytes.length; i++)
 					bytes[i] = (byte) code[bytes[i]];
@@ -46,6 +43,9 @@ public class Coder {
 	
 	public static void main(String[] args) {
 		char[] code = new char[256];
+		Arrays.fill(code, '!');
+		for (int i = 48; i < 58; i++)
+			code[i] = (char) (i + 16);
 		codeFile("inFile1.txt", "outFile1.txt", code, "logFile.txt");
 	}
 }
