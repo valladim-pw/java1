@@ -1,4 +1,2 @@
-Hello
-П ри вет
-
-Another line
+This is testing line
+12345678
