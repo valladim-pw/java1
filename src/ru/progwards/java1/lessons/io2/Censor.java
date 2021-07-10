@@ -1,4 +1,5 @@
 package ru.progwards.java1.lessons.io2;
+
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.RandomAccessFile;
@@ -18,7 +19,6 @@ public class Censor {
 			msg = msg.substring(1);
 			return fileName == null ? "" :  "\"" + fileName  + "\""  + " : " + msg;
 		}
-		
 		@Override
 		public String toString() {
 			return "\"" + fileName  + "\"" + " : " + msg;
@@ -27,48 +27,54 @@ public class Censor {
 	public static void censorFile(String inoutFileName, String[] obscene) throws IOException{
 		int i = 0;
 		int end;
+		int start;
 		try(FileReader fileReader = new FileReader(inoutFileName)) {
 			RandomAccessFile randomFile = new RandomAccessFile(inoutFileName, "rw");
-			for (int ch; (ch = randomFile.read()) >= 0; i++){
-				randomFile.seek((long)i);
-				for(int j = 0; j < obscene.length; j++){
-					char[] word = obscene[j].toCharArray();
-					if(ch == word[0]){
-						String c = Character.toString(ch);
-						c = c.replace(c, "*");
-						if(i == 0){
-							end = i + word.length;
-						} else {
-							i--;
-							randomFile.seek((long)i);
-							String first = Character.toString(randomFile.read());
-							if(first.equals(c))
-								break;
-							end = i + word.length;
-						}
-						randomFile.seek((long)end);
-						char last = (char)randomFile.read();
-						if(!Character.isLetter(last)){
-							randomFile.seek((long)i);
-							while(i < end) {
-								randomFile.writeBytes(c);
-								i++;
+			String compare = "";
+			String stars = "";
+			int ch;
+			while((ch = randomFile.read()) >= 0) {
+				if (Character.isLetter(ch)) {
+					if(i == 0){
+						i++;
+						randomFile.seek((long) i);
+					}
+					String read = Character.toString(ch);
+					String c;
+					c = read.replace(read, "*");
+					compare += read;
+					stars += c;
+				} else {
+					if(compare != ""){
+						end = i;
+						start = end - compare.length();
+						for(int j = 0; j < obscene.length; j++) {
+							if(compare.equals(obscene[j])){
+								if(start > 0){
+									i--;
+									end = i;
+									start = end - compare.length();
+									randomFile.seek((long)start);
+								} else {
+									randomFile.seek((long)start);
+								}
+								randomFile.writeBytes(stars);
 							}
-						} else{
-							i++;
 						}
 					}
+					compare = "";
+					stars = "";
 				}
+				i++;
 			}
-		}catch (IOException e){
+		} catch (IOException e){
 			CensorException ce = new CensorException( inoutFileName, e.getMessage());
 			ce.getMessage();
 			throw ce;
 		}
 	}
-	
 	public static void main(String[] args) {
-		String[] words = {"Java", "Oracle", "Sun", "Systems","Microsystems", };
+		String[] words = { "Sun", "Java", "Oracle", "Microsystems"};
 		try{
 			censorFile("inoutFile.txt", words);
 		}catch(IOException e){
