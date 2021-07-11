@@ -5,26 +5,36 @@ import java.io.IOException;
 import java.io.RandomAccessFile;
 
 public class Censor {
-	public static class CensorException extends IOException {
+	public static class CensorException extends Exception {
 		public String fileName = "";
 		public String msg = "";
+		public String className = "";
 		public CensorException(String fileName, String msg){
 			super(msg);
 			this.msg = msg;
 			this.fileName = fileName;
+			className = this.getClass().getName();
 		}
 		@Override
 		public String getMessage() {
-			msg = msg.substring(msg.indexOf("("), msg.indexOf(")"));
-			msg = msg.substring(1);
-			return fileName == null ? "" :  "\"" + fileName  + "\""  + " : " + msg;
+			if(msg != null && msg.indexOf("(") != -1  ){
+				msg = msg.substring(msg.indexOf("("), msg.indexOf(")"));
+				msg = msg.substring(1);
+			}
+			if(msg == null){
+				msg = "File name is null";
+			}
+			if(className.indexOf("$") != -1 ){
+				className = className.substring(className.indexOf("$") + 1);
+			}
+			return className + " : " + fileName == null ? "null" :  "\"" + fileName  + "\""  + " : " + msg;
 		}
 		@Override
 		public String toString() {
-			return "\"" + fileName  + "\"" + " : " + msg;
+			return className + " : " + "\"" + fileName  + "\"" + " : " + msg;
 		}
 	}
-	public static void censorFile(String inoutFileName, String[] obscene) throws IOException{
+	public static void censorFile(String inoutFileName, String[] obscene) throws Exception{
 		int i = 0;
 		int end;
 		int start;
@@ -67,7 +77,7 @@ public class Censor {
 				}
 				i++;
 			}
-		} catch (IOException e){
+		} catch (Exception e){
 			CensorException ce = new CensorException( inoutFileName, e.getMessage());
 			ce.getMessage();
 			throw ce;
@@ -77,7 +87,7 @@ public class Censor {
 		String[] words = { "Sun", "Java", "Oracle", "Microsystems"};
 		try{
 			censorFile("inoutFile.txt", words);
-		}catch(IOException e){
+		}catch(Exception e){
 			System.out.println(e);
 		}
 	}
