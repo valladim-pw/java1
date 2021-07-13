@@ -27,11 +27,11 @@ public class Censor {
 			if(className.indexOf("$") != -1 ){
 				className = className.substring(className.indexOf("$") + 1);
 			}
-			return className + " : " + fileName == null ? "null" :  "\"" + fileName  + "\""  + " : " + msg;
+			return className + " : " + fileName == null ? "" :  fileName  + " : " + msg;
 		}
 		@Override
 		public String toString() {
-			return className + " : " + "\"" + fileName  + "\"" + " : " + msg;
+			return fileName  + " : " + msg;
 		}
 	}
 	public static void censorFile(String inoutFileName, String[] obscene) throws Exception{
@@ -86,7 +86,7 @@ public class Censor {
 	public static void main(String[] args) {
 		String[] words = { "Sun", "Java", "Oracle", "Microsystems"};
 		try{
-			censorFile("inoutFile.txt", words);
+			censorFile("inoutFile.txt", null);
 		}catch(Exception e){
 			System.out.println(e);
 		}
