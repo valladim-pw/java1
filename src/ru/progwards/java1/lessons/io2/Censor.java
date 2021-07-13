@@ -21,9 +21,6 @@ public class Censor {
 				msg = msg.substring(msg.indexOf("("), msg.indexOf(")"));
 				msg = msg.substring(1);
 			}
-			if(msg == null){
-				msg = "File name is null";
-			}
 			if(className.indexOf("$") != -1 ){
 				className = className.substring(className.indexOf("$") + 1);
 			}
