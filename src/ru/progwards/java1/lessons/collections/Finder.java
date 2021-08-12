@@ -40,11 +40,15 @@ public class Finder {
 		for(Integer num : numbers){
 			list.add(num);
 		}
-		for(int i = 1; i < numbers.size(); i++) {
-			if(numbers.contains(list.get(i)))
-				return true;
+		list.sort(null);
+		boolean answer = true;
+		for(int i = 0; i < list.size() - 1; i++) {
+			if(list.get(i + 1) - list.get(i) != 1){
+				answer = false;
+				break;
+			}
 		}
-		return false;
+		return answer;
 	}
 	public static String findSimilar(Collection<String> names){
 		List<String> list = new ArrayList<>();
@@ -70,26 +74,15 @@ public class Finder {
 	}
 	public static void main(String[] args) {
 		Collection<Integer> nums = new ArrayList<>();
-		nums.add(-10);
-		nums.add(5);
-		nums.add(4);
-		nums.add(8);
-		nums.add(7);
-		nums.add(12);
-		nums.add(1);
-		nums.add(-34);
-		nums.add(9);
-		nums.add(6);
+		Integer[] arrNums = {18,1,18,14,13,5,2,16,10,16,12,6,16,14,8,6,17,6,2};
+		for(int i = 0; i < arrNums.length; i++){
+			nums.add(arrNums[i]);
+		}
 		Collection<String> names = new ArrayList<>();
-		names.add("Александр");
-		names.add("Василий");
-		names.add("Семен");
-		names.add("Олег");
-		names.add("Олег");
-		names.add("Сергей");
-		names.add("Вениамин");
-		names.add("Иван");
-		names.add("Иван");
+		String[] arrNames = {"Александр","Василий","Семен","Олег","Олег","Сергей","Вениамин","Иван","Иван"};
+		for(int i = 0; i < arrNames.length; i++){
+			names.add(arrNames[i]);
+		}
 		System.out.println(findMinSumPair(nums));
 		System.out.println(findLocalMax(nums));
 		System.out.println(findSequence(nums));
