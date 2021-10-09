@@ -3,7 +3,7 @@ package ru.progwards.java1.lessons.queues;
 import java.util.*;
 
 public class CollectionsSort {
-	static final int ELEMENTS_COUNT = 10_000;
+	static final int ELEMENTS_COUNT = 5_000;
 	public static void mySort(Collection<Integer> data) {
 		List<Integer> list = new ArrayList<>(data.size());
 		list.addAll(0, data);
@@ -38,7 +38,7 @@ public class CollectionsSort {
 			data.add(val);
 		}
 	}
-	static void collSort(Collection<Integer> data){
+	public static void collSort(Collection<Integer> data){
 		List<Integer> list = new ArrayList<>(data.size());
 		list.addAll(0, data);
 		Collections.sort(list);
