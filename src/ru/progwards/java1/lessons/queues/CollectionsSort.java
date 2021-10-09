@@ -51,9 +51,13 @@ public class CollectionsSort {
 		Collection<String> result = new ArrayList<>();
 		List<String> methods = new ArrayList<>();
 		List<String> subList = new ArrayList<>();
-		List<Integer> data = new ArrayList<>();
+		Collection<Integer> data = new ArrayList<>();
+		List<Integer> dataList = new ArrayList<>();
 		for (int i = 0; i < ELEMENTS_COUNT; i++) {
-			data.add(data.size() / 2, i);
+			dataList.add(dataList.size() / 2, i);
+		}
+		for(Integer i : dataList){
+			data.add(i);
 		}
 		String method1 = "mySort ";
 		String method2 = "minSort ";
