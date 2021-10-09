@@ -3,7 +3,7 @@ package ru.progwards.java1.lessons.queues;
 import java.util.*;
 
 public class CollectionsSort {
-	static final int ELEMENTS_COUNT = 1_000;
+	static final int ELEMENTS_COUNT = 10_000;
 	public static void mySort(Collection<Integer> data) {
 		List<Integer> list = new ArrayList<>(data.size());
 		list.addAll(0, data);
@@ -48,6 +48,7 @@ public class CollectionsSort {
 		}
 	}
 	public static Collection<String> compareSort(){
+		Collection<String> result = new ArrayList<>();
 		List<String> methods = new ArrayList<>();
 		List<String> subList = new ArrayList<>();
 		List<Integer> data = new ArrayList<>();
@@ -81,6 +82,7 @@ public class CollectionsSort {
 			}
 		};
 		Collections.sort(methods, comparator);
+		System.out.println(methods);
 		methods.add(last);
 		for(int i = 0; i < methods.size() - 1; i++){
 			if(comparator.compare(methods.get(i), methods.get(i + 1)) != 0){
@@ -104,7 +106,10 @@ public class CollectionsSort {
 			}
 		}
 		methods.remove(methods.size() - 1);
-		return methods;
+		for(String str : methods){
+			result.add(str);
+		}
+		return result;
 	}
 	public static void main(String[] args) {
 		Collection<Integer> data = new ArrayList<>();
