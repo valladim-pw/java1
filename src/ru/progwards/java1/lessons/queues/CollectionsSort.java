@@ -17,6 +17,10 @@ public class CollectionsSort {
 				}
 			}
 		}
+		data.clear();
+		for(Integer val : list){
+			data.add(val);
+		}
 	}
 	public static void minSort(Collection<Integer> data){
 		List<Integer> list = new ArrayList<>(data.size());
@@ -29,11 +33,19 @@ public class CollectionsSort {
 			i++;
 		}
 		list.addAll(0, listCopy);
+		data.clear();
+		for(Integer val : list){
+			data.add(val);
+		}
 	}
 	static void collSort(Collection<Integer> data){
 		List<Integer> list = new ArrayList<>(data.size());
 		list.addAll(0, data);
 		Collections.sort(list);
+		data.clear();
+		for(Integer val : list){
+			data.add(val);
+		}
 	}
 	public static Collection<String> compareSort(){
 		List<String> methods = new ArrayList<>();
@@ -45,11 +57,6 @@ public class CollectionsSort {
 		String method1 = "mySort ";
 		String method2 = "minSort ";
 		String method3 = "collSort ";
-		String method4 = "hisSort";
-		String method5 = "logSort";
-		String method6 = "downSort";
-		String method7 = "beautySort";
-		String method8 = "authSort";
 		String last = " -1";
 		int end;
 		int begin;
@@ -65,16 +72,6 @@ public class CollectionsSort {
 		collSort(data);
 		method3 += (double)(System.currentTimeMillis() - start) / 1000;
 		methods.add(method3);
-		method4 += method1.substring(method1.indexOf(" "));
-		methods.add(method4);
-		method5 += method2.substring(method2.indexOf(" "));
-		methods.add(method5);
-		method6 += method2.substring(method2.indexOf(" "));
-		methods.add(method6);
-		method7 += method3.substring(method3.indexOf(" "));
-		methods.add(method7);
-		method8 += method3.substring(method3.indexOf(" "));
-		methods.add(method8);
 		Comparator<String> comparator = new Comparator<String>() {
 			@Override
 			public int compare(String s1, String s2) {
@@ -110,12 +107,37 @@ public class CollectionsSort {
 		return methods;
 	}
 	public static void main(String[] args) {
-		Collection<Integer> data = List.of(11, 10, 9, 8, 33, 0, -4);
+		Collection<Integer> data = new ArrayList<>();
+		data.add(87);
+		data.add(77);
+		data.add(20);
+		data.add(93);
+		data.add(6);
+		data.add(56);
+		data.add(75);
 		mySort(data);
-		Collection<Integer> data1 = List.of(-1, 13, -9, 6, 23, 0, 3);
+		System.out.println(data);
+		Collection<Integer> data1 = new ArrayList<>();
+		data1.add(62);
+		data1.add(83);
+		data1.add(66);
+		data1.add(80);
+		data1.add(56);
+		data1.add(84);
 		minSort(data1);
-		Collection<Integer> data2 = List.of(13, 20, 5, 81, 3, 0, -7);
+		System.out.println(data1);
+		Collection<Integer> data2 = new ArrayList<>();
+		data2.add(90);
+		data2.add(7);
+		data2.add(56);
+		data2.add(50);
+		data2.add(52);
+		data2.add(1);
+		data2.add(77);
+		data2.add(33);
+		data2.add(82);
 		collSort(data2);
+		System.out.println(data2);
 		System.out.println(compareSort());
 	}
 }

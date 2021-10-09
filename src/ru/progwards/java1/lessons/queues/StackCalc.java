@@ -17,16 +17,18 @@ public class StackCalc{
 		this.push(sum);
 	}
 	public void sub(){
-		Double sub = this.pop() - this.pop();
-		this.push(sub);
+		Double sub = this.pop();
+		Double reduce = this.pop();
+		this.push(reduce - sub);
 	}
 	public void mul(){
 		Double mul = this.pop() * this.pop();
 		this.push(mul);
 	}
 	public void div(){
-		Double div = this.pop() / this.pop();
-		this.push(div);
+		Double div = this.pop();
+		Double divis = this.pop();
+		this.push(divis / div);
 	}
 	@Override
 	public String toString() {
