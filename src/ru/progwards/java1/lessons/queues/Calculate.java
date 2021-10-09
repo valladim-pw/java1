@@ -4,7 +4,7 @@ import java.util.*;
 public class Calculate {
 	public static double calculation1(){
 		LinkedList<Double> list = new LinkedList<>();
-		StackCalc stack = new StackCalc(list);
+		StackCalc stack = new StackCalc();
 		stack.push(2.2);
 		stack.push(12.1);
 		stack.push(3);
@@ -14,7 +14,7 @@ public class Calculate {
 	}
 	public static double calculation2(){
 		LinkedList<Double> list = new LinkedList<>();
-		StackCalc stack = new StackCalc(list);
+		StackCalc stack = new StackCalc();
 		stack.push(737.22);
 		stack.push(24);
 		stack.add();
