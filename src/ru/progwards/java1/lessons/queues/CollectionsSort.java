@@ -3,7 +3,6 @@ package ru.progwards.java1.lessons.queues;
 import java.util.*;
 
 public class CollectionsSort {
-	static final int ELEMENTS_COUNT = 5_000;
 	public static void mySort(Collection<Integer> data) {
 		List<Integer> list = new ArrayList<>(data.size());
 		list.addAll(0, data);
@@ -24,22 +23,16 @@ public class CollectionsSort {
 	}
 	public static void minSort(Collection<Integer> data){
 		List<Integer> list = new ArrayList<>(data.size());
-		List<Integer> listCopy = new ArrayList<>();
-		list.addAll(0, data);
-		int i = 0;
-		while(!list.isEmpty()){
-			listCopy.add(i, Collections.min(list));
-			list.remove(list.indexOf(Collections.min(list)));
-			i++;
+		Collection<Integer> dataNew = new ArrayList<>();
+		while(!data.isEmpty()){
+			Integer min  = Collections.min(data);
+			data.remove(min);
+			dataNew.add(min);
 		}
-		list.addAll(0, listCopy);
-		data.clear();
-		for(Integer val : list){
-			data.add(val);
-		}
+		data.addAll(dataNew);
 	}
 	public static void collSort(Collection<Integer> data){
-		List<Integer> list = new ArrayList<>(data.size());
+		List<Integer> list = new ArrayList<>();
 		list.addAll(0, data);
 		Collections.sort(list);
 		data.clear();
@@ -51,13 +44,21 @@ public class CollectionsSort {
 		Collection<String> result = new ArrayList<>();
 		List<String> methods = new ArrayList<>();
 		List<String> subList = new ArrayList<>();
-		Collection<Integer> data = new ArrayList<>();
+		Collection<Integer> data1 = new ArrayList<>();
+		Collection<Integer> data2 = new ArrayList<>();
+		Collection<Integer> data3 = new ArrayList<>();
 		List<Integer> dataList = new ArrayList<>();
-		for (int i = 0; i < ELEMENTS_COUNT; i++) {
+		for (int i = 0; i < 1000; i++) {
 			dataList.add(dataList.size() / 2, i);
 		}
 		for(Integer i : dataList){
-			data.add(i);
+			data1.add(i);
+		}
+		for(Integer i : dataList){
+			data2.add(i);
+		}
+		for(Integer i : dataList){
+			data3.add(i);
 		}
 		String method1 = "mySort ";
 		String method2 = "minSort ";
@@ -66,26 +67,31 @@ public class CollectionsSort {
 		int end;
 		int begin;
 		long start = System. currentTimeMillis();
-		mySort(data);
-		method1 += (double)(System.currentTimeMillis() - start) / 1000;
+		mySort(data1);
+		long finish = System. currentTimeMillis();
+		method1 += finish - start;
 		methods.add(method1);
 		start = System. currentTimeMillis();
-		minSort(data);
-		method2 += (double)(System.currentTimeMillis() - start) / 1000;
+		minSort(data2);
+		finish = System. currentTimeMillis();
+		method2 += finish - start;
 		methods.add(method2);
 		start = System. currentTimeMillis();
-		collSort(data);
-		method3 += (double)(System.currentTimeMillis() - start) / 1000;
+		collSort(data1);
+		finish = System. currentTimeMillis();
+		method3 += finish - start;
 		methods.add(method3);
 		Comparator<String> comparator = new Comparator<String>() {
 			@Override
 			public int compare(String s1, String s2) {
-				Double d1 = Double.parseDouble(s1.substring(s1.indexOf(" ")));
-				Double d2 = Double.parseDouble(s2.substring(s2.indexOf(" ")));
-				return d1.compareTo(d2);
+				s1 = s1.substring(s1.indexOf(" ")).trim();
+				s2 = s2.substring(s2.indexOf(" ")).trim();
+				Long l1 = Long.parseLong(s1);
+				Long l2 = Long.parseLong(s2);
+				return l1.compareTo(l2);
 			}
 		};
-		Collections.sort(methods, comparator);
+		methods.sort(comparator);
 		System.out.println(methods);
 		methods.add(last);
 		for(int i = 0; i < methods.size() - 1; i++){
