@@ -18,7 +18,7 @@ public class Order implements Comparable<Order> {
 	public Order addOrder(Collection<Order> list){
 		list.add(this);
 		this.num = list.size();
-		listOrder = new ArrayList<>();
+		listOrder = new PriorityQueue<>();
 		for(Order val : list){
 			listOrder.add(val);
 		}

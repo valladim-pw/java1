@@ -5,7 +5,6 @@ public class OrderQueue {
 	public Collection<Order> queueOrder;
 	public OrderQueue(Collection<Order> list){
 		this.queueOrder = list;
-		list.clear();
 	}
 	public void add(Order order){
 		if(order.getSum() <= 10000.0)
@@ -42,8 +41,7 @@ public class OrderQueue {
 		return order;
 	}
 	public static void main(String[] args) {
-		//List<Order> list = new ArrayList<>();
-		PriorityQueue<Order> list = new PriorityQueue<>();
+		Collection<Order> list = new PriorityQueue<>();
 		Order o1 = new Order(1500).addOrder(list);
 		Order o2 = new Order(20000).addOrder(list);
 		Order o3 = new Order(28000).addOrder(list);
@@ -52,8 +50,7 @@ public class OrderQueue {
 		Order o6 = new Order(8000).addOrder(list);
 		Order o7 = new Order(15000).addOrder(list);
 		Order o8 = new Order(10000).addOrder(list);
-		PriorityQueue<Order> list2 = new PriorityQueue<Order>();
-		OrderQueue orderQueue = new OrderQueue(list2);
+		OrderQueue orderQueue = new OrderQueue(list);
 		orderQueue.add(o1);
 		orderQueue.add(o2);
 		orderQueue.add(o3);
@@ -62,8 +59,7 @@ public class OrderQueue {
 		orderQueue.add(o6);
 		orderQueue.add(o7);
 		orderQueue.add(o8);
-		//System.out.println("" + list);
-		System.out.println("" + list2);
+		System.out.println("" + list);
 		System.out.println(orderQueue.get());
 	}
 }
