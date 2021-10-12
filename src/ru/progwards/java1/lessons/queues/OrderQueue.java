@@ -2,8 +2,11 @@ package ru.progwards.java1.lessons.queues;
 import java.util.*;
 
 public class OrderQueue {
-	public Collection<Order> queueOrder;
+	public Collection<Order> queueOrder = new PriorityQueue<>();
 	public OrderQueue(Collection<Order> list){
+		for(Order val : list){
+			queueOrder.add(val);
+		}
 		this.queueOrder = list;
 	}
 	public void add(Order order){
@@ -46,19 +49,19 @@ public class OrderQueue {
 		Order o2 = new Order(20000).addOrder(list);
 		Order o3 = new Order(28000).addOrder(list);
 		Order o4 = new Order(30000).addOrder(list);
-		Order o5 = new Order(12000).addOrder(list);
-		Order o6 = new Order(8000).addOrder(list);
-		Order o7 = new Order(15000).addOrder(list);
-		Order o8 = new Order(10000).addOrder(list);
+//		Order o5 = new Order(12000).addOrder(list);
+//		Order o6 = new Order(8000).addOrder(list);
+//		Order o7 = new Order(15000).addOrder(list);
+//		Order o8 = new Order(10000).addOrder(list);
 		OrderQueue orderQueue = new OrderQueue(list);
-		orderQueue.add(o1);
+		//orderQueue.add(o1);
 		orderQueue.add(o2);
 		orderQueue.add(o3);
 		orderQueue.add(o4);
-		orderQueue.add(o5);
-		orderQueue.add(o6);
-		orderQueue.add(o7);
-		orderQueue.add(o8);
+//		orderQueue.add(o5);
+//		orderQueue.add(o6);
+//		orderQueue.add(o7);
+//		orderQueue.add(o8);
 		System.out.println("" + list);
 		System.out.println(orderQueue.get());
 	}
