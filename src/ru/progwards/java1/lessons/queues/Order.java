@@ -5,7 +5,7 @@ public class Order implements Comparable<Order> {
 	private double sum;
 	private int num;
 	public int priority;
-	public Collection<Order> listOrder;
+	public List<Order> listOrder;
 	public Order(double sum){
 		this.sum = sum;
 	}
@@ -15,10 +15,10 @@ public class Order implements Comparable<Order> {
 	public int getNum() {
 		return num;
 	}
-	public Order addOrder(Collection<Order> list){
+	public Order addOrder(List<Order> list){
 		list.add(this);
 		this.num = list.size();
-		listOrder = new PriorityQueue<>();
+		listOrder = new ArrayList<>();
 		for(Order val : list){
 			listOrder.add(val);
 		}
