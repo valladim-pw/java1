@@ -92,7 +92,6 @@ public class CollectionsSort {
 			}
 		};
 		methods.sort(comparator);
-		System.out.println(methods);
 		methods.add(last);
 		for(int i = 0; i < methods.size() - 1; i++){
 			if(comparator.compare(methods.get(i), methods.get(i + 1)) != 0){
