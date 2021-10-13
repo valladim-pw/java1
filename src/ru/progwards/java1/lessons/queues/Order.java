@@ -1,13 +1,14 @@
 package ru.progwards.java1.lessons.queues;
 import java.util.*;
 
-public class Order implements Comparable<Order> {
+public class Order {
 	private double sum;
 	private int num;
 	public int priority;
-	public List<Order> listOrder;
+	public static List<Order> listOrder = new ArrayList<>();
 	public Order(double sum){
 		this.sum = sum;
+		listOrder.add(this.addOrder());
 	}
 	public double getSum() {
 		return sum;
@@ -15,18 +16,11 @@ public class Order implements Comparable<Order> {
 	public int getNum() {
 		return num;
 	}
-	public Order addOrder(List<Order> list){
+	public Order addOrder(){
+		List<Order> list = new ArrayList<>();
 		list.add(this);
-		this.num = list.size();
-		listOrder = new ArrayList<>();
-		for(Order val : list){
-			listOrder.add(val);
-		}
+		this.num = listOrder.size() + 1;
 		return this;
-	}
-	@Override
-	public int compareTo( Order o) {
-		return Integer.compare(priority, o.priority);
 	}
 	@Override
 	public String toString() {

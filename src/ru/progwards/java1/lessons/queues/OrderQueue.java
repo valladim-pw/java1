@@ -2,11 +2,10 @@ package ru.progwards.java1.lessons.queues;
 import java.util.*;
 
 public class OrderQueue {
-	public List<Order> queueOrder ;
-	public OrderQueue(List<Order> list){
-		this.queueOrder = list;
-	}
+	public List<Order> queueOrder;
 	public void add(Order order){
+		queueOrder = new ArrayList<>();
+		queueOrder.add(order);
 		if(order.getSum() <= 10000.0)
 			order.priority = 3;
 		else if(order.getSum() > 10000.0 && order.getSum() <= 20000.0)
@@ -28,6 +27,7 @@ public class OrderQueue {
 			}
 		}
 		Collections.sort(queueOrder, comparator);
+		//System.out.println(queueOrder);
 	}
 	public Order get(){
 		Order order = null;
@@ -37,16 +37,15 @@ public class OrderQueue {
 		return order;
 	}
 	public static void main(String[] args) {
-		List<Order> list = new ArrayList<>();
-		Order o1 = new Order(1500).addOrder(list);
-		Order o2 = new Order(20000).addOrder(list);
-		Order o3 = new Order(28000).addOrder(list);
-		Order o4 = new Order(30000).addOrder(list);
-		Order o5 = new Order(12000).addOrder(list);
-		Order o6 = new Order(8000).addOrder(list);
-		Order o7 = new Order(15000).addOrder(list);
-		Order o8 = new Order(10000).addOrder(list);
-		OrderQueue orderQueue = new OrderQueue(list);
+		Order o1 = new Order(1500);
+		Order o2 = new Order(21000);
+		Order o3 = new Order(28000);
+		Order o4 = new Order(30000);
+		Order o5 = new Order(12000);
+		Order o6 = new Order(8000);
+		Order o7 = new Order(15000);
+		Order o8 = new Order(10000);
+		OrderQueue orderQueue = new OrderQueue();
 		orderQueue.add(o1);
 		orderQueue.add(o2);
 		orderQueue.add(o3);
@@ -55,7 +54,7 @@ public class OrderQueue {
 		orderQueue.add(o6);
 		orderQueue.add(o7);
 		orderQueue.add(o8);
-		System.out.println("" + list);
+		System.out.println(orderQueue.queueOrder);
 		System.out.println(orderQueue.get());
 	}
 }
