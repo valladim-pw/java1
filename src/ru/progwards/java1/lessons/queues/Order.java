@@ -4,7 +4,6 @@ import java.util.*;
 public class Order {
 	private double sum;
 	private int num;
-	public int priority;
 	public static List<Order> listOrder = new ArrayList<>();
 	public Order(double sum){
 		this.sum = sum;
@@ -24,6 +23,6 @@ public class Order {
 	}
 	@Override
 	public String toString() {
-		return num + ": " + sum + "(" + priority + ")";
+		return num + ": " + sum ;
 	}
 }
