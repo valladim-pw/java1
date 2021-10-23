@@ -7,6 +7,10 @@ public class OrderQueue {
 	public double sum;
 	public int num;
 	public OrderQueue addPriority(Order order) {
+		Iterator<Order> iterator = order.listOrder.iterator();
+		while(iterator.hasNext()) {
+			order = iterator.next();
+		}
 		OrderQueue orderQ = new OrderQueue();
 		if (order.getSum() <= 10000.0)
 			orderQ.priority = 3;
@@ -29,7 +33,7 @@ public class OrderQueue {
 		};
 		orderPriority.add(this.addPriority(order));
 		Collections.sort(orderPriority, comparator);
-		System.out.println("priority" + orderPriority);
+		//System.out.println("priority" + orderPriority);
 	}
 	public OrderQueue get() {
 		OrderQueue order = null;
