@@ -2,7 +2,7 @@ package ru.progwards.java1.lessons.queues;
 import java.util.*;
 
 public class OrderQueue {
-	public static LinkedList<Order> orderPriority = new LinkedList<>();
+	public LinkedList<Order> orderPriority = new LinkedList<>();
 	public int priority = 0;
 	public int addPriority(Order order) {
 		if (order.getSum() <= 10000.0)
@@ -19,13 +19,16 @@ public class OrderQueue {
 			public int compare(Order o1, Order o2) {
 				Integer p1 = addPriority(o1);
 				Integer p2 = addPriority(o2);
-				return p1.compareTo(p2);
+				Integer n1 = o1.getNum();
+				Integer n2 = o2.getNum();
+				if(p1.compareTo(p2) == 0)
+					return n1.compareTo(n2);
+				else
+					return p1.compareTo(p2);
 			}
 		};
-		Collections.sort(order.listOrder, comparator);
-		Order o = null;
-		orderPriority.add(o);
-		Collections.copy(orderPriority, order.listOrder);
+		orderPriority.add(order);
+		orderPriority.sort(comparator);
 	}
 	public Order get() {
 		Order order = null;
