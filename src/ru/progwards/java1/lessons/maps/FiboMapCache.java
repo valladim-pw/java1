@@ -7,7 +7,7 @@ public class FiboMapCache {
 		if(cacheOn == true)
 			fiboCache = new HashMap<>();
 		else{
-			this.clearCache();
+			this.clearCahe();
 		}
 	}
 	public BigDecimal fiboNumber(int n){
@@ -37,7 +37,7 @@ public class FiboMapCache {
 		}
 		return out;
 	}
-	public void clearCache(){
+	public void clearCahe(){
 		fiboCache = null;
 	}
 	public static void test(){
