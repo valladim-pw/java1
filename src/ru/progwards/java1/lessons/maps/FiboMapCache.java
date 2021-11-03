@@ -11,14 +11,14 @@ public class FiboMapCache {
 		}
 	}
 	public BigDecimal fiboNumber(int n){
-		BigDecimal a = new BigDecimal("0");
+		BigDecimal a = new BigDecimal("1");
 		BigDecimal b = new BigDecimal("1");
 		BigDecimal c;
 		BigDecimal out = null;
 		if(fiboCache != null){
 			BigDecimal res = fiboCache.get(n);
 			if(res == null){
-				for(int i = 1; i <= n; i++){
+				for(int i = 3; i <= n; i++){
 					c = a.add(b);
 					a = b;
 					b = c;
@@ -28,7 +28,7 @@ public class FiboMapCache {
 				out  = res;
 			}
 		} else {
-			for(int i = 1; i <= n; i++){
+			for(int i = 3; i <= n; i++){
 				c = a.add(b);
 				a = b;
 				b = c;
