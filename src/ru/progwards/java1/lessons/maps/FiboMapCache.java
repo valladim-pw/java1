@@ -26,10 +26,9 @@ public class FiboMapCache {
 					b = c;
 				}
 				fiboCache.put(n, b);
-			}else {
-				out = res;
+			} else {
+				out  = res;
 			}
-			out  = fiboCache.get(n);
 		} else {
 			for(int i = 3; i <= n; i++){
 				c = a.add(b);
@@ -49,6 +48,7 @@ public class FiboMapCache {
 		FiboMapCache fibo1 = new FiboMapCache(true);
 		long start = System. currentTimeMillis();;
 		for(int i = 1; i <= 1000; i++){
+			fibo1.fiboNumber(i);
 			fibo1.fiboNumber(i);
 		}
 		time1 += System. currentTimeMillis() - start;

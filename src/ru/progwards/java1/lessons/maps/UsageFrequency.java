@@ -3,7 +3,7 @@ import java.io.*;
 import java.util.*;
 public class UsageFrequency {
 	private List<Character> list = new ArrayList<>();
-	public void processFile(String fileName) throws Exception {
+	public void processFile(String fileName) throws IOException {
 		try(FileReader reader = new FileReader(fileName);Scanner scanner = new Scanner(reader);)	{
 			while(scanner.hasNextLine()){
 				String string = scanner.nextLine();
@@ -16,7 +16,7 @@ public class UsageFrequency {
 					list.add(Character.forDigit(32, 10));
 				}
 			}
-		} catch (Exception e)	{
+		} catch (IOException e)	{
 			e.getMessage();
 			throw e;
 		}
@@ -63,13 +63,13 @@ public class UsageFrequency {
 		return words;
 	}
 	public static void main(String[] args) {
+		UsageFrequency usageFreq = new UsageFrequency();
 		try {
-			UsageFrequency usageFreq = new UsageFrequency();
 			usageFreq.processFile("wiki.train.tokens");
-			System.out.println(usageFreq.getLetters());
-			System.out.println(usageFreq.getWords());
 		} catch(Exception e){
 			System.out.println(e);
 		}
+		System.out.println(usageFreq.getLetters());
+		System.out.println(usageFreq.getWords());
 	}
 }
