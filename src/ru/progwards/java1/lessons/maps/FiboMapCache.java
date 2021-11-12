@@ -3,9 +3,7 @@ import java.math.BigDecimal;
 import java.util.*;
 public class FiboMapCache {
 	private Map<Integer, BigDecimal> fiboCache;
-	private boolean cacheOn = false;
 	public FiboMapCache(boolean cacheOn){
-		this.cacheOn = cacheOn;
 		if(cacheOn == true)
 			fiboCache = new HashMap<>();
 		else{
@@ -17,7 +15,7 @@ public class FiboMapCache {
 		BigDecimal b = new BigDecimal("1");
 		BigDecimal c;
 		BigDecimal out = null;
-		if(cacheOn == true){
+		if(fiboCache != null){
 			BigDecimal res = fiboCache.get(n);
 			if(res == null){
 				for(int i = 3; i <= n; i++){
