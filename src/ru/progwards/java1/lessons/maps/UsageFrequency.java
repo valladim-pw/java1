@@ -7,7 +7,7 @@ public class UsageFrequency {
 		try(FileReader reader = new FileReader(fileName);Scanner scanner = new Scanner(reader);)	{
 			while(scanner.hasNextLine()){
 				String string = scanner.nextLine();
-				if(!string.isBlank()){
+				if(!string.isBlank() && list != null){
 					for (char c : string.toCharArray())
 						if (Character.isDigit(c) || Character.isAlphabetic(c))
 							list.add(c);
@@ -63,13 +63,13 @@ public class UsageFrequency {
 		return words;
 	}
 	public static void main(String[] args) {
-		UsageFrequency usageFreq = new UsageFrequency();
 		try {
+			UsageFrequency usageFreq = new UsageFrequency();
 			usageFreq.processFile("wiki.train.tokens");
-		} catch(Exception e){
+			System.out.println(usageFreq.getLetters());
+			System.out.println(usageFreq.getWords());
+		} catch (Throwable e) {
 			System.out.println(e);
 		}
-		System.out.println(usageFreq.getLetters());
-		System.out.println(usageFreq.getWords());
 	}
 }
