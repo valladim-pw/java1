@@ -18,7 +18,8 @@ public class FiboMapCache {
 		BigDecimal c;
 		BigDecimal out = null;
 		if(cacheOn == true){
-			if(fiboCache.get(n) == null){
+			BigDecimal res = fiboCache.get(n);
+			if(res == null){
 				for(int i = 3; i <= n; i++){
 					c = a.add(b);
 					a = b;

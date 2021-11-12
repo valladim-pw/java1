@@ -2,16 +2,7 @@ package ru.progwards.java1.lessons.maps;
 import java.io.*;
 import java.util.*;
 public class UsageFrequency {
-	private String fileName;
 	private List<Character> list = new ArrayList<>();
-	public UsageFrequency(String fileName){
-		this.fileName = fileName;
-		try {
-			processFile(fileName);
-		} catch(Exception e){
-			System.out.println(e);
-		}
-	}
 	public void processFile(String fileName) throws Exception {
 		try(FileReader reader = new FileReader(fileName))	{
 			Scanner scanner = new Scanner(reader);
@@ -73,8 +64,13 @@ public class UsageFrequency {
 		return words;
 	}
 	public static void main(String[] args) {
-		UsageFrequency usageFreq = new UsageFrequency("wiki.train.tokens");
-		System.out.println(usageFreq.getLetters());
-		System.out.println(usageFreq.getWords());
+		UsageFrequency usageFreq = new UsageFrequency();
+		try {
+			usageFreq.processFile("wiki.train.tokens");
+			System.out.println(usageFreq.getLetters());
+			System.out.println(usageFreq.getWords());
+		} catch(Exception e){
+			System.out.println(e);
+		}
 	}
 }
