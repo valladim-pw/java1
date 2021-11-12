@@ -26,6 +26,8 @@ public class FiboMapCache {
 					b = c;
 				}
 				fiboCache.put(n, b);
+			}else {
+				out = res;
 			}
 			out  = fiboCache.get(n);
 		} else {

@@ -4,8 +4,7 @@ import java.util.*;
 public class UsageFrequency {
 	private List<Character> list = new ArrayList<>();
 	public void processFile(String fileName) throws Exception {
-		try(FileReader reader = new FileReader(fileName))	{
-			Scanner scanner = new Scanner(reader);
+		try(FileReader reader = new FileReader(fileName);Scanner scanner = new Scanner(reader);)	{
 			while(scanner.hasNextLine()){
 				String string = scanner.nextLine();
 				if(!string.isBlank()){
@@ -64,8 +63,8 @@ public class UsageFrequency {
 		return words;
 	}
 	public static void main(String[] args) {
-		UsageFrequency usageFreq = new UsageFrequency();
 		try {
+			UsageFrequency usageFreq = new UsageFrequency();
 			usageFreq.processFile("wiki.train.tokens");
 			System.out.println(usageFreq.getLetters());
 			System.out.println(usageFreq.getWords());
