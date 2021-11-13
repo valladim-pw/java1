@@ -33,8 +33,8 @@ public class UsageFrequency {
 		}
 	}
 	public void processFile(String fileName) throws Exception {
-		try(FileReader reader = new FileReader(fileName))	{
-			Scanner scanner = new Scanner(reader);
+		try(FileReader reader = new FileReader(fileName);Scanner scanner = new Scanner(reader);)	{
+			
 			while(scanner.hasNextLine()){
 				String string = scanner.nextLine();
 				if(!string.isBlank()){
