@@ -3,11 +3,41 @@ import java.io.*;
 import java.util.*;
 public class UsageFrequency {
 	private List<Character> list = new ArrayList<>();
-	public void processFile(String fileName) throws IOException {
-		try(FileReader reader = new FileReader(fileName);Scanner scanner = new Scanner(reader);)	{
+	public static class WrongLoadFile extends Exception {
+		public String fileName = "";
+		public String msg = "";
+		public String className = "";
+		public WrongLoadFile(String fileName, String msg){
+			super(msg);
+			this.msg = msg;
+			this.fileName = fileName;
+			className = this.getClass().getName();
+		}
+		@Override
+		public String getMessage() {
+			if(msg != null && msg.indexOf("(") != -1  ){
+				msg = msg.substring(msg.indexOf("("), msg.indexOf(")"));
+				msg = msg.substring(1);
+			}
+			if(className.indexOf("$") != -1 ){
+				className = className.substring(className.indexOf("$") + 1);
+			}
+			return msg;
+		}
+		@Override
+		public String toString() {
+			String nullStr = "file name is null";
+			if(msg == null)
+				msg = nullStr;
+			return className + ": " + "\"" + fileName + "\""  + " -> " + msg;
+		}
+	}
+	public void processFile(String fileName) throws Exception {
+		try(FileReader reader = new FileReader(fileName))	{
+			Scanner scanner = new Scanner(reader);
 			while(scanner.hasNextLine()){
 				String string = scanner.nextLine();
-				if(!string.isBlank() && list != null){
+				if(!string.isBlank()){
 					for (char c : string.toCharArray())
 						if (Character.isDigit(c) || Character.isAlphabetic(c))
 							list.add(c);
@@ -16,9 +46,10 @@ public class UsageFrequency {
 					list.add(Character.forDigit(32, 10));
 				}
 			}
-		} catch (IOException e)	{
-			e.getMessage();
-			throw e;
+		} catch (Exception e){
+			WrongLoadFile wf = new WrongLoadFile( fileName, e.getMessage());
+			wf.getMessage();
+			throw wf;
 		}
 	}
 	public Map<Character, Integer> getLetters(){
@@ -63,12 +94,12 @@ public class UsageFrequency {
 		return words;
 	}
 	public static void main(String[] args) {
-		try {
-			UsageFrequency usageFreq = new UsageFrequency();
+		UsageFrequency usageFreq = new UsageFrequency();
+		try{
 			usageFreq.processFile("wiki.train.tokens");
 			System.out.println(usageFreq.getLetters());
 			System.out.println(usageFreq.getWords());
-		} catch (Throwable e) {
+		}catch(Exception e){
 			System.out.println(e);
 		}
 	}
