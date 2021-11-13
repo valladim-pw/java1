@@ -33,7 +33,7 @@ public class UsageFrequency {
 		}
 	}
 	public void processFile(String fileName) throws Exception {
-		try(FileReader reader = new FileReader(fileName);Scanner scanner = new Scanner(reader);)	{
+		try(FileReader reader = new FileReader(fileName);Scanner scanner = new Scanner(reader))	{
 			
 			while(scanner.hasNextLine()){
 				String string = scanner.nextLine();
@@ -52,7 +52,7 @@ public class UsageFrequency {
 			throw wf;
 		}
 	}
-	public Map<Character, Integer> getLetters(){
+	public Map<Character, Integer> getLetters() throws Exception{
 		Map<Character, Integer> letters = new TreeMap<>();
 		for(Character ch : list){
 			Character key = ch;
@@ -68,7 +68,7 @@ public class UsageFrequency {
 		}
 		return letters;
 	}
-	public Map<String, Integer> getWords(){
+	public Map<String, Integer> getWords() throws Exception{
 		Map<String, Integer> words = new TreeMap<>();
 		StringBuilder strBuilder = new StringBuilder();
 		String word = "";
