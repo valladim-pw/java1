@@ -2,39 +2,19 @@ package ru.progwards.java1.lessons.maps;
 import java.io.*;
 import java.util.*;
 public class UsageFrequency {
+	private String fileName;
 	private List<Character> list = new ArrayList<>();
-	public static class WrongLoadFile extends Exception {
-		public String fileName = "";
-		public String msg = "";
-		public String className = "";
-		public WrongLoadFile(String fileName, String msg){
-			super(msg);
-			this.msg = msg;
-			this.fileName = fileName;
-			className = this.getClass().getName();
-		}
-		@Override
-		public String getMessage() {
-			if(msg != null && msg.indexOf("(") != -1  ){
-				msg = msg.substring(msg.indexOf("("), msg.indexOf(")"));
-				msg = msg.substring(1);
-			}
-			if(className.indexOf("$") != -1 ){
-				className = className.substring(className.indexOf("$") + 1);
-			}
-			return msg;
-		}
-		@Override
-		public String toString() {
-			String nullStr = "file name is null";
-			if(msg == null)
-				msg = nullStr;
-			return className + ": " + "\"" + fileName + "\""  + " -> " + msg;
+	public UsageFrequency(String fileName) throws Exception {
+		this.fileName = fileName;
+		try {
+			this.processFile(this.fileName);
+		} catch(Exception e){
+			e.getMessage();
+			throw e;
 		}
 	}
 	public void processFile(String fileName) throws Exception {
 		try(FileReader reader = new FileReader(fileName);Scanner scanner = new Scanner(reader))	{
-			
 			while(scanner.hasNextLine()){
 				String string = scanner.nextLine();
 				if(!string.isBlank()){
@@ -47,12 +27,11 @@ public class UsageFrequency {
 				}
 			}
 		} catch (Exception e){
-			WrongLoadFile wf = new WrongLoadFile( fileName, e.getMessage());
-			wf.getMessage();
-			throw wf;
+			e.getMessage();
+			throw e;
 		}
 	}
-	public Map<Character, Integer> getLetters() throws Exception{
+	public Map<Character, Integer> getLetters(){
 		Map<Character, Integer> letters = new TreeMap<>();
 		for(Character ch : list){
 			Character key = ch;
@@ -68,7 +47,7 @@ public class UsageFrequency {
 		}
 		return letters;
 	}
-	public Map<String, Integer> getWords() throws Exception{
+	public Map<String, Integer> getWords(){
 		Map<String, Integer> words = new TreeMap<>();
 		StringBuilder strBuilder = new StringBuilder();
 		String word = "";
@@ -94,9 +73,9 @@ public class UsageFrequency {
 		return words;
 	}
 	public static void main(String[] args) {
-		UsageFrequency usageFreq = new UsageFrequency();
+		
 		try{
-			usageFreq.processFile("wiki.train.tokens");
+			UsageFrequency usageFreq = new UsageFrequency("wiki.train.tokens");
 			System.out.println(usageFreq.getLetters());
 			System.out.println(usageFreq.getWords());
 		}catch(Exception e){
