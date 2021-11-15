@@ -2,18 +2,37 @@ package ru.progwards.java1.lessons.maps;
 import java.io.*;
 import java.util.*;
 public class UsageFrequency {
-	private String fileName;
 	private List<Character> list = new ArrayList<>();
-	public UsageFrequency(String fileName) throws Exception {
-		this.fileName = fileName;
-		try {
-			this.processFile(this.fileName);
-		} catch(Exception e){
-			e.getMessage();
-			throw e;
+	public static class WrongLoadFile extends RuntimeException {
+		public String fileName = "";
+		public String msg = "";
+		public String className = "";
+		public WrongLoadFile(String fileName, String msg){
+			super(msg);
+			this.msg = msg;
+			this.fileName = fileName;
+			className = this.getClass().getName();
+		}
+		@Override
+		public String getMessage() {
+			if(msg != null && msg.indexOf("(") != -1 && msg.contains(fileName) ){
+				msg = msg.substring(msg.indexOf("("), msg.indexOf(")"));
+				msg = msg.substring(1);
+			}
+			if(className.indexOf("$") != -1 ){
+				className = className.substring(className.indexOf("$") + 1);
+			}
+			return msg;
+		}
+		@Override
+		public String toString() {
+			String nullStr = "file name is null";
+			if(msg == null)
+				msg = nullStr;
+			return className + ": " + "\"" + fileName + "\""  + " -> " + msg ;
 		}
 	}
-	public void processFile(String fileName) throws Exception {
+	public void processFile(String fileName)  {
 		try(FileReader reader = new FileReader(fileName);Scanner scanner = new Scanner(reader))	{
 			while(scanner.hasNextLine()){
 				String string = scanner.nextLine();
@@ -27,8 +46,9 @@ public class UsageFrequency {
 				}
 			}
 		} catch (Exception e){
-			e.getMessage();
-			throw e;
+			WrongLoadFile wf = new WrongLoadFile( fileName, e.getMessage());
+			wf.getMessage();
+			throw wf;
 		}
 	}
 	public Map<Character, Integer> getLetters(){
@@ -73,12 +93,12 @@ public class UsageFrequency {
 		return words;
 	}
 	public static void main(String[] args) {
-		
+		UsageFrequency usageFreq = new UsageFrequency();
 		try{
-			UsageFrequency usageFreq = new UsageFrequency("wiki.train.tokens");
+			usageFreq.processFile("wiki.train.tokens");
 			System.out.println(usageFreq.getLetters());
 			System.out.println(usageFreq.getWords());
-		}catch(Exception e){
+		} catch(RuntimeException e){
 			System.out.println(e);
 		}
 	}
