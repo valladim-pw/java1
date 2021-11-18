@@ -74,7 +74,7 @@ public class SalesInfo {
 		Map<String, Double> goods = new TreeMap<>();
 		for(String good : orderList){
 			List<String> goodList = Arrays.asList(good.split(","));
-			String key = goodList.get(1);
+			String key = goodList.get(1).trim();
 			Double sum = Double.parseDouble(goodList.get(3).trim());
 			Double newSum = 0.0;
 			Double oldSum = goods.putIfAbsent(key, sum);
