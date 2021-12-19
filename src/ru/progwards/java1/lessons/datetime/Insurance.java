@@ -55,15 +55,14 @@ public class Insurance {
 	@Override
 	public String toString() {
 		String strResult = "";
-		String strStart = "";
-		if(style != null)
-			strStart = startFormat;
-		else
-			strStart = "" + start;
-		if(duration != null)
+		String strStart = "" + start;
+		if(duration != null){
 			this.checkValid(start.plus(duration));
-		else
+		} else {
+			if(style != null)
+				strStart = startFormat;
 			this.checkValid(start);
+		}
 		strResult = "Insurance issued on " + strStart + validStr;
 		return strResult;
 	}
@@ -122,18 +121,18 @@ public class Insurance {
 	public boolean checkValid(ZonedDateTime dateTime){
 		boolean validate;
 		ZonedDateTime checkDate = ZonedDateTime.now(id);
+		if (!dateTime.getZone().equals(id)){
+			int dateTimeOff = dateTime.getOffset().getTotalSeconds() / 3600;
+			int timeDiff = Math.abs(startOff - dateTimeOff);
+			if(dateTimeOff < startOff)
+				dateTime = dateTime.plusHours((long)timeDiff).toLocalDateTime().atZone(id);
+			else if(dateTimeOff > startOff)
+				dateTime = dateTime.minusHours((long)timeDiff).toLocalDateTime().atZone(id);
+			else
+				dateTime = dateTime.toLocalDateTime().atZone(id);
+		}
 		if(duration == null){
 			if(!dateTime.equals(start)){
-				if (!dateTime.getZone().equals(id)){
-					int dateTimeOff = dateTime.getOffset().getTotalSeconds() / 3600;
-					int timeDiff = Math.abs(startOff - dateTimeOff);
-					if(dateTimeOff < startOff)
-						dateTime = dateTime.plusHours((long)timeDiff).toLocalDateTime().atZone(id);
-					else if(dateTimeOff > startOff)
-						dateTime = dateTime.minusHours((long)timeDiff).toLocalDateTime().atZone(id);
-					else
-						dateTime = dateTime.toLocalDateTime().atZone(id);
-				}
 				int compareDateTime = dateTime.toLocalDateTime().compareTo(start.toLocalDateTime());
 				if(compareDateTime > 0)
 					validate = true;
@@ -147,26 +146,33 @@ public class Insurance {
 					validate = false;
 			}
 		} else {
-			int compareStart = checkDate.toLocalDateTime().compareTo(start.toLocalDateTime());
-			int compareExp = checkDate.toLocalDateTime().compareTo(dateTime.toLocalDateTime());
-			if(compareStart > 0 && compareExp <= 0)
-				validate = true;
-			else
-				validate = false;
+			ZonedDateTime expZoned = start.plus(duration);
+			if(!dateTime.equals(expZoned)){
+				int compareStart = dateTime.toLocalDateTime().compareTo(start.toLocalDateTime());
+				int compareExp = dateTime.toLocalDateTime().compareTo(expZoned.toLocalDateTime());
+				if(compareStart > 0 && compareExp <= 0)
+					validate = true;
+				else
+					validate = false;
+			} else{
+				int compareStart = checkDate.toLocalDateTime().compareTo(start.toLocalDateTime());
+				int compareExp = checkDate.toLocalDateTime().compareTo(dateTime.toLocalDateTime());
+				if(compareStart > 0 && compareExp <= 0)
+					validate = true;
+				else
+					validate = false;
+			}
 		}
 		if(validate)
-			validStr = "is valid";
+			validStr = " is valid";
 		else
-			validStr = "is not valid";
+			validStr = " is not valid";
 		return validate;
 	}
 	public static void main(String[] args) {
-		ZonedDateTime start1 = ZonedDateTime.parse("2021-12-19T11:26:12.773467+03:00[Europe/Moscow]");
-		ZonedDateTime start2 = ZonedDateTime.parse("2021-12-19T11:26:12.816934+03:00[Europe/Moscow]");
-		ZonedDateTime start3 = ZonedDateTime.parse("2021-12-19T11:26:12.819646+03:00[Europe/Moscow]");
-		ZonedDateTime start4 = Instant.now().atZone(ZoneId.systemDefault());
-		String start5 = start4.toString();
-		ZonedDateTime start6 = ZonedDateTime.parse("2022-03-26T11:26:12.851132+03:00[Europe/Moscow]");
+		ZonedDateTime start1 = ZonedDateTime.now(ZoneId.systemDefault());
+		ZonedDateTime start2 = ZonedDateTime.now(ZoneId.systemDefault());
+		ZonedDateTime start3 = ZonedDateTime.now(ZoneId.systemDefault());
 		Insurance ins = new Insurance(start1);
 		System.out.println(ins);
 		Insurance ins2 = new Insurance(start2);
@@ -175,15 +181,18 @@ public class Insurance {
 		Insurance ins3 = new Insurance(start3);
 		ins3.setDuration(ZonedDateTime.parse("2021-12-19T14:26:12.819693+03:00[Europe/Moscow]"));
 		System.out.println(ins3);
+		ZonedDateTime start4 = ZonedDateTime.now(ZoneId.systemDefault());
 		Insurance ins4 = new Insurance(start4);
-		ins4.setDuration(0,1,2);
+		ins4.setDuration("1000000000", Insurance.FormatStyle.SHORT);
 		System.out.println(ins4);
-		Insurance ins5 = new Insurance(start5, FormatStyle.LONG);
+		ZonedDateTime start5 = ZonedDateTime.parse("2021-11-20T00:04:17.670357+03:00[Europe/Moscow]");
+		Insurance ins5 = new Insurance(start5);
+		ins4.setDuration("0000-01-04T00:00:00", Insurance.FormatStyle.LONG);
 		System.out.println(ins5);
-		ins5.setDuration("0000-01-01T00:00:01",FormatStyle.FULL);
-		System.out.println(ins5);
+		ZonedDateTime start6 = ZonedDateTime.parse("2021-12-18T00:04:17.682490+03:00[Europe/Moscow]");
 		Insurance ins6 = new Insurance(start6);
-		System.out.println(ins6.checkValid(ZonedDateTime.parse("2021-12-26T11:26:12.851176+03:00[Europe/Moscow]")));
+		ins6.setDuration(Duration.ofDays(3));
+		System.out.println(ins6.checkValid(ZonedDateTime.parse("2021-12-20T00:04:17.682529+03:00[Europe/Moscow]")));
 		System.out.println(ins6);
 	}
 }
