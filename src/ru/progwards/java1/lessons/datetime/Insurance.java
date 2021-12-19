@@ -55,12 +55,12 @@ public class Insurance {
 	@Override
 	public String toString() {
 		String strResult = "";
-		String strStart = "" + start;
+		String strStart = start + " ";
 		if(duration != null){
 			this.checkValid(start.plus(duration));
 		} else {
 			if(style != null)
-				strStart = startFormat;
+				strStart = startFormat + " ";
 			this.checkValid(start);
 		}
 		strResult = "Insurance issued on " + strStart + validStr;
@@ -164,9 +164,9 @@ public class Insurance {
 			}
 		}
 		if(validate)
-			validStr = " is valid";
+			validStr = "is valid";
 		else
-			validStr = " is not valid";
+			validStr = "is not valid";
 		return validate;
 	}
 	public static void main(String[] args) {
