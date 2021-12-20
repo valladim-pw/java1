@@ -21,28 +21,27 @@ public class Insurance {
 		this.startOff = start.getOffset().getTotalSeconds() / 3600;
 	}
 	public Insurance(String strStart, FormatStyle style){
+		if(strStart.indexOf("[") != -1)
+			style = FormatStyle.FULL;
+		else if(strStart.indexOf("T") != -1)
+			style = FormatStyle.LONG;
+		else
+			style = FormatStyle.SHORT;
 		this.style = style;
-		String id = strStart.substring(strStart.indexOf("[") + 1, strStart.indexOf("]"));
-		String check = strStart.substring(strStart.indexOf("T"));
 		switch(style){
 			case SHORT:
-				strStart = strStart.substring(0, strStart.indexOf("T"));
 				LocalDate ld = LocalDate.parse(strStart, DateTimeFormatter.ISO_LOCAL_DATE);
 				this.start = ld.atStartOfDay(ZoneId.systemDefault());
 				this.id = start.getZone();
 				this.startOff = start.getOffset().getTotalSeconds() / 3600;
-				startFormat = start.format(DateTimeFormatter.ISO_LOCAL_DATE);
+				startFormat = start.format(DateTimeFormatter.ISO_ZONED_DATE_TIME);
 				break;
 			case LONG:
-				if(check.indexOf("-") != -1)
-					strStart = strStart.substring(0, strStart.indexOf("T")) + check.substring(0, check.indexOf("-"));
-				else
-					strStart = strStart.substring(0, strStart.indexOf("+"));
 				LocalDateTime ldt = LocalDateTime.parse(strStart, DateTimeFormatter.ISO_LOCAL_DATE_TIME);
-				this.start = ldt.atZone(ZoneId.of(id));
+				this.start = ldt.atZone(ZoneId.systemDefault());
 				this.id = start.getZone();
 				this.startOff = start.getOffset().getTotalSeconds() / 3600;
-				startFormat = start.format(DateTimeFormatter.ISO_LOCAL_DATE_TIME);
+				startFormat = start.format(DateTimeFormatter.ISO_ZONED_DATE_TIME);
 				break;
 			case FULL:
 				this.start = ZonedDateTime.parse(strStart, DateTimeFormatter.ISO_ZONED_DATE_TIME);
@@ -55,12 +54,12 @@ public class Insurance {
 	@Override
 	public String toString() {
 		String strResult = "";
-		String strStart = start + " ";
+		String strStart = start.format(DateTimeFormatter.ISO_ZONED_DATE_TIME);
 		if(duration != null){
 			this.checkValid(start.plus(duration));
 		} else {
 			if(style != null)
-				strStart = startFormat + " ";
+				strStart = startFormat;
 			this.checkValid(start);
 		}
 		strResult = "Insurance issued on " + strStart + validStr;
@@ -164,9 +163,9 @@ public class Insurance {
 			}
 		}
 		if(validate)
-			validStr = "is valid";
+			validStr = " is valid";
 		else
-			validStr = "is not valid";
+			validStr = " is not valid";
 		return validate;
 	}
 	public static void main(String[] args) {
@@ -175,7 +174,7 @@ public class Insurance {
 		ZonedDateTime start3 = ZonedDateTime.now(ZoneId.systemDefault());
 		Insurance ins = new Insurance(start1);
 		System.out.println(ins);
-		Insurance ins2 = new Insurance(start2);
+		Insurance ins2 = new Insurance("" + start2, FormatStyle.LONG);
 		ins2.setDuration(Duration.ofDays(2));
 		System.out.println(ins2);
 		Insurance ins3 = new Insurance(start3);
@@ -194,5 +193,7 @@ public class Insurance {
 		ins6.setDuration(Duration.ofDays(3));
 		System.out.println(ins6.checkValid(ZonedDateTime.parse("2021-12-20T00:04:17.682529+03:00[Europe/Moscow]")));
 		System.out.println(ins6);
+		Insurance ins7 = new Insurance("2021-12-20", FormatStyle.SHORT);
+		System.out.println(ins7);
 	}
 }
