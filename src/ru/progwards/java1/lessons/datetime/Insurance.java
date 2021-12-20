@@ -11,7 +11,6 @@ public class Insurance {
 	private ZonedDateTime start;
 	private Duration duration;
 	public FormatStyle style;
-	public String startFormat;
 	public ZoneId id;
 	public int startOff;
 	public String validStr;
@@ -52,9 +51,9 @@ public class Insurance {
 	public String toString() {
 		String strResult = "";
 		if(duration != null){
-			this.checkValid(start.plus(duration));
+			checkValid(start.plus(duration));
 		} else {
-			this.checkValid(start);
+			checkValid(start);
 		}
 		strResult = "Insurance issued on " + start + validStr;
 		return strResult;
