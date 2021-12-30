@@ -4,15 +4,15 @@ import java.util.*;
 
 public class Profiler {
 	public static List<StatisticInfo> listInfo = new ArrayList<>();
-	public static class StatisticInfo{
-		public String sectionName;
-		public int fullTime = 0;
-		public int selfTime = 0;
-		public int count;
-		public long start = 0;
-		public long finish = 0;
-		boolean wrapper = true;
-	}
+//	public static class StatisticInfo{
+//		public String sectionName;
+//		public int fullTime = 0;
+//		public int selfTime = 0;
+//		public int count;
+//		public long start = 0;
+//		public long finish = 0;
+//		boolean wrapper = true;
+//	}
 	public static void code(int elementsCount){
 		List<Integer> arrayList = new ArrayList();
 		for (int i = 0; i < elementsCount; i++) {
@@ -22,7 +22,7 @@ public class Profiler {
 	public static void enterSection(String name){
 		long start = Instant.now().toEpochMilli();
 		StatisticInfo section = new StatisticInfo();
-		section.count = 1;
+		//section.count = 1;
 		section.start = start;
 		section.sectionName = name;
 		listInfo.add(listInfo.size(), section);
