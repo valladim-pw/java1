@@ -4,15 +4,6 @@ import java.util.*;
 
 public class Profiler {
 	public static List<StatisticInfo> listInfo = new ArrayList<>();
-//	public static class StatisticInfo{
-//		public String sectionName;
-//		public int fullTime = 0;
-//		public int selfTime = 0;
-//		public int count;
-//		public long start = 0;
-//		public long finish = 0;
-//		boolean wrapper = true;
-//	}
 	public static void code(int elementsCount){
 		List<Integer> arrayList = new ArrayList();
 		for (int i = 0; i < elementsCount; i++) {
@@ -22,7 +13,6 @@ public class Profiler {
 	public static void enterSection(String name){
 		long start = Instant.now().toEpochMilli();
 		StatisticInfo section = new StatisticInfo();
-		//section.count = 1;
 		section.start = start;
 		section.sectionName = name;
 		listInfo.add(listInfo.size(), section);
@@ -109,33 +99,8 @@ public class Profiler {
 		listInfo.sort(comparator);
 		String caption = "name fullTime selfTime count";
 		System.out.println(caption);
-		List<String> list = new ArrayList<>();
-		List<String> result = new ArrayList<>();
-		for(StatisticInfo sect : listInfo){
-			String line = "";
-			String n = sect.sectionName;
-			String f = Integer.valueOf(sect.fullTime).toString();
-			String s = Integer.valueOf(sect.selfTime).toString();
-			String c = Integer.valueOf(sect.count).toString();
-			list.add(list.size(), "name ".replace("name ".substring(0, n.length()), n));
-			list.add(list.size(), "fullTime ".replace("fullTime ".substring(0, f.length()), f));
-			list.add(list.size(), "selfTime ".replace("selfTime ".substring(0, s.length()), s));
-			list.add(list.size(), "count ".replace("count ".substring(0, c.length()), c));
-			for(int i = 0; i < list.size(); i++){
-				String str = list.get(i);
-				for(Character ch : str.toCharArray()){
-					if(Character.isLetter(ch)){
-						str = str.replace(Character.toString(ch)," " );
-					}
-				}
-				line += str;
-			}
-			result.add(result.size(), line);
-			line = "";
-			list.clear();
-		}
-		for(String str : result){
-			System.out.println(str);
+		for(StatisticInfo section : listInfo){
+			System.out.println(section.toString());
 		}
 		return listInfo;
 	}
@@ -147,7 +112,7 @@ public class Profiler {
 		exitSection("2");
 		enterSection("3");
 		code(5000);
-		for(int i = 0; i < 23; i++){
+		for(int i = 0; i < 12; i++){
 			enterSection("4");
 				enterSection("5");
 					enterSection("6");
@@ -159,7 +124,7 @@ public class Profiler {
 			exitSection("4");
 		}
 		exitSection("3");
-		for(int i = 0; i < 13; i++){
+		for(int i = 0; i < 22; i++){
 			enterSection("7");
 				enterSection("8");
 					enterSection("9");
@@ -176,5 +141,6 @@ public class Profiler {
 			code(5000);
 		exitSection("1");
 		getStatisticInfo();
+		//System.out.println(getStatisticInfo());
 	}
 }
