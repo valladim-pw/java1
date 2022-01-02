@@ -3,7 +3,7 @@ import java.time.*;
 import java.util.*;
 
 public class Profiler {
-	public static List<StatisticInfo> listInfo = new ArrayList<>();
+	public static List<StatisticInfo> listInfo = new LinkedList<>();
 	public static void code(int elementsCount){
 		List<Integer> arrayList = new ArrayList();
 		for (int i = 0; i < elementsCount; i++) {
@@ -43,8 +43,9 @@ public class Profiler {
 				section.fullTime = (int)diff;
 			}
 		}
+		StatisticInfo next;
 		ListIterator<StatisticInfo> iter1 = listInfo.listIterator(listInfo.size() - 2);
-		StatisticInfo next = iter1.next();
+		next = iter1.next();
 		if(iter1.hasNext()){
 			int self = next.selfTime;
 			if(section.sectionName.equals(next.sectionName)){
@@ -56,26 +57,26 @@ public class Profiler {
 		}
 		ListIterator<StatisticInfo> iter2 = listInfo.listIterator();
 		while(iter2.hasNext()){
-			StatisticInfo next2 = iter2.next();
-			if(section.sectionName.equals(next2.sectionName) && !section.equals(next2)){
+			next = iter2.next();
+			if(section.sectionName.equals(next.sectionName) && !section.equals(next)){
 				iter2.remove();
-				section.count += next2.count;
-				section.fullTime += next2.fullTime;
+				section.count += next.count;
+				section.fullTime += next.fullTime;
 				if(section.wrapper == false)
-					section.selfTime += next2.selfTime;
+					section.selfTime += next.selfTime;
 			}
 		}
 		ListIterator<StatisticInfo> iter3 = listInfo.listIterator(listInfo.size() - 2);
-		StatisticInfo next3 = iter3.next();
+		next = iter3.next();
 		int full = section.fullTime;
-		int fullNext = next3.fullTime;
-		int self = next3.selfTime;
+		int fullNext = next.fullTime;
+		int self = next.selfTime;
 		int res = 0;
 		if(iter3.hasNext()){
-			if(section.selfTime == next3.selfTime && next3.wrapper == false){
+			if(section.selfTime == next.selfTime && next.wrapper == false){
 				res = full - self;
 				section.selfTime = res;
-			} else if(section.selfTime == next3.selfTime && next3.wrapper == true){
+			} else if(section.selfTime == next.selfTime && next.wrapper == true){
 				res = full - fullNext;
 				section.selfTime = res;
 			}
@@ -106,21 +107,21 @@ public class Profiler {
 	}
 	public static void main(String[] args) {
 		enterSection("1");
-			code(5000);
+		code(5000);
 		enterSection("2");
-			code(5000);
+		code(5000);
 		exitSection("2");
 		enterSection("3");
 		code(5000);
 		for(int i = 0; i < 12; i++){
 			enterSection("4");
-				enterSection("5");
+		 		enterSection("5");
 					enterSection("6");
-						code(5000);
-					exitSection("6");
-						code(5000);
-				exitSection("5");
 					code(5000);
+					exitSection("6");
+					code(5000);
+				exitSection("5");
+				code(5000);
 			exitSection("4");
 		}
 		exitSection("3");
@@ -128,19 +129,18 @@ public class Profiler {
 			enterSection("7");
 				enterSection("8");
 					enterSection("9");
-						code(5000);
-					exitSection("9");
-						code(5000);
-				exitSection("8");
 					code(5000);
+					exitSection("9");
+				code(5000);
+				exitSection("8");
+			code(5000);
 			exitSection("7");
 		}
 		enterSection("10");
-			code(5000);
+		code(5000);
 		exitSection("10");
-			code(5000);
+		code(5000);
 		exitSection("1");
 		getStatisticInfo();
-		//System.out.println(getStatisticInfo());
 	}
 }
