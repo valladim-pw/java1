@@ -3,16 +3,23 @@ package ru.progwards.java1.lessons.datetime;
 import java.util.*;
 
 public class StatisticInfo{
-	public StatisticInfo() {
-		super();
-	}
 	public String sectionName;
-	public int fullTime = 0;
-	public int selfTime = 0;
-	public int count = 1;
-	public long start = 0;
-	public long finish = 0;
-	boolean wrapper = true;
+	public int fullTime;
+	public int selfTime;
+	public int count;
+	public long start;
+	public long finish;
+	boolean wrapper;
+	public StatisticInfo(String name) {
+		super();
+		this.sectionName = name;
+		this.fullTime = 0;
+		this.selfTime = 0;
+		this.count = 1;
+		this.start = 0;
+		this.finish = 0;
+		this.wrapper = true;
+	}
 	@Override
 	public boolean equals(Object o) {
 		if (this == o) return true;
@@ -26,10 +33,12 @@ public class StatisticInfo{
 						wrapper == section.wrapper &&
 						Objects.equals(sectionName, section.sectionName);
 	}
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(sectionName, fullTime, selfTime, count, start, finish, wrapper);
 	}
+	
 	@Override
 	public String toString() {
 		List<String> list = new ArrayList<>();

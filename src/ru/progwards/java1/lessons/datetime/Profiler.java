@@ -12,9 +12,8 @@ public class Profiler {
 	}
 	public static void enterSection(String name){
 		long start = Instant.now().toEpochMilli();
-		StatisticInfo section = new StatisticInfo();
+		StatisticInfo section = new StatisticInfo(name);
 		section.start = start;
-		section.sectionName = name;
 		listInfo.add(listInfo.size(), section);
 		if(listInfo.size() > 1){
 			for(StatisticInfo info : listInfo){
@@ -30,9 +29,8 @@ public class Profiler {
 	public static void exitSection(String name){
 		long finish = Instant.now().toEpochMilli();
 		long diff = 0;
-		StatisticInfo section = new StatisticInfo();
+		StatisticInfo section = new StatisticInfo(name);
 		section.finish = finish;
-		section.sectionName = name;
 		listInfo.add(listInfo.size(), section);
 		for(StatisticInfo info : listInfo){
 			String s1 = section.sectionName;
