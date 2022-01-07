@@ -45,9 +45,9 @@ public class StatisticInfo{
 		String result = "";
 		String line = "";
 		String n = sectionName;
-		String f = Integer.valueOf(fullTime).toString();
-		String s = Integer.valueOf(selfTime).toString();
-		String c = Integer.valueOf(count).toString();
+		String f = "" + fullTime;
+		String s = "" + selfTime;
+		String c = "" + count;
 		list.add(list.size(), "name ".replace("name ".substring(0, n.length()), n));
 		list.add(list.size(), "fullTime ".replace("fullTime ".substring(0, f.length()), f));
 		list.add(list.size(), "selfTime ".replace("selfTime ".substring(0, s.length()), s));

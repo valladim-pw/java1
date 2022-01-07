@@ -29,6 +29,7 @@ public class Profiler {
 	public static void exitSection(String name){
 		long finish = Instant.now().toEpochMilli();
 		long diff = 0;
+		int intDiff = 0;
 		StatisticInfo section = new StatisticInfo(name);
 		section.finish = finish;
 		listInfo.add(listInfo.size(), section);
@@ -38,7 +39,8 @@ public class Profiler {
 			if(s1.equals(s2) && !section.equals(info)){
 				section.count = 0;
 				diff = section.finish - info.start;
-				section.fullTime = (int)diff;
+				intDiff = (int)diff;
+				section.fullTime = intDiff;
 			}
 		}
 		StatisticInfo next;
@@ -47,7 +49,7 @@ public class Profiler {
 		if(iter1.hasNext()){
 			int self = next.selfTime;
 			if(section.sectionName.equals(next.sectionName)){
-				section.selfTime = (int)diff;
+				section.selfTime = intDiff;
 				section.wrapper = false;
 			} else {
 				section.selfTime = self;
@@ -60,28 +62,28 @@ public class Profiler {
 				iter2.remove();
 				section.count += next.count;
 				section.fullTime += next.fullTime;
-				if(section.wrapper == false)
+				if(!section.wrapper)
 					section.selfTime += next.selfTime;
 			}
 		}
 		ListIterator<StatisticInfo> iter3 = listInfo.listIterator(listInfo.size() - 2);
-		next = iter3.next();
+		next =  iter3.next();
 		int full = section.fullTime;
 		int fullNext = next.fullTime;
 		int self = next.selfTime;
 		int res = 0;
 		if(iter3.hasNext()){
-			if(section.selfTime == next.selfTime && next.wrapper == false){
+			if(section.selfTime == next.selfTime && !next.wrapper){
 				res = full - self;
 				section.selfTime = res;
-			} else if(section.selfTime == next.selfTime && next.wrapper == true){
+			} else if(section.selfTime == next.selfTime && next.wrapper){
 				res = full - fullNext;
 				section.selfTime = res;
 			}
 		}
 	}
-	public static List getStatisticInfo(){
-		Comparator<StatisticInfo> comparator = new Comparator<>(){
+	public static List<StatisticInfo> getStatisticInfo(){
+		Comparator<StatisticInfo> comparator = new Comparator<StatisticInfo>(){
 			@Override
 			public int compare(StatisticInfo o1, StatisticInfo o2) {
 				return Integer.compare(Integer.parseInt(o1.sectionName), Integer.parseInt(o2.sectionName));
@@ -135,7 +137,7 @@ public class Profiler {
 			exitSection("7");
 		}
 		enterSection("10");
-		code(5000);
+		code(15000);
 		exitSection("10");
 		code(5000);
 		exitSection("1");
