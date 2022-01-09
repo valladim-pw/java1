@@ -10,6 +10,7 @@ public class StatisticInfo{
 	public long start;
 	public long finish;
 	boolean wrapper;
+	public int number;
 	public StatisticInfo(String name) {
 		super();
 		this.sectionName = name;
@@ -19,6 +20,7 @@ public class StatisticInfo{
 		this.start = 0;
 		this.finish = 0;
 		this.wrapper = true;
+		this.number = 0;
 	}
 	@Override
 	public boolean equals(Object o) {
@@ -31,14 +33,13 @@ public class StatisticInfo{
 						start == section.start &&
 						finish == section.finish &&
 						wrapper == section.wrapper &&
+						number == section.number &&
 						Objects.equals(sectionName, section.sectionName);
 	}
-	
 	@Override
 	public int hashCode() {
-		return Objects.hash(sectionName, fullTime, selfTime, count, start, finish, wrapper);
+		return Objects.hash(sectionName, fullTime, selfTime, count, start, finish, wrapper, number);
 	}
-	
 	@Override
 	public String toString() {
 		List<String> list = new ArrayList<>();
@@ -48,17 +49,13 @@ public class StatisticInfo{
 		String f = "" + fullTime;
 		String s = "" + selfTime;
 		String c = "" + count;
-		list.add(list.size(), "name ".replace("name ".substring(0, n.length()), n));
-		list.add(list.size(), "fullTime ".replace("fullTime ".substring(0, f.length()), f));
-		list.add(list.size(), "selfTime ".replace("selfTime ".substring(0, s.length()), s));
-		list.add(list.size(), "count ".replace("count ".substring(0, c.length()), c));
+		String change = "c            ";
+		list.add(list.size(), change.replace(change.substring(0, n.length()), n));
+		list.add(list.size(), change.replace(change.substring(0, f.length()), f));
+		list.add(list.size(), change.replace(change.substring(0, s.length()), s));
+		list.add(list.size(), change.replace(change.substring(0, c.length()), c));
 		for(int i = 0; i < list.size(); i++){
 			String str = list.get(i);
-			for(Character ch : str.toCharArray()){
-				if(Character.isLetter(ch)){
-					str = str.replace(Character.toString(ch)," " );
-				}
-			}
 			line += str;
 		}
 		result = line;
