@@ -118,20 +118,19 @@ public class Profiler {
 	public static void main(String[] args) {
 		enterSection("process1");
 		code(3000);
-		enterSection("process2");
-		code(3000);
-		exitSection("process2");
+			enterSection("process2");
+			code(3000);
+			exitSection("process2");
 		enterSection("process3");
-		//code(3000);
-		for(int i = 0; i < 32; i++){
+		for(int i = 0; i < 42; i++){
 			enterSection("process4");
-			enterSection("process5");
-			enterSection("process6");
-			code(3000);
-			exitSection("process6");
-			code(3000);
-			exitSection("process5");
-			code(3000);
+				enterSection("process5");
+					enterSection("process6");
+					code(3000);
+					exitSection("process6");
+					code(3000);
+				exitSection("process5");
+				code(3000);
 			exitSection("process4");
 		}
 		code(30000);
@@ -139,15 +138,15 @@ public class Profiler {
 		enterSection("7");
 		code(5000);
 		exitSection("7");
-		for(int i = 0; i < 22; i++){
+		for(int i = 0; i < 10; i++){
 			enterSection("8");
-			enterSection("9");
-			enterSection("10");
-			code(30000);
-			exitSection("10");
-			code(3000);
-			exitSection("9");
-			code(3000);
+				enterSection("9");
+					enterSection("10");
+					code(30000);
+					exitSection("10");
+					code(3000);
+				exitSection("9");
+				code(3000);
 			exitSection("8");
 		}
 		enterSection("11");
