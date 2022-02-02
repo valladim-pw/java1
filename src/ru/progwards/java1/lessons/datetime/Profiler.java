@@ -109,11 +109,15 @@ public class Profiler {
 			if(next.number == 0){
 				iter.remove();
 			} else {
-				if(next.mark != 0)
+				if (next.mark != 0)
 					next.selfTime = next.fullTime - next.mark;
 				self += next.selfTime;
-				if (next.number == 1)
-					next.selfTime = next.fullTime - self;
+				if (next.number == 1) {
+					if (self == next.fullTime)
+						next.selfTime = self;
+					else
+						next.selfTime = next.fullTime - self;
+				}
 			}
 		}
 		Comparator<StatisticInfo> comparator = new Comparator<>(){
@@ -130,7 +134,7 @@ public class Profiler {
 		return listInfo;
 	}
 	public static void main(String[] args) {
-		enterSection("1");
+		enterSection("Process1");
 		code(5000);
 		enterSection("2");
 		code(5000);
@@ -140,12 +144,12 @@ public class Profiler {
 			enterSection("4");
 			for (int j = 0; j < 3; j++) {
 				enterSection("5");
-				enterSection("6");
-				enterSection("7");
-				code(5000);
-				exitSection("7");
-				code(5000);
-				exitSection("6");
+					enterSection("6");
+						enterSection("7");
+						code(5000);
+						exitSection("7");
+					code(5000);
+					exitSection("6");
 				code(5000);
 				exitSection("5");
 			}
@@ -157,12 +161,12 @@ public class Profiler {
 		enterSection("8");
 		for(int i = 0; i < 3; i++){
 			enterSection("9");
-			enterSection("10");
-			enterSection("11");
-			code(5000);
-			exitSection("11");
-			code(5000);
-			exitSection("10");
+				enterSection("10");
+					enterSection("11");
+					code(5000);
+					exitSection("11");
+				code(5000);
+				exitSection("10");
 			code(5000);
 			exitSection("9");
 		}
@@ -171,7 +175,7 @@ public class Profiler {
 		enterSection("12");
 		code(5000);
 		exitSection("12");
-		exitSection("1");
+		exitSection("Process1");
 		getStatisticInfo();
 	}
 }
