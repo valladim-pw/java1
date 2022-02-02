@@ -9,8 +9,8 @@ public class StatisticInfo{
 	public int count;
 	public long start;
 	public long finish;
-	boolean wrapper;
 	public int number;
+	public int mark;
 	public StatisticInfo(String name) {
 		super();
 		this.sectionName = name;
@@ -19,8 +19,8 @@ public class StatisticInfo{
 		this.count = 1;
 		this.start = 0;
 		this.finish = 0;
-		this.wrapper = true;
 		this.number = 0;
+		this.mark = 0;
 	}
 	@Override
 	public boolean equals(Object o) {
@@ -32,14 +32,16 @@ public class StatisticInfo{
 						count == section.count &&
 						start == section.start &&
 						finish == section.finish &&
-						wrapper == section.wrapper &&
 						number == section.number &&
+						mark == section.mark &&
 						Objects.equals(sectionName, section.sectionName);
 	}
+	
 	@Override
 	public int hashCode() {
-		return Objects.hash(sectionName, fullTime, selfTime, count, start, finish, wrapper, number);
+		return Objects.hash(sectionName, fullTime, selfTime, count, start, finish, number, mark);
 	}
+	
 	@Override
 	public String toString() {
 		List<String> list = new ArrayList<>();
@@ -64,3 +66,4 @@ public class StatisticInfo{
 		return result;
 	}
 }
+
