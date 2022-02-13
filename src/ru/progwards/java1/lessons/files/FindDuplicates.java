@@ -34,7 +34,11 @@ public class FindDuplicates {
 			}
 			@Override
 			public FileVisitResult visitFileFailed(Path file, IOException e) throws IOException{
-				return FileVisitResult.CONTINUE;
+				if (e == null) {
+					return FileVisitResult.CONTINUE;
+				} else {
+					throw e;
+				}
 			}
 		});
 		for(String str : fileSet){
@@ -44,13 +48,12 @@ public class FindDuplicates {
 		duplicates.add(strList);
 		return duplicates;
 	}
-	
 	public static void main(String[] args) {
 		FindDuplicates fd = new FindDuplicates();
 		try{
 			System.out.println(fd.findDuplicates("c:/test/"));
-		} catch(IOException e){
-			e.printStackTrace();
+		} catch(Exception e){
+			System.out.println(e);
 		}
 	}
 }
