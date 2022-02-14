@@ -12,8 +12,7 @@ public class FindDuplicates {
 		Set<String> fileSet = new HashSet<>();
 		List<List<String>> duplicates = new LinkedList<>();
 		try{
-			Path dir = Paths.get(startPath);
-			Files.walkFileTree(dir,new SimpleFileVisitor<Path>(){
+			Files.walkFileTree(Paths.get(startPath),new SimpleFileVisitor<Path>(){
 				@Override
 				public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException{
 					fileList.add(file);
@@ -42,14 +41,14 @@ public class FindDuplicates {
 					}
 				}
 			});
-			for(String str : fileSet){
-				strList.add(str);
-			}
-			Collections.sort(strList);
-			duplicates.add(strList);
 		} catch(Exception e){
-			System.out.println(e);
+			throw e;
 		}
+		for(String str : fileSet){
+			strList.add(str);
+		}
+		Collections.sort(strList);
+		duplicates.add(strList);
 		return duplicates;
 	}
 	public static void main(String[] args) {
