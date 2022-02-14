@@ -6,7 +6,7 @@ import java.nio.file.attribute.FileTime;
 import java.util.*;
 
 public class FindDuplicates {
-	public List<List<String>> findDuplicates(String startPath) throws Exception{
+	public List<List<String>> findDuplicates(String startPath){
 		List<Path> fileList = new LinkedList<>();
 		List<String> strList = new LinkedList<>();
 		Set<String> fileSet = new HashSet<>();
@@ -41,8 +41,10 @@ public class FindDuplicates {
 					}
 				}
 			});
-		} catch(Exception e){
-			throw e;
+		} catch(SecurityException se){
+			System.out.println(se);
+		} catch(IOException e){
+			System.out.println(e);
 		}
 		for(String str : fileSet){
 			strList.add(str);
@@ -53,10 +55,6 @@ public class FindDuplicates {
 	}
 	public static void main(String[] args) {
 		FindDuplicates fd = new FindDuplicates();
-		try{
-			System.out.println(fd.findDuplicates("c:/test/"));
-		} catch(Exception e){
-			System.out.println(e);
-		}
+		System.out.println(fd.findDuplicates("c:/test/"));
 	}
 }
