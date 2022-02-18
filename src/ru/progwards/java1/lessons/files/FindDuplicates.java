@@ -7,11 +7,18 @@ import java.util.*;
 
 public class FindDuplicates {
 	public List<List<String>> findDuplicates(String startPath){
-		List<Path> fileList = new LinkedList<>();
+		LinkedList<Path> fileList = new LinkedList<>();
 		List<String> strList = new LinkedList<>();
+		TreeSet<String> fileSet = new TreeSet<>(new Comparator<String>() {
+			@Override
+			public int compare(String s1, String s2) {
+				return s2.compareTo(s1);
+			}
+		});
 		List<List<String>> duplicates = new LinkedList<>();
 		try{
-			Files.walkFileTree(Paths.get(startPath),new SimpleFileVisitor<Path>(){
+			Path dir = Paths.get(startPath);
+			Files.walkFileTree(dir, new SimpleFileVisitor<Path>(){
 				@Override
 				public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException{
 					fileList.add(file);
@@ -24,7 +31,7 @@ public class FindDuplicates {
 							if(Files.getLastModifiedTime(f).equals(fileTime) &&
 											Files.size(f) == fileSize &&
 											Arrays.equals(Files.readAllBytes(f), fileContent)){
-								strList.add(f.toString() + ", " + file.toString());
+								fileSet.add(f.getFileName() + f.toString()  + ", " + file.toString());
 							}
 						}
 					}
@@ -44,14 +51,19 @@ public class FindDuplicates {
 		} catch(IOException e){
 			System.out.println(e);
 		}
+		for(String str : fileSet){
+			str = str.substring(str.indexOf(":") - 1);
+			strList.add(str);
+		}
 		duplicates.add(strList);
 		return duplicates;
 	}
 	public static void main(String[] args) {
 		FindDuplicates fd = new FindDuplicates();
-		for(List list : fd.findDuplicates("c:/test/")){
+		fd.findDuplicates("c:/test_dir/");
+		for(List list : fd.findDuplicates("c:/test_dir/")){
 			for(Object str : list)
-				System.out.println(str);
+				System.out.println(str + "\n");
 		}
 	}
 }
