@@ -31,7 +31,7 @@ public class FindDuplicates {
 							if(Files.getLastModifiedTime(f).equals(fileTime) &&
 											Files.size(f) == fileSize &&
 											Arrays.equals(Files.readAllBytes(f), fileContent)){
-								fileSet.add(f.getFileName() + f.toString()  + ", " + file.toString());
+								fileSet.add(f.getFileName() + " " + f.toString()  + ", " + file.toString());
 							}
 						}
 					}
@@ -52,7 +52,7 @@ public class FindDuplicates {
 			System.out.println(e);
 		}
 		for(String str : fileSet){
-			str = str.substring(str.indexOf(":") - 1);
+			str = str.substring(str.indexOf(" "));
 			strList.add(str);
 		}
 		duplicates.add(strList);
