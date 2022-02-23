@@ -60,10 +60,6 @@ public class FindDuplicates {
 	}
 	public static void main(String[] args) {
 		FindDuplicates fd = new FindDuplicates();
-		fd.findDuplicates("c:/test_dir/");
-		for(List list : fd.findDuplicates("c:/test_dir/")){
-			for(Object str : list)
-				System.out.println(str + "\n");
-		}
+		System.out.println(fd.findDuplicates("c:/test_dir/"));
 	}
 }
