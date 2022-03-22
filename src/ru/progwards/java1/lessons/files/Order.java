@@ -10,7 +10,10 @@ public class Order {
 	public LocalDateTime datetime;
 	public List<OrderItem> items = new ArrayList<>();
 	public double sum;
-	public Order(Path file){
+	public Order(Path path) {
+		this.getIds(path);
+	}
+	public void getIds(Path file){
 		this.shopId = file.getFileName().toString().substring(0, 3);
 		this.orderId = file.getFileName().toString().substring(4, 10);
 		this.customerId = file.getFileName().toString().substring(11, 15);

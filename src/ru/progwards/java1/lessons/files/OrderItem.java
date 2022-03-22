@@ -1,16 +1,19 @@
 package ru.progwards.java1.lessons.files;
 import java.util.*;
 public class OrderItem {
-	public String goodsName;
+	public String googsName;
 	public int count;
 	public double price;
-	public OrderItem(String str){
-		this.goodsName = str.split(",")[0].trim();
+	public OrderItem(String string){
+		this.getStringParts(string);
+	}
+	public void getStringParts(String str){
+		this.googsName = (str.split(",")[0].trim());
 		this.count = Integer.parseInt(str.split(",")[1].trim());
 		this.price = Double.parseDouble(str.split(",")[2].trim());
 	}
 	public String getGoodsName() {
-		return goodsName;
+		return googsName;
 	}
 	public int getCount() {
 		return count;
@@ -23,15 +26,15 @@ public class OrderItem {
 		if (this == o) return true;
 		if (o == null || getClass() != o.getClass()) return false;
 		OrderItem orderItem = (OrderItem) o;
-		return goodsName.equals(orderItem.goodsName);
+		return googsName.equals(orderItem.googsName);
 	}
 	@Override
 	public int hashCode() {
-		return Objects.hash(goodsName);
+		return Objects.hash(googsName);
 	}
 	
 	@Override
 	public String toString() {
-		return goodsName + " " + count + " " + price + "\n";
+		return googsName + " " + count + " " + price + "\n";
 	}
 }
