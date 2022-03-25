@@ -5,6 +5,7 @@ import java.nio.file.attribute.*;
 import java.time.*;
 import java.util.*;
 import static java.nio.file.StandardOpenOption.TRUNCATE_EXISTING;
+
 public class OrderProcessor {
 	public static int corrNum  = 0;
 	public Path path;
@@ -25,7 +26,7 @@ public class OrderProcessor {
 				@Override
 				public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
 					try{
-						Order order = new Order(file);
+						Order order = new Order().getOrder(file);
 						String mark = "";
 						for(char ch: file.getFileName().toString().toCharArray()){
 							if(!Character.isLetterOrDigit(ch)){
@@ -50,7 +51,7 @@ public class OrderProcessor {
 							} else if(start != null && finish != null && shopId != null){
 								if ((order.getDateTime().toLocalDate().isAfter(start) || order.getDateTime().toLocalDate().isEqual(start))
 												&&  (order.getDateTime().toLocalDate().isBefore(finish) || order.getDateTime().toLocalDate().isEqual(finish))){
-									if(order.getShopId().equals(shopId))
+									if(order.getOrder(file).getShopId().equals(shopId))
 										orderList.add(order);
 								}
 							} else if(start != null && finish != null && shopId == null){
@@ -94,7 +95,7 @@ public class OrderProcessor {
 			Files.walkFileTree(path, new SimpleFileVisitor<Path>(){
 				@Override
 				public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException{
-					Order order = new Order(file);
+					Order order = new Order().getOrder(file);
 					if(shopId == null){
 						orderList.add(order);
 					} else {
@@ -116,7 +117,6 @@ public class OrderProcessor {
 		} catch(SecurityException se){
 			System.out.println(se);
 		} catch(IOException e){
-			System.out.println(e);
 		}
 		return orderList;
 	}
@@ -131,7 +131,7 @@ public class OrderProcessor {
 			Files.walkFileTree(path, new SimpleFileVisitor<Path>(){
 				@Override
 				public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException{
-					Order order = new Order(file);
+					Order order = new Order().getOrder(file);
 					String key = order.getShopId();
 					Double sum = order.getSum();
 					Double newSum = 0.0;
@@ -154,7 +154,6 @@ public class OrderProcessor {
 		} catch(SecurityException se){
 			System.out.println(se);
 		} catch(IOException e){
-			System.out.println(e);
 		}
 		return orderMap;
 	}
@@ -169,7 +168,7 @@ public class OrderProcessor {
 			Files.walkFileTree(path, new SimpleFileVisitor<Path>(){
 				@Override
 				public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException{
-					Order order = new Order(file);
+					Order order = new Order().getOrder(file);
 					for(OrderItem item : order.getItems()){
 						String key = item.getGoodsName();
 						Double sum = item.getCount() * item.getPrice();
@@ -194,7 +193,7 @@ public class OrderProcessor {
 		} catch(SecurityException se){
 			System.out.println(se);
 		} catch(IOException e){
-			System.out.println(e);
+		
 		}
 		return goodsMap;
 	}
@@ -209,7 +208,7 @@ public class OrderProcessor {
 			Files.walkFileTree(path, new SimpleFileVisitor<Path>(){
 				@Override
 				public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException{
-					Order order = new Order(file);
+					Order order = new Order().getOrder(file);
 					LocalDate key = order.getDateTime().toLocalDate();
 					Double sum = order.getSum();
 					Double newSum = 0.0;
@@ -232,17 +231,17 @@ public class OrderProcessor {
 		} catch(SecurityException se){
 			System.out.println(se);
 		} catch(IOException e){
-			System.out.println(e);
+		
 		}
 		return daysMap;
 	}
 	public static void main(String[] args) {
 		try{
 			OrderProcessor op = new OrderProcessor("products/");
-			System.out.println(op.loadOrders(LocalDate.of(2022,03,05), LocalDate.of(2022, 03, 05), "S05"));
-			System.out.println(op.loadOrders(null, LocalDate.of(2022, 03, 05), "S05"));
-			System.out.println(op.loadOrders(LocalDate.of(2022,03,05), null, "S05"));
-			System.out.println(op.loadOrders(LocalDate.of(2022,03,05), LocalDate.of(2022, 03, 20), null));
+//			System.out.println(op.loadOrders(LocalDate.of(2022,03,05), LocalDate.of(2022, 03, 05), "S05"));
+//			System.out.println(op.loadOrders(null, LocalDate.of(2022, 03, 05), "S05"));
+//			System.out.println(op.loadOrders(LocalDate.of(2022,03,05), null, "S05"));
+//			System.out.println(op.loadOrders(LocalDate.of(2022,03,05), LocalDate.of(2022, 03, 20), null));
 			System.out.println(op.process("S05"));
 			System.out.println(op.statisticsByShop());
 			System.out.println(op.statisticsByGoods());

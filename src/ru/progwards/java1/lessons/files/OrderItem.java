@@ -4,13 +4,11 @@ public class OrderItem {
 	public String googsName;
 	public int count;
 	public double price;
-	public OrderItem(String string){
-		this.getStringParts(string);
-	}
-	public void getStringParts(String str){
-		this.googsName = (str.split(",")[0].trim());
+	public OrderItem getOrderItem(String str){
+		this.googsName = str.split(",")[0].trim();
 		this.count = Integer.parseInt(str.split(",")[1].trim());
 		this.price = Double.parseDouble(str.split(",")[2].trim());
+		return this;
 	}
 	public String getGoodsName() {
 		return googsName;
