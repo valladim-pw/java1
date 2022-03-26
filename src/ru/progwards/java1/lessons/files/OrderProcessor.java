@@ -117,6 +117,7 @@ public class OrderProcessor {
 		} catch(SecurityException se){
 			System.out.println(se);
 		} catch(IOException e){
+			System.out.println(e);
 		}
 		return orderList;
 	}
@@ -154,6 +155,7 @@ public class OrderProcessor {
 		} catch(SecurityException se){
 			System.out.println(se);
 		} catch(IOException e){
+			System.out.println(e);
 		}
 		return orderMap;
 	}
@@ -193,7 +195,7 @@ public class OrderProcessor {
 		} catch(SecurityException se){
 			System.out.println(se);
 		} catch(IOException e){
-		
+			System.out.println(e);
 		}
 		return goodsMap;
 	}
@@ -231,7 +233,7 @@ public class OrderProcessor {
 		} catch(SecurityException se){
 			System.out.println(se);
 		} catch(IOException e){
-		
+			System.out.println(e);
 		}
 		return daysMap;
 	}

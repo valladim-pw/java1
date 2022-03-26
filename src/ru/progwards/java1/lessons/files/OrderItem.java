@@ -5,10 +5,16 @@ public class OrderItem {
 	public String googsName;
 	public int count;
 	public double price;
-	public OrderItem getOrderItem(String str) throws IOException, NumberFormatException{
-		this.googsName = str.split(",")[0].trim();
-		this.count = Integer.parseInt(str.split(",")[1].trim());
-		this.price = Double.parseDouble(str.split(",")[2].trim());
+	public OrderItem getOrderItem(String str) throws Exception{
+		try{
+			this.googsName = str.split(",")[0].trim();
+			this.count = Integer.parseInt(str.split(",")[1].trim());
+			this.price = Double.parseDouble(str.split(",")[2].trim());
+		} catch (Exception e){
+			if(e != null)
+				throw e;
+		}
+		
 		return this;
 	}
 	public String getGoodsName() {

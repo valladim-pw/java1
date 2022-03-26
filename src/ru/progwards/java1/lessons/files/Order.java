@@ -10,18 +10,23 @@ public class Order {
 	public LocalDateTime datetime;
 	public List<OrderItem> items = new ArrayList<>();
 	public double sum;
-	public Order getOrder(Path file){
+	public Order getOrder(Path file) throws IOException{
 		try{
 			this.shopId = file.getFileName().toString().substring(0, 3);
 			this.orderId = file.getFileName().toString().substring(4, 10);
 			this.customerId = file.getFileName().toString().substring(11, 15);
 			
 			this.datetime = LocalDateTime.ofInstant(Files.getLastModifiedTime(file).toInstant(), ZoneId.systemDefault());
-			List<String> list = Files.readAllLines(file);
-			for(String str : list){
-				OrderItem orderItem = new OrderItem().getOrderItem(str);
-				this.items.add(orderItem);
+			try{
+				List<String> list = Files.readAllLines(file);
+				for(String str : list){
+					OrderItem orderItem = new OrderItem().getOrderItem(str);
+					this.items.add(orderItem);
+				}
+			} catch(Exception e){
+				System.out.println(e);
 			}
+			
 			
 			Comparator productComparator = new Comparator<OrderItem>() {
 				@Override
@@ -31,7 +36,8 @@ public class Order {
 			};
 			items.sort(productComparator);
 		} catch(IOException e){
-			System.out.println(e);
+			if(e != null)
+				throw e;
 		}
 		return this;
 	}
