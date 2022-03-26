@@ -238,10 +238,10 @@ public class OrderProcessor {
 	public static void main(String[] args) {
 		try{
 			OrderProcessor op = new OrderProcessor("products/");
-//			System.out.println(op.loadOrders(LocalDate.of(2022,03,05), LocalDate.of(2022, 03, 05), "S05"));
-//			System.out.println(op.loadOrders(null, LocalDate.of(2022, 03, 05), "S05"));
-//			System.out.println(op.loadOrders(LocalDate.of(2022,03,05), null, "S05"));
-//			System.out.println(op.loadOrders(LocalDate.of(2022,03,05), LocalDate.of(2022, 03, 20), null));
+			System.out.println(op.loadOrders(LocalDate.of(2022,03,05), LocalDate.of(2022, 03, 05), "S05"));
+			System.out.println(op.loadOrders(null, LocalDate.of(2022, 03, 05), "S05"));
+			System.out.println(op.loadOrders(LocalDate.of(2022,03,05), null, "S05"));
+			System.out.println(op.loadOrders(LocalDate.of(2022,03,05), LocalDate.of(2022, 03, 20), null));
 			System.out.println(op.process("S05"));
 			System.out.println(op.statisticsByShop());
 			System.out.println(op.statisticsByGoods());

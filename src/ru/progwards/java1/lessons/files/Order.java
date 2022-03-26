@@ -11,26 +11,28 @@ public class Order {
 	public List<OrderItem> items = new ArrayList<>();
 	public double sum;
 	public Order getOrder(Path file){
-		this.shopId = file.getFileName().toString().substring(0, 3);
-		this.orderId = file.getFileName().toString().substring(4, 10);
-		this.customerId = file.getFileName().toString().substring(11, 15);
 		try{
+			this.shopId = file.getFileName().toString().substring(0, 3);
+			this.orderId = file.getFileName().toString().substring(4, 10);
+			this.customerId = file.getFileName().toString().substring(11, 15);
+			
 			this.datetime = LocalDateTime.ofInstant(Files.getLastModifiedTime(file).toInstant(), ZoneId.systemDefault());
 			List<String> list = Files.readAllLines(file);
 			for(String str : list){
 				OrderItem orderItem = new OrderItem().getOrderItem(str);
 				this.items.add(orderItem);
 			}
+			
+			Comparator productComparator = new Comparator<OrderItem>() {
+				@Override
+				public int compare(OrderItem o1, OrderItem o2) {
+					return o1.getGoodsName().compareTo(o2.getGoodsName());
+				}
+			};
+			items.sort(productComparator);
 		} catch(IOException e){
 			System.out.println(e);
 		}
-		Comparator productComparator = new Comparator<OrderItem>() {
-			@Override
-			public int compare(OrderItem o1, OrderItem o2) {
-				return o1.getGoodsName().compareTo(o2.getGoodsName());
-			}
-		};
-		items.sort(productComparator);
 		return this;
 	}
 	@Override

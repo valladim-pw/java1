@@ -1,10 +1,11 @@
 package ru.progwards.java1.lessons.files;
+import java.io.IOException;
 import java.util.*;
 public class OrderItem {
 	public String googsName;
 	public int count;
 	public double price;
-	public OrderItem getOrderItem(String str){
+	public OrderItem getOrderItem(String str) throws IOException, NumberFormatException{
 		this.googsName = str.split(",")[0].trim();
 		this.count = Integer.parseInt(str.split(",")[1].trim());
 		this.price = Double.parseDouble(str.split(",")[2].trim());
