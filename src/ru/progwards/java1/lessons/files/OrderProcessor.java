@@ -76,8 +76,8 @@ public class OrderProcessor {
 				}
 			});
 			return errNum;
-		} catch(IOException e){
-			throw new UncheckedIOException(e);
+		} catch(Exception e){
+			throw e;
 		}
 	}
 	public List<Order> process(String shopId) throws Exception{
@@ -105,8 +105,8 @@ public class OrderProcessor {
 				}
 			});
 			return orderList;
-		} catch(IOException e){
-			throw new UncheckedIOException(e);
+		} catch(Exception e){
+			throw e;
 		}
 	}
 	public Map<String, Double> statisticsByShop() throws Exception{
@@ -141,8 +141,8 @@ public class OrderProcessor {
 				}
 			});
 			return orderMap;
-		} catch(IOException e){
-			throw new UncheckedIOException(e);
+		} catch(Exception e){
+			throw e;
 		}
 	}
 	public Map<String, Double> statisticsByGoods() throws Exception{
@@ -179,8 +179,8 @@ public class OrderProcessor {
 				}
 			});
 			return goodsMap;
-		} catch(IOException e){
-			throw new UncheckedIOException(e);
+		} catch(Exception e){
+			throw e;
 		}
 	}
 	public Map<LocalDate, Double> statisticsByDay() throws Exception{
@@ -215,8 +215,8 @@ public class OrderProcessor {
 				}
 			});
 			return daysMap;
-		} catch(IOException e){
-			throw new UncheckedIOException(e);
+		} catch(Exception e){
+			throw e;
 		}
 	}
 	public static void main(String[] args) {
