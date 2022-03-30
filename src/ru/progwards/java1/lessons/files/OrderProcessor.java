@@ -1,5 +1,6 @@
 package ru.progwards.java1.lessons.files;
 import java.io.IOException;
+import java.io.UncheckedIOException;
 import java.nio.file.*;
 import java.nio.file.attribute.*;
 import java.time.*;
@@ -7,8 +8,9 @@ import java.util.*;
 import static java.nio.file.StandardOpenOption.TRUNCATE_EXISTING;
 
 public class OrderProcessor {
-	public static int corrNum  = 0;
 	public Path path;
+	List<Order> orderList = new ArrayList<>();
+	public static int errNum = 0;
 	public OrderProcessor(String startPath){
 		this.path = Paths.get(startPath);
 	}
@@ -18,79 +20,67 @@ public class OrderProcessor {
 			return o1.getDateTime().compareTo(o2.getDateTime());
 		}
 	};
-	public int loadOrders(LocalDate start, LocalDate finish, String shopId) throws Exception	{
-		List<Order> orderList = new LinkedList<>();
-		PathMatcher pathMatcher = FileSystems.getDefault().getPathMatcher("glob:**/*.csv");
+	public int loadOrders(LocalDate start, LocalDate finish, String shopId) throws Exception{
 		try{
+			PathMatcher pathMatcher = FileSystems.getDefault().getPathMatcher("glob:**/*.csv");
 			Files.walkFileTree(path, new SimpleFileVisitor<Path>(){
 				@Override
 				public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) throws IOException {
-					try{
-						Order order = new Order().getOrder(file);
-						String mark = "";
-						for(char ch: file.getFileName().toString().toCharArray()){
-							if(!Character.isLetterOrDigit(ch)){
-								mark += Character.toString(ch);
-							}
-						}
-						if(pathMatcher.matches(file) &&
-										file.getFileName().toString().length() == 19 &&
-										file.getFileName().toString().substring(3, 4).equals("-") &&
-										file.getFileName().toString().substring(10, 11).equals("-") &&
-										mark.length() == 3){
-							if(start == null && finish != null && shopId != null ){
-								if(order.getDateTime().toLocalDate().isBefore(finish) || order.getDateTime().toLocalDate().isEqual(finish)){
-									if(order.getShopId().equals(shopId))
-										orderList.add(order);
-								}
-							} else if(start != null && finish == null && shopId != null){
-								if(order.getDateTime().toLocalDate().isAfter(start) || order.getDateTime().toLocalDate().isEqual(start)){
-									if(order.getShopId().equals(shopId))
-										orderList.add(order);
-								}
-							} else if(start != null && finish != null && shopId != null){
-								if ((order.getDateTime().toLocalDate().isAfter(start) || order.getDateTime().toLocalDate().isEqual(start))
-												&&  (order.getDateTime().toLocalDate().isBefore(finish) || order.getDateTime().toLocalDate().isEqual(finish))){
-									if(order.getOrder(file).getShopId().equals(shopId))
-										orderList.add(order);
-								}
-							} else if(start != null && finish != null && shopId == null){
-								orderList.add(order);
-							} else {
-								orderList.add(order);
-							}
-							orderList.sort(orderComparator);
-						} else{
-							Files.writeString(file, "", TRUNCATE_EXISTING);
-							corrNum++;
-						}
-						return FileVisitResult.CONTINUE;
-					} catch(Exception e){
-						if (e != null) {
-							return FileVisitResult.CONTINUE;
-						} else {
-							throw e;
+					Order order = new Order().getOrder(file);
+					String mark = "";
+					for(char ch: file.getFileName().toString().toCharArray()){
+						if(!Character.isLetterOrDigit(ch)){
+							mark += Character.toString(ch);
 						}
 					}
+					if(pathMatcher.matches(file) &&
+									file.getFileName().toString().length() == 19 &&
+									file.getFileName().toString().substring(3, 4).equals("-") &&
+									file.getFileName().toString().substring(10, 11).equals("-") &&
+									mark.length() == 3){
+						if(start == null && finish != null && shopId != null ){
+							if(order.getDateTime().toLocalDate().isBefore(finish) || order.getDateTime().toLocalDate().isEqual(finish)){
+								if(order.getShopId().equals(shopId))
+									orderList.add(order);
+							}
+						} else if(start != null && finish == null && shopId != null){
+							if(order.getDateTime().toLocalDate().isAfter(start) || order.getDateTime().toLocalDate().isEqual(start)){
+								if(order.getShopId().equals(shopId))
+									orderList.add(order);
+							}
+						} else if(start != null && finish != null && shopId != null){
+							if ((order.getDateTime().toLocalDate().isAfter(start) || order.getDateTime().toLocalDate().isEqual(start))
+											&&  (order.getDateTime().toLocalDate().isBefore(finish) || order.getDateTime().toLocalDate().isEqual(finish))){
+								if(order.getOrder(file).getShopId().equals(shopId))
+									orderList.add(order);
+							}
+						} else if(start != null && finish != null && shopId == null){
+							orderList.add(order);
+						} else {
+							orderList.add(order);
+						}
+						orderList.sort(orderComparator);
+					} else{
+						Files.writeString(file, "", TRUNCATE_EXISTING);
+						errNum++;
+					}
+					return FileVisitResult.CONTINUE;
 				}
 				@Override
 				public FileVisitResult visitFileFailed(Path file, IOException e) throws IOException{
-					if (e != null) {
-						throw e;
-					} else {
+					if (e == null) {
 						return FileVisitResult.CONTINUE;
+					} else {
+						throw e;
 					}
 				}
 			});
-		} catch(SecurityException se){
-			System.out.println(se);
+			return errNum;
 		} catch(IOException e){
-			System.out.println(e);
+			throw new UncheckedIOException(e);
 		}
-		return corrNum;
 	}
 	public List<Order> process(String shopId) throws Exception{
-		List<Order> orderList = new LinkedList<>();
 		try{
 			Files.walkFileTree(path, new SimpleFileVisitor<Path>(){
 				@Override
@@ -114,12 +104,10 @@ public class OrderProcessor {
 					}
 				}
 			});
-		} catch(SecurityException se){
-			System.out.println(se);
+			return orderList;
 		} catch(IOException e){
-			System.out.println(e);
+			throw new UncheckedIOException(e);
 		}
-		return orderList;
 	}
 	public Map<String, Double> statisticsByShop() throws Exception{
 		Map<String, Double> orderMap = new TreeMap<>(new Comparator<String>() {
@@ -152,12 +140,10 @@ public class OrderProcessor {
 					}
 				}
 			});
-		} catch(SecurityException se){
-			System.out.println(se);
+			return orderMap;
 		} catch(IOException e){
-			System.out.println(e);
+			throw new UncheckedIOException(e);
 		}
-		return orderMap;
 	}
 	public Map<String, Double> statisticsByGoods() throws Exception{
 		Map<String, Double> goodsMap = new TreeMap<>(new Comparator<String>() {
@@ -192,12 +178,10 @@ public class OrderProcessor {
 					}
 				}
 			});
-		} catch(SecurityException se){
-			System.out.println(se);
+			return goodsMap;
 		} catch(IOException e){
-			System.out.println(e);
+			throw new UncheckedIOException(e);
 		}
-		return goodsMap;
 	}
 	public Map<LocalDate, Double> statisticsByDay() throws Exception{
 		Map<LocalDate, Double> daysMap = new TreeMap<>(new Comparator<LocalDate>() {
@@ -230,12 +214,10 @@ public class OrderProcessor {
 					}
 				}
 			});
-		} catch(SecurityException se){
-			System.out.println(se);
+			return daysMap;
 		} catch(IOException e){
-			System.out.println(e);
+			throw new UncheckedIOException(e);
 		}
-		return daysMap;
 	}
 	public static void main(String[] args) {
 		try{
@@ -243,8 +225,8 @@ public class OrderProcessor {
 			System.out.println(op.loadOrders(LocalDate.of(2022,03,05), LocalDate.of(2022, 03, 05), "S05"));
 			System.out.println(op.loadOrders(null, LocalDate.of(2022, 03, 05), "S05"));
 			System.out.println(op.loadOrders(LocalDate.of(2022,03,05), null, "S05"));
-			System.out.println(op.loadOrders(LocalDate.of(2022,03,05), LocalDate.of(2022, 03, 20), null));
-			System.out.println(op.process("S05"));
+			System.out.println(op.loadOrders(LocalDate.of(2022,03,17), LocalDate.of(2022, 03, 20), null));
+			System.out.println(op.process("S01"));
 			System.out.println(op.statisticsByShop());
 			System.out.println(op.statisticsByGoods());
 			System.out.println(op.statisticsByDay());
