@@ -10,11 +10,12 @@ public class OrderProcessor {
 	public String path;
 	List<Order> orderList = new ArrayList<>();
 	String id;
-	public static int errNum = 0;
+	int errNum;
 	public OrderProcessor(String startPath){
 		this.path = startPath;
 	}
 	public int loadOrders(LocalDate start, LocalDate finish, String shopId){
+		errNum = 0;
 		orderList.clear();
 		try {
 			PathMatcher pathMatcher = FileSystems.getDefault().getPathMatcher("glob:**/*.csv");
@@ -48,6 +49,7 @@ public class OrderProcessor {
 						if (order.items != null) {
 							orderList.add(order);
 						} else {
+							order = null;
 							errNum++;
 						}
 					}
