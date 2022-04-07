@@ -4,7 +4,6 @@ public class OrderItem {
 	public String googsName;
 	public int count;
 	public double price;
-	public OrderItem(){};
 	public OrderItem(String goodsName, int count, double price){
 		this.googsName = goodsName;
 		this.count = count;
@@ -13,11 +12,9 @@ public class OrderItem {
 	public String getGoodsName() {
 		return googsName;
 	}
-	public int getCount() {
-		return count;
-	}
-	public double getPrice() {
-		return price;
+	public double getSum()
+	{
+		return count * price;
 	}
 	@Override
 	public String toString() {
