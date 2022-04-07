@@ -5,6 +5,7 @@ import java.io.IOException;
 import java.io.RandomAccessFile;
 
 public class Censor {
+
 	public static class CensorException extends Exception {
 		public String fileName = "";
 		public String msg = "";

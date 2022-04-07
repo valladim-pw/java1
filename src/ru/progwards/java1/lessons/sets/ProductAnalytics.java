@@ -50,7 +50,7 @@ public class ProductAnalytics {
 		while (iterShops.hasNext()){
 			shopSet1.addAll(iterShops.next().getProducts());
 			resultSet.addAll(shopSet1);
-			if(resultSet.isEmpty()){
+			if(compareSet2.isEmpty()){
 				shopSet2.addAll(iterShops.next().getProducts());
 			} else {
 				shopSet2.addAll(compareSet2);

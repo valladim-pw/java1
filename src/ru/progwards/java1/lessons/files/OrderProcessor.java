@@ -21,31 +21,31 @@ public class OrderProcessor {
 			Files.walkFileTree(Path.of(path), new SimpleFileVisitor<>() {
 				@Override
 				public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) {
-					String mark = "";
-					for (char ch : file.getFileName().toString().toCharArray()) {
-						if (!Character.isLetterOrDigit(ch)) {
-							mark += Character.toString(ch);
-						}
-					}
+//					String mark = "";
+//					for (char ch : file.getFileName().toString().toCharArray()) {
+//						if (!Character.isLetterOrDigit(ch)) {
+//							mark += Character.toString(ch);
+//						}
+//					}
 					Order order = new Order().getOrder(file);
 					if (order == null)
 						return FileVisitResult.TERMINATE;
 					if (((start == null || (start != null && start.compareTo(order.getDate()) <= 0)) &&
 								(finish == null || (finish != null && finish.compareTo(order.getDate()) >= 0)) &&
 								(shopId == null || (shopId != null && shopId.compareTo(order.shopId) == 0))) &&
-								((pathMatcher.matches(file) &&
+								/*(*/(pathMatcher.matches(file) /*&&
 								file.getFileName().toString().length() == 19 &&
 								file.getFileName().toString().substring(3, 4).equals("-") &&
 								file.getFileName().toString().substring(10, 11).equals("-") &&
-								mark.length() == 3))){
+								mark.length() == 3))*/)){
 						if (order.items != null) {
 							orderList.add(order);
 						} else {
 							errNum++;
 						}
-					} else {
+					} /*else {
 						order = null;
-					}
+					}*/
 					return FileVisitResult.CONTINUE;
 				}
 				
@@ -180,8 +180,9 @@ public class OrderProcessor {
 	}
 	public static void main(String[] args) {
 		try{
-			OrderProcessor op = new OrderProcessor("c:/products2");
-			op.loadOrders(null,null, null);
+			OrderProcessor op = new OrderProcessor("c:/products");
+			//op.loadOrders(null, null, null);
+			op.loadOrders(LocalDate.of(2020, Month.JANUARY, 5), LocalDate.of(2020, Month.JANUARY, 10), null);
 			op.process(null);
 			op.statisticsByShop();
 			op.statisticsByGoods();

@@ -4,21 +4,37 @@ import java.math.BigDecimal;
 import java.math.BigInteger;
 
 public class BigAlgebra {
-	public static BigDecimal fastPow(BigDecimal num,int pow){
+	public static BigDecimal fastPow(BigDecimal num,int pow) {
 		BigDecimal z = num;
 		BigDecimal res = BigDecimal.ONE;
-		while(pow > 0){
-			int remainder = pow % 2;
-			if(remainder == 1){
+		int compare;
+		String str = Integer.toBinaryString(pow);
+		for(int i = 0; i < str.length(); i++){
+			compare = pow & 1;
+			if(compare == 1) {
 				res = res.multiply(z);
-				z = z.pow(2);
-			} else {
-				z = z.pow(2);
 			}
-			pow /= 2;
+			z = z.pow(2);
+			pow >>= 1;
 		}
 		return res;
 	}
+//Variant 2
+//public static BigDecimal fastPow(BigDecimal num,int pow){
+//	BigDecimal z = num;
+//	BigDecimal res = BigDecimal.ONE;
+//	while(pow > 0){
+//		int remainder = pow % 2;
+//		if(remainder == 1){
+//			res = res.multiply(z);
+//			z = z.pow(2);
+//		} else {
+//			z = z.pow(2);
+//		}
+//		pow /= 2;
+//	}
+//	return res;
+//}
 	public static BigInteger fibonacci(int n){
 		BigInteger a = BigInteger.ONE;
 		BigInteger b = BigInteger.ONE;
@@ -31,7 +47,7 @@ public class BigAlgebra {
 		return b;
 	}
 	public static void main(String[] args) {
-		System.out.println(BigAlgebra.fastPow(new BigDecimal("8.23"), 9));
+		System.out.println(BigAlgebra.fastPow(new BigDecimal("21"), 13));
 		//21^13 : 154 472 377 739 119 461
 		//21^15 : 68 122 318 582 951 682 301
 		//15^10 : 576 650 390 625

@@ -2,10 +2,12 @@ package ru.progwards.java1.lessons.bitsworld;
 
 public class Binary {
 	public static void main(String[] args) {
-		Binary num1 = new Binary((byte)127);
+		
+		Binary num1 = new Binary((byte)10);
 		System.out.println(num1.toString());
+
 	}
-	
+
 	byte num ;
 	public Binary(byte num){
 		this.num = num;

@@ -42,7 +42,7 @@ public class Creator {
 	}
 	public static void main(String[] args) {
 		System.out.println(fillEven(14));
-		System.out.println(fillOdd(12));
-		System.out.println(fill3(3));
+		System.out.println(fillOdd(14));
+		System.out.println(fill3(5));
 	}
 }

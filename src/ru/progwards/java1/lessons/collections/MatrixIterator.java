@@ -2,7 +2,6 @@ package ru.progwards.java1.lessons.collections;
 import java.util.*;
 
 public class MatrixIterator<T> implements Iterator<T> {
-	
 	private T[][] array;
 	public int i;
 	public int j;
@@ -32,7 +31,7 @@ public class MatrixIterator<T> implements Iterator<T> {
 		}
 	}
 	public static void main(String[] args) {
-		Integer[] arr1 = {5, 6};
+		Boolean[] arr1 = {true, false};
 		Double[] arr2 = {13.3, 14.7, 15.0, 16.78, 17.11};
 		Integer[] arr3 = {9, 10, 11, 12};
 		String[] arr4 = {"String1", "String2", "String3", "String4"};

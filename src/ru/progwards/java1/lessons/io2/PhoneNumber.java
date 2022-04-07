@@ -34,7 +34,6 @@ public class PhoneNumber {
 		}
 		return result;
 	}
-	
 	public static void main(String[] args) {
 		try{
 			System.out.println(format("+n8m, 98 8 111 223 3"));

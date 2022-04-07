@@ -41,21 +41,35 @@ public class CyclesGoldenFibo {
 				System.out.println(res);
 			}
 		}
-		System.out.println(containsDigit(892340356, 2));
+		System.out.println(containsDigit(123056689, 7));
 	}
 	public static boolean containsDigit(int number, int digit){
+//		variant 1
+//		int i = 0;
+//		int a = 10;
+//		int b = 1;
+//		int res;
+//		do{
+//			i++;
+//			res = (number % a) / b;
+//			a *= 10;
+//			b *= 10;
+//			if(digit == res)
+//				return true;
+//		} while(b < number);
+//		return false;
+		//variant 2
 		int i = 0;
-		int a = 10;
-		int b = 1;
 		int res;
+		int a;
 		do{
 			i++;
-			res = (number % a) / b;
-			a *= 10;
-			b *= 10;
+			res = number % 10;
+			a = number /= 10;
+			System.out.println(res);
 			if(digit == res)
 				return true;
-		} while(b < number);
+		} while(res != a);
 		return false;
 	}
 	public static int fiboNumber(int n){

@@ -10,7 +10,6 @@ public class Translator {
 			this.inLang[i] = inLang[i];
 			this.outLang[i] = outLang[i];
 		}
-		
 	}
 	public String translate(String sentence){
 		String result = "";

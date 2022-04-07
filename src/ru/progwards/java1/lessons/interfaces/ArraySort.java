@@ -1,4 +1,6 @@
 package ru.progwards.java1.lessons.interfaces;
+//import org.jetbrains.annotations.NotNull;
+
 import java.util.Arrays;
 
 public class ArraySort {
@@ -14,5 +16,9 @@ public class ArraySort {
 			}
 		}
 		System.out.println(Arrays.toString(a));
+	}
+	
+	public static void main(String[] args) {
+	
 	}
 }

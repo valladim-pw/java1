@@ -3,7 +3,6 @@ package ru.progwards.java1.lessons.collections;
 import java.util.*;
 
 public class ArrayIterator<T> implements Iterator<T> {
-	
 	private T[] array;
 	public int i;
 	ArrayIterator(T[] array) {
@@ -21,7 +20,6 @@ public class ArrayIterator<T> implements Iterator<T> {
 		return array[i++];
 	}
 	public static void main(String[] args) {
-		//Integer[] arr = {11, 2, 63, 44 , 8};
 		Object[] arr = {"String1", 3, "String2", 10.9, "String3", 56, "String4"};
 		ArrayIterator arrIterator = new ArrayIterator(arr);
 		while(arrIterator.hasNext())
