@@ -21,34 +21,38 @@ public class OrderProcessor {
 			Files.walkFileTree(Path.of(path), new SimpleFileVisitor<>() {
 				@Override
 				public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) {
-//					String mark = "";
-//					for (char ch : file.getFileName().toString().toCharArray()) {
-//						if (!Character.isLetterOrDigit(ch)) {
-//							mark += Character.toString(ch);
-//						}
-//					}
+					String name = file.getFileName().toString();
+					name = name.substring(0, name.indexOf(".")).trim();
+					String[] nameArr = name.split("-");
+					boolean ok = false;
+					String mask = "";
+					for (char ch : name.toCharArray()) {
+						if (Character.isLetterOrDigit(ch))
+							mask += Character.toString(ch);
+					}
+					if(mask.length() == 13 &&
+									nameArr.length == 3 &&
+									nameArr[0].length() == 3 &&
+									nameArr[1].length() == 6 &&
+									nameArr[2].length() == 4
+					)
+						ok = true;
 					Order order = new Order().getOrder(file);
 					if (order == null)
 						return FileVisitResult.TERMINATE;
 					if (((start == null || (start != null && start.compareTo(order.getDate()) <= 0)) &&
 								(finish == null || (finish != null && finish.compareTo(order.getDate()) >= 0)) &&
 								(shopId == null || (shopId != null && shopId.compareTo(order.shopId) == 0))) &&
-								/*(*/(pathMatcher.matches(file) /*&&
-								file.getFileName().toString().length() == 19 &&
-								file.getFileName().toString().substring(3, 4).equals("-") &&
-								file.getFileName().toString().substring(10, 11).equals("-") &&
-								mark.length() == 3))*/)){
+								(pathMatcher.matches(file) && ok)
+					){
 						if (order.items != null) {
 							orderList.add(order);
 						} else {
 							errNum++;
 						}
-					} /*else {
-						order = null;
-					}*/
+					}
 					return FileVisitResult.CONTINUE;
 				}
-				
 				@Override
 				public FileVisitResult visitFileFailed(Path file, IOException e){
 					e.printStackTrace();
@@ -103,8 +107,8 @@ public class OrderProcessor {
 		for(Order order: orderList){
 			for(OrderItem item : order.items){
 				String key = item.getGoodsName();
-				Double sum = item.getSum();
-				Double newSum = 0.0;
+				double sum = item.getSum();
+				double newSum = 0.0;
 				Double oldSum = goodsMap.putIfAbsent(key, sum);
 				if(oldSum != null){
 					newSum = oldSum + sum;
@@ -123,8 +127,8 @@ public class OrderProcessor {
 		});
 		for(Order order: orderList){
 			LocalDate key = order.getDate();
-			Double sum = order.sum;
-			Double newSum = 0.0;
+			double sum = order.sum;
+			double newSum = 0.0;
 			Double oldSum = daysMap.putIfAbsent(key, sum);
 			if(oldSum != null){
 				newSum = oldSum + sum;
@@ -181,8 +185,8 @@ public class OrderProcessor {
 	public static void main(String[] args) {
 		try{
 			OrderProcessor op = new OrderProcessor("c:/products");
-			//op.loadOrders(null, null, null);
-			op.loadOrders(LocalDate.of(2020, Month.JANUARY, 5), LocalDate.of(2020, Month.JANUARY, 10), null);
+			op.loadOrders(null, null, null);
+			//op.loadOrders(LocalDate.of(2020, Month.JANUARY, 1), LocalDate.of(2020, Month.JANUARY, 16), null);
 			op.process(null);
 			op.statisticsByShop();
 			op.statisticsByGoods();
