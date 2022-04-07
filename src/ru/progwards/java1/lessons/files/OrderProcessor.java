@@ -1,195 +1,109 @@
 package ru.progwards.java1.lessons.files;
 import java.io.IOException;
+import java.io.UncheckedIOException;
 import java.nio.file.*;
 import java.nio.file.attribute.*;
 import java.time.*;
 import java.util.*;
 
-public class OrderProcessor {
-	public String path;
+public class OrderProcessor{
+	Path startPath;
 	List<Order> orderList = new ArrayList<>();
-	String id;
-	public static int errNum = 0;
-	public OrderProcessor(String startPath){
-		this.path = startPath;
+	
+	private void printOrders(List<Order> list){
+		for (Order order : list){
+			System.out.println(order);
+		}
 	}
-	public int loadOrders(LocalDate start, LocalDate finish, String shopId) throws Exception {
+	public OrderProcessor(String startPath){
+		this.startPath = Paths.get(startPath);
+	}
+	int errors;
+	public int loadOrders(LocalDate start, LocalDate finish, String shopId){
+		errors = 0;
 		orderList.clear();
-		try {
-			PathMatcher pathMatcher = FileSystems.getDefault().getPathMatcher("glob:**/*.csv");
-			Files.walkFileTree(Path.of(path), new SimpleFileVisitor<>() {
-				@Override
-				public FileVisitResult visitFile(Path file, BasicFileAttributes attrs){
-					String mark = "";
-					for (char ch : file.getFileName().toString().toCharArray()) {
-						if (!Character.isLetterOrDigit(ch)) {
-							mark += Character.toString(ch);
-						}
-					}
-					Order order = new Order().getOrder(file);
-					if(order == null)
-						return FileVisitResult.TERMINATE;
-					if((start == null || (start != null && start.compareTo(order.getDate()) <= 0)) &&
-									(finish == null || (finish != null && finish.compareTo(order.getDate()) >= 0)) &&
-									(shopId == null || (shopId != null && shopId.compareTo(order.shopId) == 0))){
-						if (pathMatcher.matches(file) &&
-										file.getFileName().toString().length() == 19 &&
-										file.getFileName().toString().substring(3, 4).equals("-") &&
-										file.getFileName().toString().substring(10, 11).equals("-") &&
-										mark.length() == 3 &&
-										order.items != null) {
-							orderList.add(order);
-						} else {
-							errNum++;
-						}
-					} else {
-						order = null;
-					}
-					return FileVisitResult.CONTINUE;
-				}
-				@Override
-				public FileVisitResult visitFileFailed(Path file, IOException e) throws IOException{
-					if (e == null) {
-						return FileVisitResult.CONTINUE;
-					} else {
-						throw e;
-					}
-				}
-			});
-			return errNum;
-		} catch (Exception e) {
-			throw e;
+		try{
+			String mask = String.format("glob:**/%s-??????-????.csv", (shopId == null ? "???" : shopId));
+			PathMatcher pathMatcher = FileSystems.getDefault().getPathMatcher(mask);
+			Files.walkFileTree(startPath, new SimpleFileVisitor<>(){
+								@Override
+								public FileVisitResult visitFile(Path file, BasicFileAttributes attrs){
+									if (pathMatcher.matches(file)){
+										Order order = Order.loadOrder(file, start, finish, shopId);
+										if (order != null)
+											orderList.add(order);
+										else
+											errors++;
+									}
+									return FileVisitResult.CONTINUE;
+								}
+								@Override
+								public FileVisitResult visitFileFailed(Path file, IOException e){
+									return FileVisitResult.CONTINUE;
+								}
+							}
+			);
+			return errors;
+		} catch (IOException e){
+			throw new UncheckedIOException(e);
 		}
 	}
 	public List<Order> process(String shopId){
-		this.id = shopId;
-		TreeSet<Order> orderSet = new TreeSet<>(new Comparator<>(){
+		TreeSet<Order> tree = new TreeSet<>(new Comparator<>(){
 			@Override
 			public int compare(Order o1, Order o2){
 				return o1.datetime.compareTo(o2.datetime);
 			}
 		});
-		for (Order order : orderList){
-			if (shopId == null || order.shopId.equals(shopId))
-				orderSet.add(order);
+		for (Order item : orderList){
+			if (shopId == null || item.shopId.compareTo(shopId) == 0)
+				tree.add(item);
 		}
-		return new ArrayList<>(orderSet);
+		return new ArrayList<>(tree);
 	}
 	public Map<String, Double> statisticsByShop(){
-		Map<String, Double> shopsMap = new TreeMap<>(new Comparator<String>() {
-			@Override
-			public int compare(String s1, String s2) {
-				return s1.compareTo(s2);
-			}
-		});
+		Map<String, Double> res = new TreeMap<>();
 		for (Order order : orderList){
-			String key = order.shopId;
-			Double sum = order.sum;
-			Double newSum = 0.0;
-			Double oldSum = shopsMap.putIfAbsent(key, sum);
-			if(oldSum != null){
-				newSum = oldSum + sum;
-				shopsMap.replace(key, newSum);
-			}
+			if (res.containsKey(order.shopId))
+				res.put(order.shopId, res.get(order.shopId) + order.sum);
+			else
+				res.put(order.shopId, order.sum);
 		}
-		return shopsMap;
+		return res;
 	}
 	public Map<String, Double> statisticsByGoods(){
-		Map<String, Double> goodsMap = new TreeMap<>(new Comparator<String>() {
-			@Override
-			public int compare(String s1, String s2) {
-				return s1.compareTo(s2);
-			}
-		});
-		for(Order order: orderList){
-			for(OrderItem item : order.items){
-				String key = item.getGoodsName();
-				Double sum = item.getSum();
-				Double newSum = 0.0;
-				Double oldSum = goodsMap.putIfAbsent(key, sum);
-				if(oldSum != null){
-					newSum = oldSum + sum;
-					goodsMap.replace(key, newSum);
-				}
+		Map<String, Double> res = new TreeMap<>();
+		for (Order order : orderList){
+			for (OrderItem item : order.items){
+				if (res.containsKey(item.googsName))
+					res.put(item.googsName, res.get(item.googsName) + item.getSum());
+				else
+					res.put(item.googsName, item.getSum());
 			}
 		}
-		return goodsMap;
+		return res;
 	}
 	public Map<LocalDate, Double> statisticsByDay(){
-		Map<LocalDate, Double> daysMap = new TreeMap<>(new Comparator<LocalDate>() {
-			@Override
-			public int compare(LocalDate d1, LocalDate d2) {
-				return d1.compareTo(d2);
-			}
-		});
-		for(Order order: orderList){
-			LocalDate key = order.getDate();
-			Double sum = order.sum;
-			Double newSum = 0.0;
-			Double oldSum = daysMap.putIfAbsent(key, sum);
-			if(oldSum != null){
-				newSum = oldSum + sum;
-				daysMap.replace(key, newSum);
-			}
+		Map<LocalDate, Double> res = new TreeMap<>();
+		for (Order order : orderList){
+			LocalDate localDate = LocalDate.from(order.datetime);
+			if (res.containsKey(localDate))
+				res.put(localDate, res.get(localDate) + order.sum);
+			else
+				res.put(localDate, order.sum);
 		}
-		return daysMap;
+		return res;
 	}
-	@Override
-	public String toString() {
-		String err = "fileErrors: " + errNum + "\n";
-		String line1 = "";
-		String line2 = "";
-		String line3 = "";
-		String line4 = "";
-		List<Order> list = this.process(this.id);
-		String process = "shopProcess: " + "\n";
-		if(!list.isEmpty()){
-			for(Order order : list){
-				line1 += order + "\n";
-			}
-		} else {
-			line1 = list + "\n";
-		}
-		Map<String, Double> shopMap = this.statisticsByShop();
-		String shop = "shopStatistics: " + "\n";
-		if(!shopMap.isEmpty()){
-			for(var entry : shopMap.entrySet()){
-				line2 += entry.getKey() + "=" + entry.getValue() + "\n";
-			}
-		} else {
-			line2 = shopMap + "\n";
-		}
-		Map<String, Double> goodMap = this.statisticsByGoods();
-		String good = "goodStatistics: " + "\n";
-		if(!goodMap.isEmpty()){
-			for(var entry : goodMap.entrySet()){
-				line3 += entry.getKey() + "=" + entry.getValue() + "\n";
-			}
-		} else {
-			line3 = goodMap + "\n";
-		}
-		Map<LocalDate, Double> dayMap = this.statisticsByDay();
-		String day = "dayStatistics: " + "\n";
-		if(!dayMap.isEmpty()){
-			for(var entry : dayMap.entrySet()){
-				line4 += entry.getKey() + "=" + entry.getValue() + "\n";
-			}
-		} else {
-			line4 = dayMap + "\n";
-		}
-		return err + process + line1 + shop + line2 + good + line3 + day + line4;
-	}
-	public static void main(String[] args) {
-		try{
-			OrderProcessor op = new OrderProcessor("products/");
-			op.loadOrders(null,LocalDate.of(2022, 04, 14), null);
-			op.process(null);
-			op.statisticsByShop();
-			op.statisticsByGoods();
-			op.statisticsByDay();
-			System.out.println(op.toString());
-		}catch(Exception e){
-			e.printStackTrace();
-		}
+	public static void main(String[] args) throws IOException{
+		OrderProcessor op = new OrderProcessor("с:/products");
+		op.loadOrders(LocalDate.of(2022,03,11), LocalDate.of(2022, 04, 12), null);
+		System.out.println("----------------");
+		op.printOrders(op.process("S01"));
+		System.out.println("----------------");
+		System.out.println("by shop:" + op.statisticsByShop());
+		System.out.println("----------------");
+		System.out.println("by goods:" + op.statisticsByGoods());
+		System.out.println("----------------");
+		System.out.println("by days:" + op.statisticsByDay());
 	}
 }
