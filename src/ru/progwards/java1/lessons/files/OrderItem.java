@@ -11,15 +11,14 @@ public class OrderItem {
 		this.price = price;
 		return this;
 	}
-	public String getGoodsName() {
+	public String getGoodsName(){
 		return googsName;
 	}
-	public double getSum()
-	{
+	public double getSum(){
 		return count * price;
 	}
 	@Override
-	public String toString() {
+	public String toString(){
 		return googsName + " " + count + " " + price + "\n";
 	}
 }

@@ -1,5 +1,6 @@
 package ru.progwards.java1.lessons.files;
 import java.io.IOException;
+import java.io.UncheckedIOException;
 import java.nio.file.*;
 import java.nio.file.attribute.*;
 import java.time.*;
@@ -13,13 +14,13 @@ public class OrderProcessor {
 	public OrderProcessor(String startPath){
 		this.path = startPath;
 	}
-	public int loadOrders(LocalDate start, LocalDate finish, String shopId) throws Exception {
+	public int loadOrders(LocalDate start, LocalDate finish, String shopId){
 		orderList.clear();
 		try {
 			PathMatcher pathMatcher = FileSystems.getDefault().getPathMatcher("glob:**/*.csv");
 			Files.walkFileTree(Path.of(path), new SimpleFileVisitor<>() {
 				@Override
-				public FileVisitResult visitFile(Path file, BasicFileAttributes attrs){
+				public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) {
 					String mark = "";
 					for (char ch : file.getFileName().toString().toCharArray()) {
 						if (!Character.isLetterOrDigit(ch)) {
@@ -27,11 +28,11 @@ public class OrderProcessor {
 						}
 					}
 					Order order = new Order().getOrder(file);
-					if(order == null)
+					if (order == null)
 						return FileVisitResult.TERMINATE;
-					if((start == null || (start != null && start.compareTo(order.getDate()) <= 0)) &&
+					if ((start == null || (start != null && start.compareTo(order.getDate()) <= 0)) &&
 									(finish == null || (finish != null && finish.compareTo(order.getDate()) >= 0)) &&
-									(shopId == null || (shopId != null && shopId.compareTo(order.shopId) == 0))){
+									(shopId == null || (shopId != null && shopId.compareTo(order.shopId) == 0))) {
 						if (pathMatcher.matches(file) &&
 										file.getFileName().toString().length() == 19 &&
 										file.getFileName().toString().substring(3, 4).equals("-") &&
@@ -47,18 +48,16 @@ public class OrderProcessor {
 					}
 					return FileVisitResult.CONTINUE;
 				}
+				
 				@Override
-				public FileVisitResult visitFileFailed(Path file, IOException e) throws IOException{
-					if (e == null) {
-						return FileVisitResult.CONTINUE;
-					} else {
-						throw e;
-					}
+				public FileVisitResult visitFileFailed(Path file, IOException e){
+					e.printStackTrace();
+					return FileVisitResult.CONTINUE;
 				}
 			});
 			return errNum;
-		} catch (Exception e) {
-			throw e;
+		}catch (IOException e){
+			throw new UncheckedIOException(e);
 		}
 	}
 	public List<Order> process(String shopId){
@@ -84,8 +83,8 @@ public class OrderProcessor {
 		});
 		for (Order order : orderList){
 			String key = order.shopId;
-			Double sum = order.sum;
-			Double newSum = 0.0;
+			double sum = order.sum;
+			double newSum = 0.0;
 			Double oldSum = shopsMap.putIfAbsent(key, sum);
 			if(oldSum != null){
 				newSum = oldSum + sum;
@@ -181,7 +180,7 @@ public class OrderProcessor {
 	}
 	public static void main(String[] args) {
 		try{
-			OrderProcessor op = new OrderProcessor("c:/products2");
+			OrderProcessor op = new OrderProcessor("???");
 			op.loadOrders(null,LocalDate.of(2022, 04, 14), null);
 			op.process(null);
 			op.statisticsByShop();

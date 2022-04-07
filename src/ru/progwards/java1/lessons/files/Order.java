@@ -24,9 +24,9 @@ public class Order {
 				}
 			});
 			sum = 0.0;
-			List<String> list = Files.readAllLines(file);
+			List<String> lines = Files.readAllLines(file);
 			try{
-				for(String str : list){
+				for(String str : lines){
 					String[] strArr = str.split(",");
 					if(strArr.length != 3){
 						this.items = null;
