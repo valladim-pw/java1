@@ -30,15 +30,15 @@ public class OrderProcessor {
 					Order order = new Order().getOrder(file);
 					if (order == null)
 						return FileVisitResult.TERMINATE;
-					if ((start == null || (start != null && start.compareTo(order.getDate()) <= 0)) &&
-									(finish == null || (finish != null && finish.compareTo(order.getDate()) >= 0)) &&
-									(shopId == null || (shopId != null && shopId.compareTo(order.shopId) == 0))) {
-						if (pathMatcher.matches(file) &&
-										file.getFileName().toString().length() == 19 &&
-										file.getFileName().toString().substring(3, 4).equals("-") &&
-										file.getFileName().toString().substring(10, 11).equals("-") &&
-										mark.length() == 3 &&
-										order.items != null) {
+					if (((start == null || (start != null && start.compareTo(order.getDate()) <= 0)) &&
+								(finish == null || (finish != null && finish.compareTo(order.getDate()) >= 0)) &&
+								(shopId == null || (shopId != null && shopId.compareTo(order.shopId) == 0))) &&
+								((pathMatcher.matches(file) &&
+								file.getFileName().toString().length() == 19 &&
+								file.getFileName().toString().substring(3, 4).equals("-") &&
+								file.getFileName().toString().substring(10, 11).equals("-") &&
+								mark.length() == 3))){
+						if (order.items != null) {
 							orderList.add(order);
 						} else {
 							errNum++;
@@ -180,8 +180,8 @@ public class OrderProcessor {
 	}
 	public static void main(String[] args) {
 		try{
-			OrderProcessor op = new OrderProcessor("???");
-			op.loadOrders(null,LocalDate.of(2022, 04, 14), null);
+			OrderProcessor op = new OrderProcessor("c:/products2");
+			op.loadOrders(null,null, null);
 			op.process(null);
 			op.statisticsByShop();
 			op.statisticsByGoods();
