@@ -35,7 +35,7 @@ public class Order {
 					String good = strArr[0].trim();
 					int count = Integer.parseInt(strArr[1].trim());
 					double price = Double.parseDouble(strArr[2].trim());
-					OrderItem orderItem = new OrderItem().getOrderItem(good, count, price);
+					OrderItem orderItem = new OrderItem(good, count, price);
 					this.sum += count * price;
 					itemSet.add(orderItem);
 					this.items = new ArrayList<>(itemSet);

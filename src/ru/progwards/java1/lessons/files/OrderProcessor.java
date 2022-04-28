@@ -186,7 +186,7 @@ public class OrderProcessor {
 	}
 	public static void main(String[] args) {
 		try{
-			OrderProcessor op = new OrderProcessor("c:/products");
+			OrderProcessor op = new OrderProcessor("c:/products2");
 			op.loadOrders(null, null, null);
 			//op.loadOrders(LocalDate.of(2020, Month.JANUARY, 1), LocalDate.of(2020, Month.JANUARY, 16), null);
 			op.process(null);
