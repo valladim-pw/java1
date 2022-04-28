@@ -2,7 +2,6 @@ package ru.progwards.java1.lessons.files;
 import java.nio.file.*;
 import java.time.*;
 import java.util.*;
-
 public class Order {
 	public String shopId;
 	public String orderId;
@@ -32,10 +31,12 @@ public class Order {
 						this.items = null;
 						return this;
 					}
-					String good = strArr[0].trim();
+//					String good = strArr[0].trim();
+//					int count = Integer.parseInt(strArr[1].trim());
+//					double price = Double.parseDouble(strArr[2].trim());
+					OrderItem orderItem = new OrderItem(strArr[0].trim(), Integer.parseInt(strArr[1].trim()), Double.parseDouble(strArr[2].trim()));
 					int count = Integer.parseInt(strArr[1].trim());
 					double price = Double.parseDouble(strArr[2].trim());
-					OrderItem orderItem = new OrderItem(good, count, price);
 					this.sum += count * price;
 					itemSet.add(orderItem);
 					this.items = new ArrayList<>(itemSet);
