@@ -2,8 +2,9 @@ package ru.progwards.java1.lessons.queues;
 import java.util.*;
 
 public class Calculate {
+	public static LinkedList<Double> list = new LinkedList<>();
 	public static double calculation1(){
-		StackCalc stack = new StackCalc(new LinkedList<>());
+		StackCalc stack = new StackCalc(list);
 		stack.push(2.2);
 		stack.push(12.1);
 		stack.push(3);
@@ -12,7 +13,7 @@ public class Calculate {
 		return stack.pop();
 	}
 	public static double calculation2(){
-		StackCalc stack = new StackCalc(new LinkedList<>());
+		StackCalc stack = new StackCalc(list);
 		stack.push(737.22);
 		stack.push(24);
 		stack.add();
