@@ -4,8 +4,8 @@ import java.util.*;
 public class StackCalc{
 	public LinkedList<Double> list;
 	public double result;
-	public StackCalc(LinkedList<Double> list){
-		this.list = list;
+	public StackCalc(LinkedList<Double> linkedList){
+		list = linkedList;
 	}
 	public void push(double value){
 		list.push(value);
