@@ -4,22 +4,24 @@ import java.util.*;
 public class StackCalc{
 	public LinkedList<Double> list;
 	public double result;
-	public StackCalc(){}
-//		list = new LinkedList<>();
-//	}
-	public StackCalc(LinkedList<Double> linkedList){
-		//this();
-		list = new LinkedList<>();
-		list = linkedList;
-		//list.equals(linkedList);
+	public StackCalc(){
+		//list = new LinkedList<>();
 	}
-	
+	public StackCalc(LinkedList<Double> linkedList){
+		this();
+		list = linkedList;
+	}
 	public void push(double value){
 		list.push(value);
 	}
 	public double pop(){
-		if(!list.isEmpty())
-			result = list.poll();
+		try{
+			if(!list.isEmpty())
+				result = list.poll();
+		}catch(NullPointerException e){
+			e.printStackTrace();
+		}
+		
 		return result;
 	}
 	public void add(){
