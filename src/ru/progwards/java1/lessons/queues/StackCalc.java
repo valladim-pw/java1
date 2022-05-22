@@ -4,11 +4,11 @@ import java.util.*;
 public class StackCalc{
 	public LinkedList<Double> list;
 	public double result;
-	public StackCalc(){
-		list = new LinkedList<>();
-	}
+//	public StackCalc(){
+//		list = new LinkedList<>();
+//	}
 	public StackCalc(LinkedList<Double> linkedList){
-		this();
+		//this();
 		list.equals(linkedList);
 	}
 	
