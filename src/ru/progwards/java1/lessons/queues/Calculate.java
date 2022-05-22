@@ -2,7 +2,6 @@ package ru.progwards.java1.lessons.queues;
 import java.util.*;
 
 public class Calculate {
-	//public static LinkedList<Double> list = new LinkedList<>();
 	public static double calculation1(){
 		LinkedList<Double> newList = new LinkedList<>();
 		StackCalc stack = new StackCalc(newList);
