@@ -3,8 +3,7 @@ import java.util.*;
 
 public class Calculate {
 	public static double calculation1(){
-		LinkedList<Double> newList = new LinkedList<>();
-		StackCalc stack = new StackCalc(newList);
+		StackCalc stack = new StackCalc();
 		stack.push(2.2);
 		stack.push(12.1);
 		stack.push(3);
@@ -13,8 +12,7 @@ public class Calculate {
 		return stack.pop();
 	}
 	public static double calculation2(){
-		LinkedList<Double> newList = new LinkedList<>();
-		StackCalc stack = new StackCalc(newList);
+		StackCalc stack = new StackCalc();
 		stack.push(737.22);
 		stack.push(24);
 		stack.add();
@@ -53,3 +51,4 @@ public class Calculate {
 		System.out.println(calculation2());
 	}
 }
+

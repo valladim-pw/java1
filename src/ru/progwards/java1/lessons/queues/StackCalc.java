@@ -2,15 +2,8 @@ package ru.progwards.java1.lessons.queues;
 import java.util.*;
 
 public class StackCalc{
-	public LinkedList<Double> list;
+	public LinkedList<Double> list = new LinkedList<>();
 	public double result;
-	public StackCalc(){
-		list = new LinkedList<>();
-	}
-	public StackCalc(LinkedList<Double> linkedList){
-		this();
-		list = linkedList;
-	}
 	public void push(double value){
 		list.push(value);
 	}
