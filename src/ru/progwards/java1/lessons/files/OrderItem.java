@@ -5,11 +5,10 @@ public class OrderItem {
 	public int count;
 	public double price;
 	public OrderItem(){}
-	public OrderItem getOrderItem(String goodsName, int count, double price){
+	public OrderItem(String goodsName, int count, double price){
 		this.googsName = goodsName;
 		this.count = count;
 		this.price = price;
-		return this;
 	}
 	public String getGoodsName(){
 		return googsName;

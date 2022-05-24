@@ -32,11 +32,11 @@ public class Order {
 						this.items = null;
 						return this;
 					}
-					String good = strArr[0].trim();
-					int count = Integer.parseInt(strArr[1].trim());
-					double price = Double.parseDouble(strArr[2].trim());
-					OrderItem orderItem = new OrderItem().getOrderItem(good, count, price);
-					this.sum += count * price;
+					String newGoodsName = strArr[0].trim();
+					int newCount = Integer.parseInt(strArr[1].trim());
+					double newPrice = Double.parseDouble(strArr[2].trim());
+					OrderItem orderItem = new OrderItem(newGoodsName, newCount, newPrice);
+					this.sum += newCount * newPrice;
 					itemSet.add(orderItem);
 					this.items = new ArrayList<>(itemSet);
 				}
