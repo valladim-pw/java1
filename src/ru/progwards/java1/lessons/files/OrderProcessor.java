@@ -21,8 +21,8 @@ public class OrderProcessor {
 			PathMatcher pathMatcher = FileSystems.getDefault().getPathMatcher("glob:**/*.csv");
 			Files.walkFileTree(Path.of(path), new SimpleFileVisitor<>() {
 				@Override
-				public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) {
-					String name = file.getFileName().toString();
+				public FileVisitResult visitFile(Path newFile, BasicFileAttributes attrs) {
+					String name = newFile.getFileName().toString();
 					name = name.substring(0, name.indexOf(".")).trim();
 					String[] nameArr = name.split("-");
 					boolean ok = false;
@@ -38,13 +38,13 @@ public class OrderProcessor {
 									nameArr[2].length() == 4
 					)
 						ok = true;
-					Order order = new Order().getOrder(file);
+					Order order = new Order(newFile);
 					if (order == null)
 						return FileVisitResult.TERMINATE;
 					if (((start == null || (start != null && start.compareTo(order.getDate()) <= 0)) &&
 								(finish == null || (finish != null && finish.compareTo(order.getDate()) >= 0)) &&
 								(shopId == null || (shopId != null && shopId.compareTo(order.shopId) == 0))) &&
-								(pathMatcher.matches(file) && ok)
+								(pathMatcher.matches(newFile) && ok)
 					){
 						if (order.items != null) {
 							orderList.add(order);
@@ -56,7 +56,7 @@ public class OrderProcessor {
 					return FileVisitResult.CONTINUE;
 				}
 				@Override
-				public FileVisitResult visitFileFailed(Path file, IOException e){
+				public FileVisitResult visitFileFailed(Path newFile, IOException e){
 					e.printStackTrace();
 					return FileVisitResult.CONTINUE;
 				}

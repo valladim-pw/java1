@@ -11,7 +11,7 @@ public class Order {
 	public List<OrderItem> items = new ArrayList<>();
 	public double sum;
 	public Order(){}
-	public Order getOrder(Path file){
+	public Order(Path file){
 		try{
 			this.shopId = file.getFileName().toString().substring(0, 3);
 			this.orderId = file.getFileName().toString().substring(4, 10);
@@ -30,7 +30,8 @@ public class Order {
 					String[] strArr = str.split(",");
 					if(strArr.length != 3){
 						this.items = null;
-						return this;
+						break;
+						//return this;
 					}
 					String newGoodsName = strArr[0].trim();
 					int newCount = Integer.parseInt(strArr[1].trim());
@@ -42,13 +43,13 @@ public class Order {
 				}
 			} catch(NumberFormatException e){
 				this.items = null;
-				return this;
+				//return this;
 			}
 		} catch(Exception e) {
 			e.printStackTrace();
-			return null;
+			//return null;
 		}
-		return this;
+		//return this;
 	}
 	public LocalDate getDate(){
 		return this.datetime.toLocalDate();
