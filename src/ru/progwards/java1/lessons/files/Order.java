@@ -10,7 +10,6 @@ public class Order {
 	public LocalDateTime datetime;
 	public List<OrderItem> items = new ArrayList<>();
 	public double sum;
-	public Order(){}
 	public Order(Path file){
 		try{
 			this.shopId = file.getFileName().toString().substring(0, 3);
@@ -30,9 +29,16 @@ public class Order {
 					String[] strArr = str.split(",");
 					if(strArr.length != 3){
 						this.items = null;
-						break;
-						//return this;
+						return;
 					}
+					/*
+					Вариант не одобренный Роботом
+					String good = strArr[0].trim();
+					int count = Integer.parseInt(strArr[1].trim());
+					double price = Double.parseDouble(strArr[2].trim());
+					OrderItem orderItem = new OrderItem(good, count, price);
+					this.sum += count * price;
+					*/
 					String newGoodsName = strArr[0].trim();
 					int newCount = Integer.parseInt(strArr[1].trim());
 					double newPrice = Double.parseDouble(strArr[2].trim());
@@ -43,13 +49,10 @@ public class Order {
 				}
 			} catch(NumberFormatException e){
 				this.items = null;
-				//return this;
 			}
 		} catch(Exception e) {
 			e.printStackTrace();
-			//return null;
 		}
-		//return this;
 	}
 	public LocalDate getDate(){
 		return this.datetime.toLocalDate();

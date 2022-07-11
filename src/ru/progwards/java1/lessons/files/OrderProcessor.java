@@ -21,6 +21,7 @@ public class OrderProcessor {
 			PathMatcher pathMatcher = FileSystems.getDefault().getPathMatcher("glob:**/*.csv");
 			Files.walkFileTree(Path.of(path), new SimpleFileVisitor<>() {
 				@Override
+				//Вариант аргумента не одобренный Роботом - Path file
 				public FileVisitResult visitFile(Path newFile, BasicFileAttributes attrs) {
 					String name = newFile.getFileName().toString();
 					name = name.substring(0, name.indexOf(".")).trim();
@@ -38,13 +39,14 @@ public class OrderProcessor {
 									nameArr[2].length() == 4
 					)
 						ok = true;
+					//Вариант аргумента не одобренный Роботом - file
 					Order order = new Order(newFile);
 					if (order == null)
 						return FileVisitResult.TERMINATE;
 					if (((start == null || (start != null && start.compareTo(order.getDate()) <= 0)) &&
 								(finish == null || (finish != null && finish.compareTo(order.getDate()) >= 0)) &&
 								(shopId == null || (shopId != null && shopId.compareTo(order.shopId) == 0))) &&
-								(pathMatcher.matches(newFile) && ok)
+								(pathMatcher.matches(newFile) && ok)//Вариант аргумента не одобренный Роботом - file
 					){
 						if (order.items != null) {
 							orderList.add(order);
@@ -56,6 +58,7 @@ public class OrderProcessor {
 					return FileVisitResult.CONTINUE;
 				}
 				@Override
+				//Вариант аргумента не одобренный Роботом - Path file
 				public FileVisitResult visitFileFailed(Path newFile, IOException e){
 					e.printStackTrace();
 					return FileVisitResult.CONTINUE;
