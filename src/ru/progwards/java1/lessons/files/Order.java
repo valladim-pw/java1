@@ -33,18 +33,18 @@ public class Order {
 						return;
 					}
 					/*
-					Вариант не одобренный Роботом
+					Вариант не одобренный Роботом*/
 					String good = strArr[0].trim();
 					int count = Integer.parseInt(strArr[1].trim());
 					double price = Double.parseDouble(strArr[2].trim());
 					OrderItem orderItem = new OrderItem(good, count, price);
 					this.sum += count * price;
-					*/
-					String newGoodsName = strArr[0].trim();
+					
+					/*String newGoodsName = strArr[0].trim();
 					int newCount = Integer.parseInt(strArr[1].trim());
 					double newPrice = Double.parseDouble(strArr[2].trim());
 					OrderItem orderItem = new OrderItem(newGoodsName, newCount, newPrice);
-					this.sum += newCount * newPrice;
+					this.sum += newCount * newPrice;*/
 					itemSet.add(orderItem);
 					this.items = new ArrayList<>(itemSet);
 				}
