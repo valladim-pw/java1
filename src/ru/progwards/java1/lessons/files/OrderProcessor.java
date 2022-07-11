@@ -46,7 +46,7 @@ public class OrderProcessor {
 					if (((start == null || (start != null && start.compareTo(order.getDate()) <= 0)) &&
 								(finish == null || (finish != null && finish.compareTo(order.getDate()) >= 0)) &&
 								(shopId == null || (shopId != null && shopId.compareTo(order.shopId) == 0))) &&
-								(pathMatcher.matches(newFile) && ok)//Вариант аргумента не одобренный Роботом - file
+								(pathMatcher.matches(newFile) && ok)
 					){
 						if (order.items != null) {
 							orderList.add(order);

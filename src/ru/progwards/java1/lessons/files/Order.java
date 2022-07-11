@@ -10,6 +10,7 @@ public class Order {
 	public LocalDateTime datetime;
 	public List<OrderItem> items = new ArrayList<>();
 	public double sum;
+	public Order(){}
 	public Order(Path file){
 		try{
 			this.shopId = file.getFileName().toString().substring(0, 3);
