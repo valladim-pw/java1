@@ -2,6 +2,7 @@ package ru.progwards.java1.lessons.files;
 import java.nio.file.*;
 import java.time.*;
 import java.util.*;
+import java.lang.reflect.Constructor;
 
 public class Order {
 	public String shopId;
@@ -10,8 +11,9 @@ public class Order {
 	public LocalDateTime datetime;
 	public List<OrderItem> items = new ArrayList<>();
 	public double sum;
-	public Order(){}
+	//public Order(){}
 	public Order(Path file){
+		super();
 		try{
 			this.shopId = file.getFileName().toString().substring(0, 3);
 			this.orderId = file.getFileName().toString().substring(4, 10);
