@@ -4,7 +4,16 @@ public class OrderItem {
 	public String googsName;
 	public int count;
 	public double price;
-	public OrderItem(){}
+	/*
+	* ! При отсутствии конструктора без аргументов
+	* код успешно выплняется в InlelliJ IDEA,
+	* но не проходит проверку Робота:
+	* Ошибка: constructor OrderItem in class ru.progwards.java1.lessons.files.OrderItem cannot be applied to given types;
+  *   required: java.lang.String,int,double
+  *   found: no arguments
+  *   reason: actual and formal argument lists differ in length
+	*/
+	public OrderItem(){} //конструктор без аргументов
 	public OrderItem(String goodsName, int count, double price){
 		this.googsName = goodsName;
 		this.count = count;

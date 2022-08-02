@@ -10,7 +10,16 @@ public class Order {
 	public LocalDateTime datetime;
 	public List<OrderItem> items = new ArrayList<>();
 	public double sum;
-	public Order(){}
+	/*
+	 * ! При отсутствии конструктора без аргументов
+	 * код успешно выплняется в InlelliJ IDEA,
+	 * но не проходит проверку Робота:
+	 * Ошибка: constructor Order in class ru.progwards.java1.lessons.files.Order cannot be applied to given types;
+	 *   required: java.nio.file.Path
+	 *   found: no arguments
+	 *   reason: actual and formal argument lists differ in length
+	 */
+	public Order(){} //конструктор без аргументов
 	public Order(Path file){
 		try{
 			this.shopId = file.getFileName().toString().substring(0, 3);
