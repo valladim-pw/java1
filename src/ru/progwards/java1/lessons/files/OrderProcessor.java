@@ -1,4 +1,5 @@
 package ru.progwards.java1.lessons.files;
+import java.io.*;
 import java.io.IOException;
 import java.io.UncheckedIOException;
 import java.nio.file.*;
@@ -187,7 +188,7 @@ public class OrderProcessor {
 	}
 	public static void main(String[] args) {
 		try{
-			OrderProcessor op = new OrderProcessor("c:/products2");
+			OrderProcessor op = new OrderProcessor("c:/products");
 			op.loadOrders(null, null, null);
 			//op.loadOrders(LocalDate.of(2020, Month.JANUARY, 1), LocalDate.of(2020, Month.JANUARY, 16), null);
 			op.process(null);
