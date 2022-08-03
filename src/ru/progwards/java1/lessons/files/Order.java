@@ -19,7 +19,7 @@ public class Order {
 	 *   found: no arguments
 	 *   reason: actual and formal argument lists differ in length
 	 */
-	//public Order(){} //конструктор без аргументов
+	public Order(){} //конструктор без аргументов
 	public Order(Path file){
 		try{
 			this.shopId = file.getFileName().toString().substring(0, 3);
