@@ -13,7 +13,7 @@ public class OrderItem {
   *   found: no arguments
   *   reason: actual and formal argument lists differ in length
 	*/
-	public OrderItem(){} //конструктор без аргументов
+	//public OrderItem(){} //конструктор без аргументов
 	public OrderItem(String goodsName, int count, double price){
 		this.googsName = goodsName;
 		this.count = count;
