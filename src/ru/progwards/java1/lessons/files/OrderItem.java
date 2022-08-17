@@ -1,9 +1,9 @@
 package ru.progwards.java1.lessons.files;
 
 public class OrderItem {
-	public String googsName;
-	public int count;
-	public double price;
+	public String googsName = "";
+	public int count = 0;
+	public double price = 0.0;
 	/*
 	* ! При отсутствии конструктора без аргументов
 	* код успешно компилируется и выполняется в InlelliJ IDEA и командной строке
@@ -13,7 +13,8 @@ public class OrderItem {
   * found: no arguments
   * reason: actual and formal argument lists differ in length
 	*/
-	public OrderItem(){} //конструктор без аргументов
+	
+	//public OrderItem(){} //конструктор без аргументов
 	public OrderItem(String goodsName, int count, double price){
 		this.googsName = goodsName;
 		this.count = count;

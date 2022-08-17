@@ -6,7 +6,7 @@ import java.nio.file.attribute.*;
 import java.time.*;
 import java.util.*;
 
-public class OrderProcessor {
+public class OrderProcessor{
 	public String path;
 	List<Order> orderList = new ArrayList<>();
 	String id;
