@@ -1,9 +1,9 @@
 package ru.progwards.java1.lessons.files;
 
 public class OrderItem {
-	public String googsName = "";
-	public int count = 0;
-	public double price = 0.0;
+	public String googsName;
+	public int count;
+	public double price;
 	/*
 	* ! При отсутствии конструктора без аргументов
 	* код успешно компилируется и выполняется в InlelliJ IDEA и командной строке

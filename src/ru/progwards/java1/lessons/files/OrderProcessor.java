@@ -191,9 +191,9 @@ public class OrderProcessor{
 			op.loadOrders(null, null, null);
 			//op.loadOrders(LocalDate.of(2020, Month.JANUARY, 1), LocalDate.of(2020, Month.JANUARY, 16), null);
 			op.process(null);
-			op.statisticsByShop();
-			op.statisticsByGoods();
-			op.statisticsByDay();
+			//op.statisticsByShop();
+			//op.statisticsByGoods();
+			//op.statisticsByDay();
 			System.out.println(op.toString());
 		}catch(Exception e){
 			e.printStackTrace();

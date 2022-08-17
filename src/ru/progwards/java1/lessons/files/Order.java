@@ -4,10 +4,10 @@ import java.time.*;
 import java.util.*;
 
 public class Order{
-	public String shopId = "";
-	public String orderId = "";
-	public String customerId = "";
-	public LocalDateTime datetime = LocalDateTime.now(ZoneId.systemDefault());
+	public String shopId;
+	public String orderId;
+	public String customerId;
+	public LocalDateTime datetime;
 	public List<OrderItem> items = new ArrayList<>();
 	public double sum;
 	/*
