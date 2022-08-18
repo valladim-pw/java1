@@ -38,8 +38,9 @@ public class OrderProcessor{
 									nameArr[2].length() == 4
 					)
 						ok = true;
-					
+					//new Order();
 					Order order = new Order(file);
+					//System.out.println("Order: " + order.orCount);
 					if (order == null)
 						return FileVisitResult.TERMINATE;
 					if (((start == null || (start != null && start.compareTo(order.getDate()) <= 0)) &&

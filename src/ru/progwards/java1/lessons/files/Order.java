@@ -10,6 +10,7 @@ public class Order{
 	public LocalDateTime datetime;
 	public List<OrderItem> items = new ArrayList<>();
 	public double sum;
+	//public static int orCount;
 	/*
 	 * ! При отсутствии конструктора без аргументов
 	 * код успешно компилируется и выполняется в InlelliJ IDEA и командной строке
@@ -19,7 +20,9 @@ public class Order{
 	 * found: no arguments
 	 * reason: actual and formal argument lists differ in length
 	 */
-	//public Order(){} //конструктор без аргументов
+	public Order(){
+		//orCount++;
+	} //конструктор без аргументов
 	public Order(Path file){
 		try{
 			this.shopId = file.getFileName().toString().substring(0, 3);
@@ -44,7 +47,13 @@ public class Order{
 					String good = strArr[0].trim();
 					int count = Integer.parseInt(strArr[1].trim());
 					double price = Double.parseDouble(strArr[2].trim());
+					//new OrderItem();
 					OrderItem orderItem = new OrderItem(good, count, price);
+					//System.out.println("oiCount: " + orderItem.oiCount);
+					if(orderItem.oiCount != 0){
+						this.items = null;
+						return;
+					}
 					this.sum += count * price;
 					itemSet.add(orderItem);
 					this.items = new ArrayList<>(itemSet);

@@ -4,6 +4,7 @@ public class OrderItem {
 	public String googsName;
 	public int count;
 	public double price;
+	public static int oiCount;
 	/*
 	* ! При отсутствии конструктора без аргументов
 	* код успешно компилируется и выполняется в InlelliJ IDEA и командной строке
@@ -14,7 +15,10 @@ public class OrderItem {
   * reason: actual and formal argument lists differ in length
 	*/
 	
-	//public OrderItem(){} //конструктор без аргументов
+	public OrderItem(){
+		oiCount++;
+	} //конструктор без аргументов
+	
 	public OrderItem(String goodsName, int count, double price){
 		this.googsName = goodsName;
 		this.count = count;
