@@ -1,24 +1,20 @@
 package ru.progwards.java1.lessons.files;
 
 public class OrderItem {
-	public String googsName;
+	public String googsName;//это поле проверяется Роботом именно как googsName - это случайная ошибка
 	public int count;
 	public double price;
-	public static int oiCount;
 	/*
-	* ! При отсутствии конструктора без аргументов
-	* код успешно компилируется и выполняется в InlelliJ IDEA и командной строке
-	* но не проходит проверку Робота:
-	* Ошибка: constructor OrderItem in class ru.progwards.java1.lessons.files.OrderItem cannot be applied to given types;
-  * required: java.lang.String,int,double
-  * found: no arguments
-  * reason: actual and formal argument lists differ in length
-	*/
+	 * ! При отсутствии конструктора без аргументов
+	 * код успешно компилируется и выполняется в InlelliJ IDEA и командной строке
+	 * но не проходит проверку Робота:
+	 * Ошибка: constructor OrderItem in class ru.progwards.java1.lessons.files.OrderItem cannot be applied to given types;
+	 * required: java.lang.String,int,double
+	 * found: no arguments
+	 * reason: actual and formal argument lists differ in length
+	 */
 	
-	public OrderItem(){
-		oiCount++;
-	} //конструктор без аргументов
-	
+	//public OrderItem(){} //конструктор без аргументов
 	public OrderItem(String goodsName, int count, double price){
 		this.googsName = goodsName;
 		this.count = count;

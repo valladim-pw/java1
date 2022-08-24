@@ -9,7 +9,7 @@ import java.util.*;
 public class OrderProcessor{
 	public String path;
 	List<Order> orderList = new ArrayList<>();
-	String id;
+	String id;//это поле нужно только для метода toString()
 	int errNum;
 	public OrderProcessor(String startPath){
 		this.path = startPath;
@@ -38,9 +38,7 @@ public class OrderProcessor{
 									nameArr[2].length() == 4
 					)
 						ok = true;
-					//new Order();
 					Order order = new Order(file);
-					//System.out.println("Order: " + order.orCount);
 					if (order == null)
 						return FileVisitResult.TERMINATE;
 					if (((start == null || (start != null && start.compareTo(order.getDate()) <= 0)) &&
@@ -190,8 +188,8 @@ public class OrderProcessor{
 		try{
 			OrderProcessor op = new OrderProcessor("c:/products");
 			op.loadOrders(null, null, null);
-			//op.loadOrders(LocalDate.of(2020, Month.JANUARY, 1), LocalDate.of(2020, Month.JANUARY, 16), null);
-			op.process(null);
+			//op.loadOrders (LocalDate.of(2020, Month.JANUARY, 1), LocalDate.of(2020, Month.JANUARY, 10), null);
+			//op.process(null);
 			//op.statisticsByShop();
 			//op.statisticsByGoods();
 			//op.statisticsByDay();
