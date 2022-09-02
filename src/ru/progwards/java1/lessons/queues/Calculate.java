@@ -5,8 +5,12 @@ public class Calculate {
 	public static double calculation1(){
 		//StackCalc stack = new StackCalc();
 		LinkedList<Double> list = new LinkedList<>();
+		//new StackCalc();
 		StackCalc stack = new StackCalc(list);
-		stack.push(2.2);
+		if(stack.count != 0)
+			stack.push(1);
+		else
+			stack.push(2.2);
 		stack.push(12.1);
 		stack.push(3);
 		stack.add();
