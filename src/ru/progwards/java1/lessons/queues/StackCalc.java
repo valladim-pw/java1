@@ -6,10 +6,8 @@ public class StackCalc{
 	//public double result;
 	public LinkedList<Double> list = new LinkedList<>();
 	public double result;
-	public static int count = 0;
-	public StackCalc(){
-		count++;
-	}
+	//public static int count = 0;
+	public StackCalc(){}
 	public StackCalc(LinkedList<Double> linkedList){
 		list = linkedList;
 	}

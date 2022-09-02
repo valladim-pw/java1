@@ -7,10 +7,7 @@ public class Calculate {
 		LinkedList<Double> list = new LinkedList<>();
 		//new StackCalc();
 		StackCalc stack = new StackCalc(list);
-		if(stack.count != 0)
-			stack.push(1);
-		else
-			stack.push(2.2);
+		stack.push(2.2);
 		stack.push(12.1);
 		stack.push(3);
 		stack.add();
@@ -58,6 +55,5 @@ public class Calculate {
 		System.out.println(calculation1());//33.22
 		System.out.println(calculation2());//1499.9126503448276
 	}
-	
 }
 
