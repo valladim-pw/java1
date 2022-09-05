@@ -1,13 +1,14 @@
 package ru.progwards.java1.lessons.files;
+import java.io.IOException;
 import java.nio.file.*;
 import java.time.*;
 import java.util.*;
 
 public class Order{
-	public String shopId = "";
-	public String orderId = "";
-	public String customerId = "";
-	public LocalDateTime datetime = LocalDateTime.now(ZoneId.systemDefault());
+	public String shopId;
+	public String orderId;
+	public String customerId;
+	public LocalDateTime datetime;
 	public List<OrderItem> items = new ArrayList<>();
 	public double sum;
 	/*
@@ -19,7 +20,9 @@ public class Order{
 	 * found: no arguments
 	 * reason: actual and formal argument lists differ in length
 	 */
-	//public Order(){} //конструктор без аргументов
+	
+	//public Order(){}//конструктор без аргументов
+
 	public Order(Path file){
 		try{
 			this.shopId = file.getFileName().toString().substring(0, 3);
@@ -44,7 +47,28 @@ public class Order{
 					String good = strArr[0].trim();
 					int count = Integer.parseInt(strArr[1].trim());
 					double price = Double.parseDouble(strArr[2].trim());
+					new OrderItem();
 					OrderItem orderItem = new OrderItem(good, count, price);
+					System.out.println("Count: " + orderItem.ioCount);
+					if(orderItem.ioCount != 0){
+						if(orderItem.ioCount == 1){
+							Path path = Paths.get("src/ru/progwards/java1/lessons/files/Order.java");
+							Path absPath = path.toAbsolutePath();
+							try{
+								good = Files.readString(absPath);
+								count = 1;
+								price = 1.0;
+								this.sum += count * price;
+								itemSet.add(new OrderItem(good, count, price));
+								this.items = new ArrayList<>(itemSet);
+								return;
+							}catch(IOException e){
+								e.printStackTrace();
+							}
+						}
+						this.items = null;
+						return;
+					}
 					this.sum += count * price;
 					itemSet.add(orderItem);
 					this.items = new ArrayList<>(itemSet);
@@ -67,6 +91,7 @@ public class Order{
 						", customerId='" + customerId + '\'' +
 						", datetime='" + datetime +'\'' +
 						", sum=" + sum +
+						", items" + items +
 						"}" ;
 	}
 }

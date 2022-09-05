@@ -189,10 +189,10 @@ public class OrderProcessor{
 			OrderProcessor op = new OrderProcessor("c:/products");
 			op.loadOrders(null, null, null);
 			//op.loadOrders (LocalDate.of(2020, Month.JANUARY, 1), LocalDate.of(2020, Month.JANUARY, 10), null);
-			//op.process(null);
-			//op.statisticsByShop();
-			//op.statisticsByGoods();
-			//op.statisticsByDay();
+			op.process(null);
+			op.statisticsByShop();
+			op.statisticsByGoods();
+			op.statisticsByDay();
 			System.out.println(op.toString());
 		}catch(Exception e){
 			e.printStackTrace();
