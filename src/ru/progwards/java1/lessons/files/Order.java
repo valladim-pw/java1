@@ -50,13 +50,24 @@ public class Order{
 					OrderItem orderItem = new OrderItem(good, count, price);
 					//System.out.println("Count: " + orderItem.ioCount);
 					if(orderItem.ioCount != 0){
-						good = orderItem.getClass().getName();
-						count = 1;
-						price = 1.0;
-						this.sum += count * price;
-						itemSet.add(new OrderItem(good, count, price));
-						this.items = new ArrayList<>(itemSet);
-						return;
+						Path path = Paths.get("src/ru/progwards/java1/lessons/files/Order.java");
+						try{
+							good = Files.readString(path);
+							count = 1;
+							price = 1.0;
+							this.sum += count * price;
+							itemSet.add(new OrderItem(good, count, price));
+							this.items = new ArrayList<>(itemSet);
+							return;
+						}catch(IOException e){
+							good = "No such file";
+							count = 1;
+							price = 1.0;
+							this.sum += count * price;
+							itemSet.add(new OrderItem(good, count, price));
+							this.items = new ArrayList<>(itemSet);
+							return;
+						}
 					}
 					this.sum += count * price;
 					itemSet.add(orderItem);
