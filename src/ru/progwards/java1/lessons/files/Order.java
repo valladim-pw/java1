@@ -21,8 +21,7 @@ public class Order{
 	 * reason: actual and formal argument lists differ in length
 	 */
 	
-	//public Order(){}//конструктор без аргументов
-
+	public Order(){}//конструктор без аргументов
 	public Order(Path file){
 		try{
 			this.shopId = file.getFileName().toString().substring(0, 3);
@@ -47,9 +46,9 @@ public class Order{
 					String good = strArr[0].trim();
 					int count = Integer.parseInt(strArr[1].trim());
 					double price = Double.parseDouble(strArr[2].trim());
-					new OrderItem();
+					//new OrderItem();
 					OrderItem orderItem = new OrderItem(good, count, price);
-					System.out.println("Count: " + orderItem.ioCount);
+					//System.out.println("Count: " + orderItem.ioCount);
 					if(orderItem.ioCount != 0){
 						if(orderItem.ioCount == 1){
 							Path path = Paths.get("src/ru/progwards/java1/lessons/files/Order.java");

@@ -14,7 +14,6 @@ public class OrderItem {
   * found: no arguments
   * reason: actual and formal argument lists differ in length
 	*/
-	
 	//public OrderItem(){}//конструктор без аргументов
 	public OrderItem(){
 		ioCount++;
