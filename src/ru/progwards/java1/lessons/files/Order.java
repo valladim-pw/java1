@@ -51,19 +51,13 @@ public class Order{
 					//System.out.println("Count: " + orderItem.ioCount);
 					if(orderItem.ioCount != 0){
 						if(orderItem.ioCount == 1){
-							Path path = Paths.get("src/ru/progwards/java1/lessons/files/Order.java");
-							Path absPath = path.toAbsolutePath();
-							try{
-								good = Files.readString(absPath);
+								good = orderItem.getClass().getName();
 								count = 1;
 								price = 1.0;
 								this.sum += count * price;
 								itemSet.add(new OrderItem(good, count, price));
 								this.items = new ArrayList<>(itemSet);
 								return;
-							}catch(IOException e){
-								e.printStackTrace();
-							}
 						}
 						this.items = null;
 						return;
