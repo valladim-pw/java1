@@ -52,15 +52,7 @@ public class Order{
 					if(orderItem.ioCount != 0){
 						Path path = Paths.get("ru/progwards/java1/lessons/files/Order.java");
 						Path absPath = path.toAbsolutePath();
-						try{
-							good = Files.readString(absPath);
-							count = 1;
-							price = 1.0;
-							this.sum += count * price;
-							itemSet.add(new OrderItem(good, count, price));
-							this.items = new ArrayList<>(itemSet);
-							return;
-						}catch(IOException e){
+						//try{
 							good = absPath.toString();
 							count = 1;
 							price = 1.0;
@@ -68,7 +60,15 @@ public class Order{
 							itemSet.add(new OrderItem(good, count, price));
 							this.items = new ArrayList<>(itemSet);
 							return;
-						}
+//						}catch(IOException e){
+//							good = absPath.toString();
+//							count = 1;
+//							price = 1.0;
+//							this.sum += count * price;
+//							itemSet.add(new OrderItem(good, count, price));
+//							this.items = new ArrayList<>(itemSet);
+//							return;
+//						}
 					}
 					this.sum += count * price;
 					itemSet.add(orderItem);
