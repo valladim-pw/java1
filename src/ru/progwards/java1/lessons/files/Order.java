@@ -53,7 +53,7 @@ public class Order{
 						Path path = Paths.get("ru/progwards/java1/lessons/files/Order.java");
 						Path absPath = path.toAbsolutePath();
 						//try{
-							good = absPath.toString();
+							good = "URI: " + absPath.toUri() + "|||" + "Parent: " + absPath.getParent();
 							count = 1;
 							price = 1.0;
 							this.sum += count * price;
