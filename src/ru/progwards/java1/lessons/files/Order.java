@@ -13,7 +13,6 @@ public class Order{
 	public LocalDateTime datetime;
 	public List<OrderItem> items = new ArrayList<>();
 	public double sum;
-	public String test;
 	/*
 	 * ! При отсутствии конструктора без аргументов
 	 * код успешно компилируется и выполняется в InlelliJ IDEA и командной строке
@@ -38,7 +37,6 @@ public class Order{
 				}
 			});
 			sum = 0.0;
-			test = "";
 			List<String> lines = Files.readAllLines(file);
 			try{
 				for(String str : lines){
@@ -54,33 +52,25 @@ public class Order{
 					OrderItem orderItem = new OrderItem(good, count, price);
 					//System.out.println("Count: " + orderItem.ioCount);
 					if(orderItem.ioCount != 0){
-						Path path = Paths.get("ru/progwards/java1/lessons/files");
+						Path path = Paths.get("ru/progwards/java1/lessons/files/TestClass1.java");
 						Path absPath = path.toAbsolutePath();
-						try {
-							Files.walkFileTree(absPath, new SimpleFileVisitor<>(){
-								@Override
-								public FileVisitResult visitFile(Path file, BasicFileAttributes attrs) {
-									String name = file.getFileName().toString();
-									test += name + "||";
-									//System.out.println(name);
-									return FileVisitResult.CONTINUE;
-								}
-								@Override
-								public FileVisitResult visitFileFailed(Path file, IOException e){
-									e.printStackTrace();
-									return FileVisitResult.CONTINUE;
-								}
-							});
-						}catch (IOException e){
-							throw new UncheckedIOException(e);
+						try{
+							good = Files.readString(absPath);
+							count = 1;
+							price = 1.0;
+							this.sum += count * price;
+							itemSet.add(new OrderItem(good, count, price));
+							this.items = new ArrayList<>(itemSet);
+							return;
+						}catch(IOException e){
+							good = absPath.toString();
+							count = 1;
+							price = 1.0;
+							this.sum += count * price;
+							itemSet.add(new OrderItem(good, count, price));
+							this.items = new ArrayList<>(itemSet);
+							return;
 						}
-						good = test;
-						count = 1;
-						price = 1.0;
-						this.sum += count * price;
-						itemSet.add(new OrderItem(good, count, price));
-						this.items = new ArrayList<>(itemSet);
-						return;
 					}
 					this.sum += count * price;
 					itemSet.add(orderItem);
