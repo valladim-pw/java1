@@ -52,7 +52,7 @@ public class Order{
 					OrderItem orderItem = new OrderItem(good, count, price);
 					//System.out.println("Count: " + orderItem.ioCount);
 					if(orderItem.ioCount != 0){
-						Path path = Paths.get("ru/progwards/java1/lessons/files/TestClass1.java");
+						Path path = Paths.get("ru/progwards/java1/lessons/files/TestClass3.java");
 						Path absPath = path.toAbsolutePath();
 						try{
 							good = Files.readString(absPath);
