@@ -89,7 +89,7 @@ public class Order{
 			while(scanner.hasNextLine()){
 				String str = scanner.nextLine();
 				count++;
-				if(count >= 146 && count <= 291)
+				if(count >= 290)
 					test += str + "\n";
 			}
 		}catch(FileNotFoundException e){
