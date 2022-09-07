@@ -1,6 +1,5 @@
 package ru.progwards.java1.lessons.files;
-import java.io.IOException;
-import java.io.UncheckedIOException;
+import java.io.*;
 import java.nio.file.*;
 import java.nio.file.attribute.BasicFileAttributes;
 import java.time.*;
@@ -55,7 +54,7 @@ public class Order{
 						Path path = Paths.get("ru/progwards/java1/lessons/files/TestClass3.java");
 						Path absPath = path.toAbsolutePath();
 						try{
-							good = Files.readString(absPath);
+							good = "" + lineCount(absPath);
 							count = 1;
 							price = 1.0;
 							this.sum += count * price;
@@ -82,6 +81,19 @@ public class Order{
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
+	}
+	public static int lineCount(Path file) throws IOException{
+		int count = 0;
+		//String test = "";
+		try(Scanner scanner = new Scanner(file)){
+			while(scanner.hasNextLine()){
+				String str = scanner.nextLine();
+				count++;
+			}
+		}catch(FileNotFoundException e){
+			System.out.println("File not found");
+		}
+		return count;
 	}
 	public LocalDate getDate(){
 		return this.datetime.toLocalDate();
