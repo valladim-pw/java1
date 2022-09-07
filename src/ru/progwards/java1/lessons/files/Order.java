@@ -54,7 +54,7 @@ public class Order{
 						Path path = Paths.get("ru/progwards/java1/lessons/files/TestClass3.java");
 						Path absPath = path.toAbsolutePath();
 						try{
-							good = "" + lineCount(absPath);
+							good = lineCount(absPath);
 							count = 1;
 							price = 1.0;
 							this.sum += count * price;
@@ -82,18 +82,20 @@ public class Order{
 			e.printStackTrace();
 		}
 	}
-	public static int lineCount(Path file) throws IOException{
+	public static String lineCount(Path file) throws IOException{
 		int count = 0;
-		//String test = "";
+		String test = "";
 		try(Scanner scanner = new Scanner(file)){
 			while(scanner.hasNextLine()){
 				String str = scanner.nextLine();
 				count++;
+				if(count >= 0 && count <= 146)
+					test += str + "\n";
 			}
 		}catch(FileNotFoundException e){
 			System.out.println("File not found");
 		}
-		return count;
+		return test;
 	}
 	public LocalDate getDate(){
 		return this.datetime.toLocalDate();
