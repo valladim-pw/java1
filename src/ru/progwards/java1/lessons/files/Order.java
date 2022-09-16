@@ -1,7 +1,5 @@
 package ru.progwards.java1.lessons.files;
-import java.io.*;
 import java.nio.file.*;
-import java.nio.file.attribute.BasicFileAttributes;
 import java.time.*;
 import java.util.*;
 
@@ -22,7 +20,7 @@ public class Order{
 	 * reason: actual and formal argument lists differ in length
 	 */
 	
-	public Order(){}//конструктор без аргументов
+	//public Order(){}//конструктор без аргументов
 	public Order(Path file){
 		try{
 			this.shopId = file.getFileName().toString().substring(0, 3);
@@ -47,30 +45,7 @@ public class Order{
 					String good = strArr[0].trim();
 					int count = Integer.parseInt(strArr[1].trim());
 					double price = Double.parseDouble(strArr[2].trim());
-					//new OrderItem();
 					OrderItem orderItem = new OrderItem(good, count, price);
-					//System.out.println("Count: " + orderItem.ioCount);
-					if(orderItem.ioCount != 0){
-						Path path = Paths.get("ru/progwards/java1/lessons/files/TestClass3.java");
-						Path absPath = path.toAbsolutePath();
-						try{
-							good = lineCount(absPath);
-							count = 1;
-							price = 1.0;
-							this.sum += count * price;
-							itemSet.add(new OrderItem(good, count, price));
-							this.items = new ArrayList<>(itemSet);
-							return;
-						}catch(IOException e){
-							good = absPath.toString();
-							count = 1;
-							price = 1.0;
-							this.sum += count * price;
-							itemSet.add(new OrderItem(good, count, price));
-							this.items = new ArrayList<>(itemSet);
-							return;
-						}
-					}
 					this.sum += count * price;
 					itemSet.add(orderItem);
 					this.items = new ArrayList<>(itemSet);
@@ -81,21 +56,6 @@ public class Order{
 		} catch(Exception e) {
 			e.printStackTrace();
 		}
-	}
-	public static String lineCount(Path file) throws IOException{
-		int count = 0;
-		String test = "";
-		try(Scanner scanner = new Scanner(file)){
-			while(scanner.hasNextLine()){
-				String str = scanner.nextLine();
-				count++;
-				if(count >= 290)
-					test += str + "\n";
-			}
-		}catch(FileNotFoundException e){
-			System.out.println("File not found");
-		}
-		return test;
 	}
 	public LocalDate getDate(){
 		return this.datetime.toLocalDate();
@@ -108,7 +68,6 @@ public class Order{
 						", customerId='" + customerId + '\'' +
 						", datetime='" + datetime +'\'' +
 						", sum=" + sum +
-						", items" + items +
 						"}" ;
 	}
 }
