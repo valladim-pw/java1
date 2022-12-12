@@ -1,6 +1,7 @@
 package ru.progwards.java1.lessons.maps;
 import java.io.*;
 import java.util.*;
+
 public class UsageFrequency {
 	private List<Character> list = new ArrayList<>();
 	public static class WrongLoadFile extends RuntimeException {
@@ -32,6 +33,7 @@ public class UsageFrequency {
 			return className + ": " + "\"" + fileName + "\""  + " -> " + msg ;
 		}
 	}
+	
 	public void processFile(String fileName)  {
 		try(FileReader reader = new FileReader(fileName);Scanner scanner = new Scanner(reader))	{
 			while(scanner.hasNextLine()){
@@ -51,6 +53,7 @@ public class UsageFrequency {
 			throw wf;
 		}
 	}
+	
 	public Map<Character, Integer> getLetters(){
 		Map<Character, Integer> letters = new TreeMap<>();
 		for(Character ch : list){
@@ -67,6 +70,7 @@ public class UsageFrequency {
 		}
 		return letters;
 	}
+	
 	public Map<String, Integer> getWords(){
 		Map<String, Integer> words = new TreeMap<>();
 		StringBuilder strBuilder = new StringBuilder();
@@ -92,6 +96,7 @@ public class UsageFrequency {
 		}
 		return words;
 	}
+	
 	public static void main(String[] args) {
 		UsageFrequency usageFreq = new UsageFrequency();
 		try{
