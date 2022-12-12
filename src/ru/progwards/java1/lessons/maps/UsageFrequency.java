@@ -3,6 +3,7 @@ import java.io.*;
 import java.util.*;
 public class UsageFrequency {
 	private List<Character> list = new ArrayList<>();
+	
 	static class WrongLoadFile extends RuntimeException {
 		public String fileName = "";
 		public String msg = "";
@@ -13,6 +14,7 @@ public class UsageFrequency {
 			this.fileName = fileName;
 			className = this.getClass().getName();
 		}
+		
 		@Override
 		public String getMessage() {
 			if(msg != null && msg.indexOf("(") != -1 && msg.contains(fileName) ){
