@@ -3,7 +3,7 @@ import java.io.*;
 import java.util.*;
 public class UsageFrequency {
 	private List<Character> list = new ArrayList<>();
-	public static class WrongLoadFile extends RuntimeException {
+	static class WrongLoadFile extends RuntimeException {
 		public String fileName = "";
 		public String msg = "";
 		public String className = "";
