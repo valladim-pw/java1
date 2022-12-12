@@ -1,7 +1,6 @@
 package ru.progwards.java1.lessons.maps;
 import java.io.*;
 import java.util.*;
-
 public class UsageFrequency {
 	private List<Character> list = new ArrayList<>();
 	public static class WrongLoadFile extends RuntimeException {
