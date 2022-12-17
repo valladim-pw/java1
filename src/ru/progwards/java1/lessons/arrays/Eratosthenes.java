@@ -7,7 +7,6 @@ public class Eratosthenes {
 		Eratosthenes nums = new Eratosthenes(10);
 		System.out.println(Arrays.toString(nums.sieve));
 		System.out.println(nums.isSimple(7));
-		//nums.sift();
 	}
 	private boolean[] sieve;
 	public Eratosthenes(int N){
@@ -19,10 +18,8 @@ public class Eratosthenes {
 		sieve[0] = false;
 		sieve[1] = false;
 		for(int i = 2; i < sieve.length;i++){
-			//System.out.println(Arrays.toString(sieve));
 			if(sieve[i] == true){
 				for(int j = 2; i*j < sieve.length; j++){
-					//System.out.println(Arrays.toString(sieve));
 					sieve[i*j] = false;
 				}
 			}
