@@ -1,13 +1,15 @@
 package ru.progwards.java1.lessons.arrays;
 
 import java.util.Arrays;
+
+
 public class Eratosthenes {
 	
 	//
 	//
 	public static void main( String[] args ) {
 		Eratosthenes nums = new Eratosthenes(10);
-		System.out.println(Arrays.toString(nums.sieve));
+		System.out.println(Arrays.toString( nums.sieve ));
 		System.out.println( nums.isSimple(7));
 	}
 	private boolean[] sieve;
