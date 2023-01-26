@@ -16,6 +16,14 @@ public class Push {
 		num = pushFile.number;
 	}
 	
+	public SourceFile getSrcFile() {
+		return srcFile;
+	}
+	
+	public PushFile getPushFile() {
+		return pushFile;
+	}
+	
 	public LinkedList<Line> getLinesList() {
 		return pushFile.getLinesList();
 	}

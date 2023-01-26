@@ -41,9 +41,4 @@ public class AnchorLine extends Line {
 		line = mark + " -" + anchorLineNumber + "," + anchorMinus + " +" + anchorLineNumber + "," + anchorPlus;
 		return line;
 	}
-	
-	
-	public String getMark(){
-		return mark;
-	}
 }

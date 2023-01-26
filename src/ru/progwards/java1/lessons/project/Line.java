@@ -28,6 +28,10 @@ public class Line {
 			mark = markValue;
 	}
 	
+	public void removeMark() {
+			mark = null;
+	}
+	
 	public void setLastMark(String markValue) {
 		if(lineNumber != 0L)
 			lastMark = markValue;
@@ -95,8 +99,14 @@ public class Line {
 		return false;
 	}
 	
+	public boolean hasLineNumber() {
+		if(lineNumber > 0L)
+			return true;
+		return false;
+	}
+	
 	public boolean checkConflict(Line otherLine) throws RuntimeException {
-		if(getLineNumber() == otherLine.getLineNumber() && getLine().equals(otherLine.getLine()))
+		if(getLine().equals(otherLine.getLine()))
 			return true;
 		else
 			throw new RuntimeException();
@@ -111,11 +121,8 @@ public class Line {
 		String addStr3 = "   ";
 		String addStr2 = "  ";
 		String addStr1 = " ";
-		if(mark != null || lastMark != null){
-			if(mark != null)
-				strInfo += lineNumber + mark;
-			else
-				strInfo += lineNumber + lastMark;
+		if(mark != null){
+			strInfo += lineNumber + mark;
 			if(lineNumber < 10L)
 				strInfo += addStr3;
 			else if(lineNumber >= 10L && lineNumber < 100L)

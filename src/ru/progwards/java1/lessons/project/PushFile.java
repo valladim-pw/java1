@@ -2,7 +2,7 @@ package ru.progwards.java1.lessons.project;
 
 import java.time.LocalDateTime;
 import java.time.ZoneId;
-import java.util.*;
+import java.util.LinkedList;
 
 public class PushFile extends ProcessFile {
 	
@@ -15,6 +15,7 @@ public class PushFile extends ProcessFile {
 	public PushFile(String nick, String string) {
 		super(string);
 		gitNick = nick;
+		this.specifyMaxLine();
 	}
 	
 	public LinkedList<CompareLine> push(SourceFile srcFile) {
@@ -24,7 +25,6 @@ public class PushFile extends ProcessFile {
 		LinkedList<Line> pushList = getLinesList();
 		int srcSize = srcList.size();
 		int pushSize = pushList.size();
-		
 		for(int i = 0; i < srcList.size() && i < pushList.size(); i++){
 			if(srcList.get(i).hasLastMark() && !pushList.get(i).hasLastMark()) {
 				srcList.get(i).setMark("-");
@@ -34,7 +34,7 @@ public class PushFile extends ProcessFile {
 				if(pushList.get(i).getLine().isBlank() && !pushList.get(i).hasStop()) {
 					srcList.add(i, new Line(0L, ""));
 					pushList.get(i).setMark("+");
-				}else	if(srcList.get(i).getLine().isBlank() && !srcList.get(i).hasStop()) {
+				} else	if(srcList.get(i).getLine().isBlank() && !srcList.get(i).hasStop()) {
 					pushList.add(i, new Line(0L, ""));
 					srcList.get(i).setMark("-");
 				}
@@ -61,10 +61,13 @@ public class PushFile extends ProcessFile {
 				srcList.get(i).setStop("");
 			if(pushList.get(i).getStop() == ".")
 				pushList.get(i).setStop("");
-			int newLen = srcFile.maxLnLength() - srcList.get(i).lineLength();
-			newLen = (newLen - srcList.get(i).lineIndent()) + srcFile.maxLnIndent();
+			int incLen1 = srcFile.setIncrLength(srcFile, srcList.get(i));
 			if(!srcList.get(i).hasIncrement()) {
-				srcList.get(i).setIncrement(newLen);
+				srcList.get(i).setIncrement(incLen1);
+			}
+			int incLen2 = this.setIncrLength(this, pushList.get(i));
+			if(!pushList.get(i).hasIncrement()) {
+				pushList.get(i).setIncrement(incLen2);
 			}
 			CompareLine compareLine = new CompareLine(srcList.get(i), pushList.get(i));
 			diffList.add(compareLine);

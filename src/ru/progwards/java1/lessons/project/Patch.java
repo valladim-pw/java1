@@ -8,7 +8,6 @@ public class Patch {
 	
 	private Diff diff;
 	private List<String> patchList = new ArrayList<>();
-	//private LinkedList<CompareLine> finalAnchorList = new LinkedList<>();
 	
 	public Patch(Diff diff) {
 		this.diff = diff;
@@ -26,20 +25,16 @@ public class Patch {
 		int x = 0;
 		int y = 0;
 		int indexMinus = 0;
-		int indexPlus = 0;
 		while(i < size) {
 			AnchorLine anchorLine;
 			CompareLine anchor;
 			CompareLine ln = diffList.pollFirst();
 			indexMinus = i - 3;
-			indexPlus = size - 3;
 			long num1 = ln.getSrcLine().getLineNumber();
 			long num2 = ln.getPushLine().getLineNumber();
 			String mark1 = ln.getSrcLine().getMark();
 			String mark2 = ln.getPushLine().getMark();
-			ln.setPatch("ptch");
-			if (mark1 == null && mark2 == null && i >= indexPlus)
-				ln.removePatch();
+			ln.setPatch(".ph.");
 			process.add(ln);
 			if(num1 > 0L)
 				countMinus++;
@@ -66,7 +61,7 @@ public class Patch {
 						formation.addAll(process);
 						process.clear();
 						formation.getLast().setEnd("");
-					} else {
+					}	else {
 						x = countMinus;
 						y = countPlus;
 						x -= 3;
@@ -74,6 +69,7 @@ public class Patch {
 						formation.getFirst().getAnchorLine().setSignes(x, y);
 						countMinus -= x;
 						countPlus -= y;
+						x = 0; y = 0;
 						diffList.addAll(formation);
 						formation.clear();
 					}
@@ -98,12 +94,22 @@ public class Patch {
 					diffList.add(exclude);
 				}
 			}
-			if(ln.getStop() != null) {
+			if(ln.getGenStop() != null) {
 				if(!formation.isEmpty()) {
-					formation.getFirst().getAnchorLine().setSignes(countMinus, countPlus);
+					if(formation.getLast().getSrcLine().hasMark()) {
+						formation.getFirst().getAnchorLine().setSignes(countMinus, countPlus);
+						formation.addAll(process);
+						process.clear();
+					} else {
+						countMinus -= process.size();
+						countPlus -= process.size();
+						formation.getFirst().getAnchorLine().setSignes(countMinus, countPlus);
+					}
 					diffList.addAll(formation);
 					formation.clear();
-				} else {
+				}
+				if(formation.isEmpty()) {
+					removePatches(process);
 					diffList.addAll(process);
 					process.clear();
 				}
@@ -131,9 +137,20 @@ public class Patch {
 		return patchList;
 	}
 	
+	public static void removePatches(LinkedList<CompareLine> list) {
+		for(CompareLine line : list){
+			line.removePatch();
+		}
+	}
+	
 	public static void printList(List<?extends Object> list) {
 		for(Object line : list){
 			System.out.println(line);
+		}
+	}
+	public static void printLists(List<?extends Object> list1, List<?extends Object> list2, List<?extends Object> list3 ) {
+		for(int i = 0; i < list1.size() && i < list2.size() && i < list3.size(); i++){
+			System.out.println(list1.get(i).toString() + list2.get(i).toString() + list3.get(i).toString());
 		}
 	}
 	
@@ -141,16 +158,9 @@ public class Patch {
 		SourceFile srcFile = new SourceFile("SrcFile.txt");
 		PushFile pushFile1 = new PushFile("Nick1","PushFile1.txt");
 		PushFile pushFile2 = new PushFile("Nick2","PushFile2.txt");
-//		System.out.println("Before: ");
-//		System.out.println("src:\n" + srcFile.toString());
-//		System.out.println("push1:\n" + pushFile1.toString());
-//		System.out.println("push2:\n" + pushFile2.toString());
-//		System.out.println("----------------------------------------");
+		
 		Push push1 = new Push(srcFile, pushFile1);
 		System.out.println("After push1: ");
-//		System.out.println("src:\n" + srcFile.toString());
-//		System.out.println("push1:\n" + pushFile1.toString());
-//		System.out.println("push2:\n" + pushFile2.toString());
 		System.out.println("diff1:\n" );
 		printList(pushFile1.getDiffList());
 		System.out.println("----------------------------------------");
@@ -159,20 +169,24 @@ public class Patch {
 		}
 		Push push2 = new Push(srcFile, pushFile2);
 		System.out.println("After push2: ");
-//		System.out.println("src:\n" + srcFile.toString());
-//		System.out.println("push1:\n" + pushFile1.toString());
-//		System.out.println("push2:\n" + pushFile2.toString());
 		System.out.println("diff2:\n");
 		printList(pushFile2.getDiffList());
 		System.out.println("----------------------------------------");
-		Diff diff = new Diff(srcFile, push1, push2);
-		//diff.comparePushFiles();
-		System.out.println("finalDiff:\n");
-		printList(diff.getFinalDiffList());
-		Patch patch = new Patch(diff);
-		System.out.println("finalDiff with anchors:\n");
-		printList(diff.getFinalDiffList());
-		System.out.println("patchList:\n");
-		printList(patch.getPatchList());
+		
+		System.out.println("lists:\n");
+		printLists(srcFile.getLinesList(), pushFile1.getLinesList(), pushFile2.getLinesList());
+		System.out.println("----------------------------------------");
+		try {
+			Diff diff = new Diff(srcFile, push1, push2);
+			System.out.println("finalDiff:\n");
+			printList(diff.getFinalDiffList());
+			Patch patch = new Patch(diff);
+			System.out.println("finalDiff with anchors:\n");
+			printList(diff.getFinalDiffList());
+			System.out.println("patchList:\n");
+			printList(patch.getPatchList());
+		} catch(RuntimeException rt) {
+			System.out.println(rt);
+		}
 	}
 }

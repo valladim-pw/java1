@@ -6,19 +6,8 @@ public class CompareLine {
 	private Line pushLine;
 	private AnchorLine anchorLine;
 	private String end;
-	private String stop;
+	private String genStop;
 	private String patch;
-	
-	public Line getSrcLine() {
-		return srcLine;
-	}
-	public Line getPushLine() {
-		return pushLine;
-	}
-	
-	public AnchorLine getAnchorLine() {
-		return anchorLine;
-	}
 	
 	public CompareLine(Line line1, Line line2) {
 		srcLine = line1;
@@ -28,6 +17,7 @@ public class CompareLine {
 	public CompareLine(AnchorLine anchor) {
 		anchorLine = anchor;
 	}
+	
 	public void setPushLine(Line pushLine) {
 		this.pushLine = pushLine;
 	}
@@ -36,8 +26,8 @@ public class CompareLine {
 		this.end = end;
 	}
 	
-	public void setStop(String stop){
-		this.stop = stop;
+	public void setGenStop(String genStop) {
+		this.genStop = genStop;
 	}
 	
 	public void setPatch(String patch) {
@@ -48,12 +38,24 @@ public class CompareLine {
 		this.patch = null;
 	}
 	
+	public Line getSrcLine() {
+		return srcLine;
+	}
+	
+	public Line getPushLine() {
+		return pushLine;
+	}
+	
+	public AnchorLine getAnchorLine() {
+		return anchorLine;
+	}
+	
 	public String getEnd(){
 		return end;
 	}
 	
-	public String getStop(){
-		return stop;
+	public String getGenStop() {
+		return genStop;
 	}
 	
 	public String getPatch() {
@@ -63,8 +65,8 @@ public class CompareLine {
 	@Override
 	public String toString() {
 		if(anchorLine != null)
-			return anchorLine.toString();
+			return anchorLine.toString();// + "\n";
 		else
-			return srcLine.toString() +	pushLine.toString();
+			return patch + srcLine.toString() +	pushLine.toString();// + "\n";
 	}
 }
