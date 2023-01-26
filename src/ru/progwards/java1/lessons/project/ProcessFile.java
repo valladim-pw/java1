@@ -44,6 +44,10 @@ public class ProcessFile {
 		}
 	}
 	
+	public Path getPath() {
+		return path;
+	}
+	
 	public int maxLnLength() {
 		return maxLnLength;
 	}

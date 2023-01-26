@@ -1,13 +1,22 @@
 package ru.progwards.java1.lessons.project;
 
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
+import static java.nio.file.StandardOpenOption.CREATE;
+import static java.nio.file.StandardOpenOption.WRITE;
+import static java.nio.file.StandardOpenOption.TRUNCATE_EXISTING;
+
 public class Patch {
 	
 	private Diff diff;
-	private List<String> patchList = new ArrayList<>();
+	private List<Line> patchList = new ArrayList<>();
 	
 	public Patch(Diff diff) {
 		this.diff = diff;
@@ -124,16 +133,32 @@ public class Patch {
 			if(line.getSrcLine() != null) {
 				if(line.getPatch() == null) {
 					if (line.getSrcLine().getLineNumber() != 0L)
-						patchList.add(line.getSrcLine().toString());
+						patchList.add(line.getSrcLine());
 				} else if(line.getPatch() != null) {
 					if(line.getPushLine().getLineNumber() != 0L)
-						patchList.add(line.getPushLine().toString());
+						patchList.add(line.getPushLine());
 				}
 			}
 		}
 	}
+	
+	public void applyPatch(Path path) {
+		try (BufferedWriter bfw = Files.newBufferedWriter(path, CREATE, WRITE, TRUNCATE_EXISTING)) {
+			String line = "";
+			int count = 1;
+			for(Line ln : getPatchList()) {
+				line = ln.getLine();
+				bfw.write(line, 0, line.length());
+				if(count < getPatchList().size())
+					bfw.newLine();
+				count++;
+			}
+		} catch(IOException e) {
+			e.printStackTrace();
+		}
+	}
 
-	public List<String> getPatchList() {
+	public List<Line> getPatchList() {
 		return patchList;
 	}
 	
@@ -155,9 +180,9 @@ public class Patch {
 	}
 	
 	public static void main(String[] args) {
-		SourceFile srcFile = new SourceFile("SrcFile.txt");
-		PushFile pushFile1 = new PushFile("Nick1","PushFile1.txt");
-		PushFile pushFile2 = new PushFile("Nick2","PushFile2.txt");
+		SourceFile srcFile = new SourceFile("srcFile.txt");
+		PushFile pushFile1 = new PushFile("Nick1","pushFile1.txt");
+		PushFile pushFile2 = new PushFile("Nick2","pushFile2.txt");
 		
 		Push push1 = new Push(srcFile, pushFile1);
 		System.out.println("After push1: ");
@@ -185,8 +210,11 @@ public class Patch {
 			printList(diff.getFinalDiffList());
 			System.out.println("patchList:\n");
 			printList(patch.getPatchList());
+			Path path = Paths.get("srcPatchFile.txt");
+			patch.applyPatch(path);
 		} catch(RuntimeException rt) {
 			System.out.println(rt);
 		}
+		
 	}
 }
