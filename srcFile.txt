@@ -3,17 +3,19 @@ import java.util.Arrays;
 
 public class Eratosthenes {
 
-	public static void main( String[] args ) {
-		Eratosthenes nums = new Eratosthenes(10);
-		System.out.println(Arrays.toString( nums.sieve ));
-		System.out.println( nums.isSimple(7));
-	}
 	private boolean[] sieve;
 	public Eratosthenes( int N ){
 		sieve = new boolean [N];
 		Arrays.fill(sieve, true);
 		sift();
 	}
+
+	public boolean isSimple(int n){
+    if(n >= 0 && n < sieve.length)
+      return sieve[ n ];
+    else
+      return false;
+  }
 	private void sift() {
 		sieve[0] = false;
 		sieve[1] = false;
@@ -25,10 +27,10 @@ public class Eratosthenes {
 			}
 		}
 	}
-	public boolean isSimple(int n){
-		if(n >= 0 && n < sieve.length)
-			return sieve[ n ];
-		else
-			return false;
-	}
+
+	public static void main( String[] args ) {
+    Eratosthenes nums = new Eratosthenes(10);
+    System.out.println(Arrays.toString( nums.sieve ));
+    System.out.println( nums.isSimple(7));
+  }
 }
