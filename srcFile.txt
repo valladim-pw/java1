@@ -10,17 +10,6 @@ public class Eratosthenes {
 		sift();
 	}
 
-	public int Sum(a, b) {
-	  return a + b;
-	}
-
-	public boolean isSimple(int n){
-    if(n >= 0 && n < sieve.length)
-      return sieve[ n ];
-    else
-      return false;
-  }
-
 	private void sift() {
 		sieve[0] = false;
 		sieve[1] = false;
