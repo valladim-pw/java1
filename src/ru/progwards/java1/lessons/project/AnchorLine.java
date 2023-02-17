@@ -6,11 +6,9 @@ public class AnchorLine extends Line {
 	private int anchorMinus;
 	private int anchorPlus;
 	private String line;
-	private String mark;
 	
 	public AnchorLine() {
 		super(-1, "");
-		mark  = "@@";
 		anchorLineNumber = 1;
 		anchorMinus = 0;
 		anchorPlus = 0;
@@ -38,7 +36,7 @@ public class AnchorLine extends Line {
 	}
 	
 	public String getLine() {
-		line = mark + " -" + anchorLineNumber + "," + anchorMinus + " +" + anchorLineNumber + "," + anchorPlus;
+		line = "@@ -" + anchorLineNumber + "," + anchorMinus + " +" + anchorLineNumber + "," + anchorPlus;
 		return line;
 	}
 }

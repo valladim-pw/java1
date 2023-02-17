@@ -13,7 +13,7 @@ public class ProcessFile {
 	
 	private Path path;
 	private LinkedList<Line> linesList = new LinkedList<>();
-	private LinkedList<CompareLine> diffList = new LinkedList<>();
+	private LinkedList<String> stringsList = new LinkedList<>();
 	private int maxLnLength;
 	private int maxLnIndent;
 	public Comparator lengthComparator = new Comparator<Line>() {
@@ -29,23 +29,22 @@ public class ProcessFile {
 		path = Paths.get(file);
 		long num = 1;
 		String line = "";
+		String strNum = "";
 		try(BufferedReader bfr = Files.newBufferedReader(path)) {
 			while ((line = bfr.readLine()) != null) {
+				stringsList.add(line);
 				Line ln = new Line(num, line);
 				linesList.add(ln);
 				num++;
 			}
-			linesList.getLast().setLastMark("");
-			Line stopLine = new Line(0L, "");
+			linesList.getLast().setOverStop(".os.");
+			Line stopLine = new EmptyLine();
 			stopLine.setStop("stop");
 			linesList.add(stopLine);
 		} catch(IOException e) {
 			e.printStackTrace();
 		}
-	}
-	
-	public Path getPath() {
-		return path;
+		this.specifyMaxLine();
 	}
 	
 	public int maxLnLength() {
@@ -62,12 +61,19 @@ public class ProcessFile {
 		maxLnIndent = maxLine.getLine().length() - maxLine.getLine().trim().length();
 		maxLnIndent *= 2;
 	}
+	
 	public int setIncrLength(ProcessFile file, Line line){
 		int newLen = file.maxLnLength() - line.lineLength();
 		newLen = (newLen - line.lineIndent()) + file.maxLnIndent();
 		return newLen;
 	}
+	
 	public LinkedList<Line> getLinesList() {
 		return linesList;
 	}
+	
+	public LinkedList<String> getStringsList() {
+		return stringsList;
+	}
+	
 }

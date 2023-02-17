@@ -1,0 +1,65 @@
+package project;
+
+public class Line {
+
+	private String line;
+	private long lineNumber;
+	private String sign;
+	private String overStop;
+	private String empty;
+
+	public Line() {}
+
+	public Line(long lineNumber, String line) {
+		this.lineNumber = lineNumber;
+		this.line = line;
+	}
+
+	enum Sign {
+		PLUS,
+		MINUS
+	}
+
+	public void setSign(String signValue) {
+		if(lineNumber != 0L)
+			sign = signValue;
+	}
+
+	public void Sign(Sign sign) {
+		switch(sign) {
+			case PLUS:
+				this.setSign("+");
+				break;
+			case MINUS:
+				this.setSign("-");
+				break;
+			default:
+				this.setSign("");
+		}
+	}
+
+	public void setOverStop(String overStopValue) {
+		if(lineNumber != 0L)
+			overStop = overStopValue;
+	}
+
+	public boolean hasOverStop() {
+		if(overStop != null)
+			return true;
+		return false;
+	}
+
+	public void setEmpty(String empty) {
+		this.empty = empty;
+	}
+
+	public String getEmpty() {
+		return empty;
+	}
+
+	public boolean hasEmpty() {
+		if(empty != null)
+			return true;
+		return false;
+	}
+}

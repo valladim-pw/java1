@@ -1,170 +1,119 @@
 package ru.progwards.java1.lessons.project;
 
-import java.io.BufferedWriter;
-import java.io.IOException;
-import java.nio.file.Files;
-import java.nio.file.Path;
-import java.nio.file.Paths;
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
+import java.util.*;
 
-import static java.nio.file.StandardOpenOption.CREATE;
-import static java.nio.file.StandardOpenOption.WRITE;
-import static java.nio.file.StandardOpenOption.TRUNCATE_EXISTING;
-
-public class Patch {
+public class Patch implements Relatable {
 	
 	private Diff diff;
-	private List<Line> patchList = new ArrayList<>();
+	SrcFileCurrent srcFileCurr;
+	LinkedList<CompareLine> currAnchorList;
+	//LinkedList<CompareLine> currDiffList;
 	
-	public Patch(Diff diff) {
+	public Patch(Diff diff, SrcFileCurrent srcFileCurr) {
 		this.diff = diff;
-		setAnchors(diff.getFinalDiffList());
-		getPatchLines();
+		this.srcFileCurr = srcFileCurr;
+		currAnchorList = new LinkedList<>(this.srcFileCurr.getDiffList());
 	}
 	
-	public static void setAnchors(LinkedList<CompareLine> diffList) {
-		LinkedList<CompareLine> process = new LinkedList<>();
-		LinkedList<CompareLine> formation = new LinkedList<>();
-		int size = diffList.size();
-		int countMinus = 0;
-		int countPlus = 0;
+	public LinkedList<CompareLine> compareSrcFileStates() throws RuntimeException {
+		LinkedList<CompareLine> anchorsList = diff.getAnchorsList();
+		LinkedList<CompareLine> processList = new LinkedList<>();
 		int i = 0;
-		int x = 0;
-		int y = 0;
-		int indexMinus = 0;
-		while(i < size) {
-			AnchorLine anchorLine;
-			CompareLine anchor;
-			CompareLine ln = diffList.pollFirst();
-			indexMinus = i - 3;
-			long num1 = ln.getSrcLine().getLineNumber();
-			long num2 = ln.getPushLine().getLineNumber();
-			String mark1 = ln.getSrcLine().getMark();
-			String mark2 = ln.getPushLine().getMark();
-			ln.setPatch(".ph.");
-			process.add(ln);
-			if(num1 > 0L)
-				countMinus++;
-			if(num2 > 0L)
-				countPlus++;
-			if (process.size() <= 3) {
-				if (mark1 != null || mark2 != null) {
-					if (indexMinus < 0) {
-						anchorLine = new AnchorLine();
-						anchor = new CompareLine(anchorLine);
-						if(formation.isEmpty())
-							formation.add(anchor);
-						formation.addAll(process);
-						process.clear();
-					} else {
-						formation.addAll(process);
-						process.clear();
-					}
-				}
-			}
-			if(process.size() == 3) {
-				if(mark1 == null && mark2 == null && !formation.isEmpty()) {
-					if(formation.getLast().getEnd() == null) {
-						formation.addAll(process);
-						process.clear();
-						formation.getLast().setEnd("");
+		int count = 0;
+		int firstIndex = 0;
+		int lastIndex = 0;
+		int anchIdx = 0;
+		String anchor = "";
+		long newSrcNum = 0L;
+		long newPushNum = 0L;
+		long currSrcNum = 0L;
+		long currPushNum = 0;
+		try {
+			while(i < anchorsList.size()) {
+				CompareLine patchLn = anchorsList.pollFirst();
+				try {
+					if(patchLn.hasAnchorLine()) {
+						processList.add(patchLn);
+						anchor = patchLn.getAnchorLine().getLine();
+						if(lastIndex != 0)
+							anchIdx++;
+						count--;
 					}	else {
-						x = countMinus;
-						y = countPlus;
-						x -= 3;
-						y -= 3;
-						formation.getFirst().getAnchorLine().setSignes(x, y);
-						countMinus -= x;
-						countPlus -= y;
-						x = 0; y = 0;
-						diffList.addAll(formation);
-						formation.clear();
+						//Relatable.checkLinesForStopAndAlignDiffList(currAnchorList, currAnchorList.get(count), patchLn);
+						if(patchLn.hasPatch()) {
+							String[] idxNum = Relatable.checkForMatchingLinesMarkedWithAnchor(currAnchorList, patchLn, lastIndex, anchIdx);
+							long srcNum = patchLn.getSrcLine().getLineNumber();
+							long pushNum = patchLn.getPushLine().getLineNumber();
+							//long diffNum = srcNum - pushNum;
+							if(processList.size() == 1) {
+								newSrcNum = Long.parseLong(idxNum[1]);
+								newPushNum = newSrcNum - (srcNum - pushNum);
+								firstIndex = Integer.parseInt(idxNum[0]);
+								processList.get(0).getAnchorLine().setAnchorNumber(newSrcNum);
+								patchLn.getSrcLine().setLineNumber(newSrcNum);
+								patchLn.getPushLine().setLineNumber(newPushNum);
+								currSrcNum = newSrcNum;
+								currPushNum = newPushNum;
+							}
+							if(processList.size() > 1) {
+								if(srcNum > 0L) {
+									currSrcNum++;
+									patchLn.getSrcLine().setLineNumber(currSrcNum);
+								}
+								if(pushNum > 0L) {
+									currPushNum++;
+									patchLn.getPushLine().setLineNumber(currPushNum);
+								}
+							}
+							processList.add(patchLn);
+							if(processList.getLast().hasEnd()) {
+								lastIndex = firstIndex + (processList.size() - 1);
+								currAnchorList.addAll(firstIndex, processList);
+								currSrcNum = 0L;
+								currPushNum = 0L;
+								processList.clear();
+							}
+						}
 					}
+				} catch(RuntimeException rte) {
+					String anch = anchor;
+					PatchConflictException pce = new PatchConflictException(anch);
+					pce.getMessage();
+					throw pce;
 				}
-			}
-			if(process.size() == 4) {
-				if(mark1 != null || mark2 != null) {
-					anchorLine = new AnchorLine();
-					anchor = new CompareLine(anchorLine);
-					anchorLine.setAnchorNumber(process.getFirst().getSrcLine().getLineNumber());
-					formation.add(anchor);
-					formation.addAll(process);
-					process.clear();
-				}
-				if(mark1 == null && mark2 == null) {
-					CompareLine exclude = process.removeFirst();
-					if(exclude.getSrcLine().getLineNumber() != 0L)
-						countMinus--;
-					if(exclude.getPushLine().getLineNumber() != 0L)
-						countPlus--;
-					exclude.removePatch();
-					diffList.add(exclude);
-				}
-			}
-			if(ln.getGenStop() != null) {
-				if(!formation.isEmpty()) {
-					if(formation.getLast().getSrcLine().hasMark()) {
-						formation.getFirst().getAnchorLine().setSignes(countMinus, countPlus);
-						formation.addAll(process);
-						process.clear();
-					} else {
-						countMinus -= process.size();
-						countPlus -= process.size();
-						formation.getFirst().getAnchorLine().setSignes(countMinus, countPlus);
-					}
-					diffList.addAll(formation);
-					formation.clear();
-				}
-				if(formation.isEmpty()) {
-					removePatches(process);
-					diffList.addAll(process);
-					process.clear();
-				}
-			}
-			i++;
-		}
-	}
-	
-	public void getPatchLines() {
-		LinkedList<CompareLine> diffList = diff.getFinalDiffList();
-		for(CompareLine line : diffList) {
-			if(line.getSrcLine() != null) {
-				if(line.getPatch() == null) {
-					if (line.getSrcLine().getLineNumber() != 0L)
-						patchList.add(line.getSrcLine());
-				} else if(line.getPatch() != null) {
-					if(line.getPushLine().getLineNumber() != 0L)
-						patchList.add(line.getPushLine());
-				}
-			}
-		}
-	}
-	
-	public void applyPatch(Path path) {
-		try (BufferedWriter bfw = Files.newBufferedWriter(path, CREATE, WRITE, TRUNCATE_EXISTING)) {
-			String line = "";
-			int count = 1;
-			for(Line ln : getPatchList()) {
-				line = ln.getLine();
-				bfw.write(line, 0, line.length());
-				if(count < getPatchList().size())
-					bfw.newLine();
 				count++;
 			}
-		} catch(IOException e) {
-			e.printStackTrace();
+		} catch(RuntimeException rte) {
+			throw rte;
 		}
-	}
-
-	public List<Line> getPatchList() {
-		return patchList;
+		return currAnchorList;
 	}
 	
-	public static void removePatches(LinkedList<CompareLine> list) {
-		for(CompareLine line : list){
-			line.removePatch();
+	public LinkedList<CompareLine> getCurrAnchorList() {
+		return currAnchorList;
+	}
+	
+	public static void main(String[] args) {
+		ProcessFile srcFile = new ProcessFile("srcFile3.txt");
+		ProcessFile pushFile = new ProcessFile("pushFile3.txt");
+		SrcFileCurrent srcFileCurr = new SrcFileCurrent("srcFileCurr2.txt");
+		printList(srcFile.getLinesList());
+		System.out.println("----------------------------------------");
+		printList(pushFile.getLinesList());
+		System.out.println("----------------------------------------");
+		try {
+			Diff diff = new Diff(srcFile, pushFile);
+			diff.compareFiles();
+			printList(diff.getAnchorsList());
+			System.out.println("----------------------------------------");
+			//printTwoLists(srcFileCurr.getLinesList(), diff.getAnchorsList());
+			//System.out.println("----------------------------------------");
+			Patch patch = new Patch(diff, srcFileCurr);
+			//patch.compareSrcFileStates();
+			//printList(patch.getCurrAnchorList());
+		} catch(RuntimeException rte) {
+			rte.printStackTrace();
+			//System.out.println(rte);
 		}
 	}
 	
@@ -173,48 +122,27 @@ public class Patch {
 			System.out.println(line);
 		}
 	}
-	public static void printLists(List<?extends Object> list1, List<?extends Object> list2, List<?extends Object> list3 ) {
-		for(int i = 0; i < list1.size() && i < list2.size() && i < list3.size(); i++){
-			System.out.println(list1.get(i).toString() + list2.get(i).toString() + list3.get(i).toString());
-		}
-	}
 	
-	public static void main(String[] args) {
-		SourceFile srcFile = new SourceFile("srcFile.txt");
-		PushFile pushFile1 = new PushFile("Nick1","pushFile1.txt");
-		PushFile pushFile2 = new PushFile("Nick2","pushFile2.txt");
-		
-		Push push1 = new Push(srcFile, pushFile1);
-		System.out.println("After push1: ");
-		System.out.println("diff1:\n" );
-		printList(pushFile1.getDiffList());
-		System.out.println("----------------------------------------");
-		for(int i = 0; i < 1000000; i++){
-			int a = i * i;
-		}
-		Push push2 = new Push(srcFile, pushFile2);
-		System.out.println("After push2: ");
-		System.out.println("diff2:\n");
-		printList(pushFile2.getDiffList());
-		System.out.println("----------------------------------------");
-		
-		System.out.println("lists:\n");
-		printLists(srcFile.getLinesList(), pushFile1.getLinesList(), pushFile2.getLinesList());
-		System.out.println("----------------------------------------");
-		try {
-			Diff diff = new Diff(srcFile, push1, push2);
-			System.out.println("finalDiff:\n");
-			printList(diff.getFinalDiffList());
-			Patch patch = new Patch(diff);
-			System.out.println("finalDiff with anchors:\n");
-			printList(diff.getFinalDiffList());
-			System.out.println("patchList:\n");
-			printList(patch.getPatchList());
-			Path path = Paths.get("srcPatchFile.txt");
-			patch.applyPatch(path);
-		} catch(RuntimeException rt) {
-			System.out.println(rt);
+	public static class PatchConflictException extends RuntimeException {
+		public String className;
+		public String anchor;
+		public PatchConflictException(String anchor) {
+			className = this.getClass().getName();
+			this.anchor = anchor;
 		}
 		
+		@Override
+		public String getMessage() {
+			if(className.indexOf("$") != -1 )
+				className = className.substring(className.indexOf("$") + 1);
+			return className + ": " +
+							"Lines marked with this anchor \"" + anchor + "\" have already been changed.\n" +
+							"Patch implementation is not possible.";
+		}
+		
+		@Override
+		public String toString() {
+			return getMessage();
+		}
 	}
 }

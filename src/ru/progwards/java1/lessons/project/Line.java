@@ -4,10 +4,11 @@ public class Line {
 	
 	private String line;
 	private long lineNumber;
-	private String mark;
-	private String lastMark;
-	private String increment;
+	private String sign;
+	private String overStop;
+	private String alignment;
 	private String stop;
+	private String empty;
 	
 	public Line() {}
 	
@@ -16,33 +17,41 @@ public class Line {
 		this.line = line;
 	}
 	
-	public void setIncrement(int len) {
-		increment = "";
-		for(int i = 0; i < len ; i++){
-			increment += ".";
+	enum Sign {
+		PLUS,
+		MINUS
+	}
+	
+	public void setSign(String signValue) {
+		if(lineNumber != 0L)
+			sign = signValue;
+	}
+	
+	public void Sign(Sign sign) {
+		switch(sign) {
+			case PLUS:
+				this.setSign("+");
+				break;
+			case MINUS:
+				this.setSign("-");
+				break;
+			default:
+				this.setSign("");
 		}
 	}
 	
-	public void setMark(String markValue) {
-		if(lineNumber != 0L)
-			mark = markValue;
+	public String getSign(){
+		return sign;
 	}
 	
-	public void removeMark() {
-			mark = null;
+	public boolean hasSign() {
+		if(sign != null)
+			return true;
+		return false;
 	}
 	
-	public void setLastMark(String markValue) {
-		if(lineNumber != 0L)
-			lastMark = markValue;
-	}
-	
-	public void setStop(String stopValue){
-		stop = stopValue;
-	}
-	
-	public long getLineNumber(){
-		return lineNumber;
+	public void removeSign() {
+		sign = null;
 	}
 	
 	public String getLine() {
@@ -64,39 +73,13 @@ public class Line {
 		return getLine().trim().length();
 	}
 	
-	public String getMark(){
-		return mark;
+	public void setLineNumber(long newNumber) {
+		if(lineNumber >= 0L)
+			lineNumber = newNumber;
 	}
 	
-	public String getLastMark(){
-		return lastMark;
-	}
-	
-	public String getStop(){
-		return stop;
-	}
-	
-	public boolean hasMark() {
-		if(mark != null)
-			return true;
-		return false;
-	}
-	
-	public boolean hasLastMark() {
-		if(lastMark != null)
-			return true;
-		return false;
-	}
-	
-	public boolean hasStop() {
-		if(stop != null)
-			return true;
-		return false;
-	}
-	public boolean hasIncrement() {
-		if(increment != null)
-			return true;
-		return false;
+	public long getLineNumber(){
+		return lineNumber;
 	}
 	
 	public boolean hasLineNumber() {
@@ -105,11 +88,60 @@ public class Line {
 		return false;
 	}
 	
-	public boolean checkConflict(Line otherLine) throws RuntimeException {
-		if(getLine().equals(otherLine.getLine()))
+	public void setOverStop(String overStopValue) {
+		if(lineNumber != 0L)
+			overStop = overStopValue;
+	}
+	
+	public String getOverStop(){
+		return overStop;
+	}
+	
+	public boolean hasOverStop() {
+		if(overStop != null)
 			return true;
-		else
-			throw new RuntimeException();
+		return false;
+	}
+	
+	public void setStop(String stopValue){
+		stop = stopValue;
+	}
+	
+	public String getStop(){
+		return stop;
+	}
+	
+	public boolean hasStop() {
+		if(stop != null)
+			return true;
+		return false;
+	}
+	
+	public void setEmpty(String empty) {
+		this.empty = empty;
+	}
+	
+	public String getEmpty() {
+		return empty;
+	}
+	
+	public boolean hasEmpty() {
+		if(empty != null)
+			return true;
+		return false;
+	}
+
+	public void setAlignment(int len) {
+		alignment = "";
+		for(int i = 0; i < len ; i++){
+			alignment += ".";
+		}
+	}
+	
+	public boolean hasAlignment() {
+		if(alignment != null)
+			return true;
+		return false;
 	}
 	
 	@Override
@@ -121,8 +153,8 @@ public class Line {
 		String addStr3 = "   ";
 		String addStr2 = "  ";
 		String addStr1 = " ";
-		if(mark != null){
-			strInfo += lineNumber + mark;
+		if(sign != null){
+			strInfo += lineNumber + sign;
 			if(lineNumber < 10L)
 				strInfo += addStr3;
 			else if(lineNumber >= 10L && lineNumber < 100L)
@@ -140,8 +172,8 @@ public class Line {
 			else
 				strInfo += addStr1;
 		}
-		if(increment != null)
-			strContent += getLine() + increment;
+		if(alignment != null)
+			strContent += getLine() + alignment;
 		else
 			strContent += getLine();
 		return strInfo + strContent ;
