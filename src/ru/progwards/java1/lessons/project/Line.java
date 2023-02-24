@@ -93,9 +93,9 @@ public class Line {
 			overStop = overStopValue;
 	}
 	
-	public String getOverStop(){
-		return overStop;
-	}
+//	public String getOverStop(){
+//		return overStop;
+//	}
 	
 	public boolean hasOverStop() {
 		if(overStop != null)

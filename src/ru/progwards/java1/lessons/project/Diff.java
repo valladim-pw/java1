@@ -1,6 +1,6 @@
 package ru.progwards.java1.lessons.project;
 
-import java.util.*;
+import java.util.LinkedList;
 
 public class Diff implements Relatable{
 	
@@ -11,9 +11,9 @@ public class Diff implements Relatable{
 	public Diff(ProcessFile srcFile, ProcessFile pushFile) {
 		this.srcFile = srcFile;
 		this.pushFile = pushFile;
-		anchorsList = this.compareFiles();
+		//anchorsList = this.compareFiles();
 	}
-	
+
 	public LinkedList<CompareLine> compareFiles() {
 		LinkedList<Line> srcList = srcFile.getLinesList();
 		LinkedList<Line> pushList = pushFile.getLinesList();
@@ -41,9 +41,6 @@ public class Diff implements Relatable{
 			
 			Relatable.checkAndSetLinesAlignmentToMaxLine(srcFile, srcLn);
 			Relatable.checkAndSetLinesAlignmentToMaxLine(pushFile, pushLn);
-			
-			//Relatable.checkLinesForStopAndAlignLinesList(srcList, srcLn, pushLn);
-			//Relatable.checkLinesForStopAndAlignLinesList(pushList, srcLn, pushLn);
 
 			CompareLine compareLine = new CompareLine(srcLn, pushLn);
 			compareLine.setPatch("ph.");
@@ -104,6 +101,7 @@ public class Diff implements Relatable{
 				if(formatList.isEmpty()) {
 					Relatable.removePatches(processList);
 					Relatable.transferAllFromFirstListToSecond(processList, anchorsList);
+					break;
 				}
 			} else if(checkStops == STOP_OR_STOP) {
 				Relatable.transferAllFromFirstListToSecond(processList, formatList);

@@ -97,17 +97,15 @@ public class Patch implements Relatable {
 		ProcessFile srcFile = new ProcessFile("srcFile3.txt");
 		ProcessFile pushFile = new ProcessFile("pushFile3.txt");
 		SrcFileCurrent srcFileCurr = new SrcFileCurrent("srcFileCurr2.txt");
-		printList(srcFile.getLinesList());
-		System.out.println("----------------------------------------");
-		printList(pushFile.getLinesList());
-		System.out.println("----------------------------------------");
+		//printList(srcFile.getLinesList());
+		//System.out.println("----------------------------------------");
+		//printList(pushFile.getLinesList());
+		//System.out.println("----------------------------------------");
 		try {
 			Diff diff = new Diff(srcFile, pushFile);
 			diff.compareFiles();
 			printList(diff.getAnchorsList());
 			System.out.println("----------------------------------------");
-			//printTwoLists(srcFileCurr.getLinesList(), diff.getAnchorsList());
-			//System.out.println("----------------------------------------");
 			Patch patch = new Patch(diff, srcFileCurr);
 			//patch.compareSrcFileStates();
 			//printList(patch.getCurrAnchorList());

@@ -87,6 +87,6 @@ public class CompareLine {
 		if(anchorLine != null)
 			return anchorLine.toString();
 		else
-			return patch + end + srcLine.toString() +	pushLine.toString();
+			return srcLine.toString() +	pushLine.toString();
 	}
 }

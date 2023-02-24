@@ -48,14 +48,14 @@ public interface Relatable {
 			if(srcLn.getLine().isBlank() && !srcLn.hasStop()) {
 				if(!pushLn.getLine().isBlank()) {
 					srcLn.Sign(Line.Sign.MINUS);
-					pushList.offerFirst(new EmptyLine());
-					pushList.getFirst().setEmpty(".");
+					//pushList.offerFirst(new EmptyLine());
+					//pushList.getFirst().setEmpty(".");
 				}
 			} else	if(pushLn.getLine().isBlank() && !pushLn.hasStop()) {
 				if(!srcLn.getLine().isBlank()) {
 					pushLn.Sign(Line.Sign.PLUS);
-					srcList.offerFirst(new EmptyLine());
-					srcList.getFirst().setEmpty(".");
+					//srcList.offerFirst(new EmptyLine());
+					//srcList.getFirst().setEmpty(".");
 				}
 			}
 		}
@@ -72,32 +72,37 @@ public interface Relatable {
 		}
 		return maxIdx;
 	}
-	
+
 	static void checkLinesComparisonCasesAndSetSignesWithChangingOrder(LinkedList<Line> srcList, LinkedList<Line> pushList, int srcIdx, int pushIdx) {
 		Line srcLn = srcList.getFirst();
 		Line pushLn = pushList.getFirst();
-	 	if(!srcLn.getLine().equals(pushLn.getLine())) {
+		if(!srcLn.getLine().equals(pushLn.getLine())) {
 			if (!srcLn.hasOverStop() && !pushLn.hasOverStop()) {
+				if(!srcLn.getLine().isBlank() && srcIdx == -1)
+					srcLn.Sign(Line.Sign.MINUS);
+				if(!pushLn.getLine().isBlank() && pushIdx == -1)
+					pushLn.Sign(Line.Sign.PLUS);
 				if (srcIdx != -1 && pushIdx != -1) {
 					if (srcIdx > pushIdx) {
 						srcLn.Sign(Line.Sign.MINUS);
-						pushList.offerFirst(new EmptyLine());
+						if(!pushLn.hasSign())
+							pushList.offerFirst(new EmptyLine());
 					} else if (pushIdx > srcIdx) {
 						pushLn.Sign(Line.Sign.PLUS);
-						srcList.offerFirst(new EmptyLine());
+						if(!srcLn.hasSign())
+							srcList.offerFirst(new EmptyLine());
 					} else {
 						srcLn.Sign(Line.Sign.MINUS);
 						pushLn.Sign(Line.Sign.PLUS);
 					}
-				} else if (srcIdx != -1 && pushIdx == -1) {
-					pushLn.Sign(Line.Sign.PLUS);
-					srcList.offerFirst(new EmptyLine());
-				} else if (srcIdx == -1 && pushIdx != -1) {
-					srcLn.Sign(Line.Sign.MINUS);
-					pushList.offerFirst(new EmptyLine());
-				} else if (srcIdx == -1 && pushIdx == -1) {
-					srcLn.Sign(Line.Sign.MINUS);
-					pushLn.Sign(Line.Sign.PLUS);
+				}
+				if (srcIdx != -1 && pushIdx == -1 ) {
+					if(!srcLn.hasSign())
+						srcList.offerFirst(new EmptyLine());
+				}
+				if (srcIdx == -1 && pushIdx != -1) {
+					if(!pushLn.hasSign())
+						pushList.offerFirst(new EmptyLine());
 				}
 			} else {
 				if ((srcIdx != -1 || srcIdx == -1 ) && pushLn.hasOverStop()) {
@@ -112,31 +117,11 @@ public interface Relatable {
 	}
 	
 	static Line checkAndSetLinesAlignmentToMaxLine(ProcessFile file, Line line) {
-		int incLen = file.setIncrLength(file, line);
+		int alignLen = file.setAlignLength(file, line);
 		if(!line.hasAlignment()) {
-			line.setAlignment(incLen);
+			line.setAlignment(alignLen);
 		}
 		return line;
-	}
-	
-	static void checkLinesForStopAndAlignLinesList(LinkedList<Line> list, Line line1, Line line2) {
-		Line empty;
-		if((line1.hasStop() && !line2.hasStop()) ||
-						(!line1.hasStop() && line2.hasStop())
-		) {
-			empty = new EmptyLine();
-			list.offer(empty);
-			empty.setStop("stop");
-		}
-	}
-	
-	static boolean checkLinesEquality(Line line1, Line line2) {
-		if(line1.getLine().equals(line2.getLine())) {
-			if(line1.hasEmpty() || line2.hasEmpty())
-				return false;
-			return true;
-		}	else
-			return false;
 	}
 	
 	static boolean checkLineNumber(Line line) {
@@ -207,7 +192,6 @@ public interface Relatable {
 		}
 	}
 	
-	
 	static void checkLinesForStopAndAlignDiffList(LinkedList<CompareLine> list, CompareLine line1, CompareLine line2) {
 		Line empty1;
 		Line empty2;
@@ -221,49 +205,6 @@ public interface Relatable {
 			comprLine.setGenStop("");
 		}
 	}
-	
-//	static String[] checkForMatchingLinesMarkedWithAnchor(LinkedList<Line> list, CompareLine line, int lastIdx, int anchIdx) throws RuntimeException {
-//		long newNum = 0L;
-//		int firstIdx = 0;
-//		boolean checkConflict = false;
-//		String[] idxNum = new String[2];
-//		for(int i = lastIdx; i < list.size(); i++) {
-//			String newStr = list.get(i).getLine();
-//			Line newLn = list.get(i);
-//			String oldStr = line.getSrcLine().getLine();
-//			Line oldLn = line.getSrcLine();
-//			if(lastIdx != 0) {
-//				lastIdx++;
-//			}
-//			if(!oldLn.hasEmpty() && !oldLn.hasStop()) {
-//				if (oldStr.equals(newStr)) {
-//					if(lastIdx == 0)
-//						firstIdx = i;
-//					else
-//						firstIdx = lastIdx - 1;
-//					newNum = list.get(i).getLineNumber();
-//					idxNum[0] = String.valueOf(firstIdx);
-//					idxNum[1] = String.valueOf(newNum);
-//					list.remove(list.get(i));
-//					checkConflict = true;
-//					break;
-//				} else
-//					if(!newLn.hasSign())
-//						newLn.setLineNumber(lastIdx - anchIdx);
-//					checkConflict = false;
-//			} else {
-//				idxNum[0] = String.valueOf(firstIdx);
-//				idxNum[1] = String.valueOf(newNum);
-//				checkConflict = true;
-//				break;
-//			}
-//
-//		}
-//		if(!checkConflict)
-//			throw new RuntimeException();
-//		else
-//			return idxNum;
-//	}
 	
 	static String[] checkForMatchingLinesMarkedWithAnchor(LinkedList<CompareLine> list, CompareLine line, int lastIdx, int anchIdx) throws RuntimeException {
 		long newNum = 0L;

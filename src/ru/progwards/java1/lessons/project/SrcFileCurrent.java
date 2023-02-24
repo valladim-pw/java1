@@ -1,6 +1,6 @@
 package ru.progwards.java1.lessons.project;
 
-import java.util.LinkedList;
+import java.util.*;
 
 public class SrcFileCurrent extends ProcessFile implements Relatable {
 	

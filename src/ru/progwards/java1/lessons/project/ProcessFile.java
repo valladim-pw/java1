@@ -26,13 +26,13 @@ public class ProcessFile {
 	public ProcessFile() {}
 	
 	public ProcessFile(String file) {
-		path = Paths.get(file);
+		path = Paths.get(file.trim());
 		long num = 1;
 		String line = "";
-		String strNum = "";
 		try(BufferedReader bfr = Files.newBufferedReader(path)) {
 			while ((line = bfr.readLine()) != null) {
-				stringsList.add(line);
+				if(!line.isBlank())
+					stringsList.add(line);
 				Line ln = new Line(num, line);
 				linesList.add(ln);
 				num++;
@@ -62,7 +62,7 @@ public class ProcessFile {
 		maxLnIndent *= 2;
 	}
 	
-	public int setIncrLength(ProcessFile file, Line line){
+	public int setAlignLength(ProcessFile file, Line line){
 		int newLen = file.maxLnLength() - line.lineLength();
 		newLen = (newLen - line.lineIndent()) + file.maxLnIndent();
 		return newLen;
