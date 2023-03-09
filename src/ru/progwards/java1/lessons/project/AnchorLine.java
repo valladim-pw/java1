@@ -23,18 +23,6 @@ public class AnchorLine extends Line {
 		anchorPlus = plus;
 	}
 	
-//	public long getAnchorLineNumber() {
-//		return anchorLineNumber;
-//	}
-//
-//	public int getAnchorMinus() {
-//		return anchorMinus;
-//	}
-//
-//	public int getAnchorPlus() {
-//		return anchorPlus;
-//	}
-	
 	public String getLine() {
 		line = "@@ -" + anchorLineNumber + "," + anchorMinus + " +" + anchorLineNumber + "," + anchorPlus;
 		return line;

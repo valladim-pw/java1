@@ -4,21 +4,19 @@ import java.util.LinkedList;
 
 public class Diff implements Relatable{
 	
-	private static LinkedList<CompareLine> anchorsList = new LinkedList<>();
+	private LinkedList<CompareLine> anchorsList = new LinkedList<>();
 	private ProcessFile srcFile;
 	private ProcessFile pushFile;
 	
 	public Diff(ProcessFile srcFile, ProcessFile pushFile) {
 		this.srcFile = srcFile;
 		this.pushFile = pushFile;
-		//anchorsList = this.compareFiles();
+		compareFiles();
 	}
 
-	public LinkedList<CompareLine> compareFiles() {
+	public void compareFiles() {
 		LinkedList<Line> srcList = srcFile.getLinesList();
 		LinkedList<Line> pushList = pushFile.getLinesList();
-		LinkedList<String> identSrcList = Relatable.createListWithIdenticalStringsRetainFromPushFile(srcFile, pushFile);
-		LinkedList<String> identPushList = Relatable.createListWithIdenticalStringsRetainFromSrcFile(pushFile, srcFile);
 		LinkedList<CompareLine> processList = new LinkedList<>();
 		LinkedList<CompareLine> formatList = new LinkedList<>();
 		
@@ -32,10 +30,8 @@ public class Diff implements Relatable{
 		int i = 0;
 		while(i < srcList.size()) {
 			
-			Relatable.checkAddedRemovedEmptyLinesAndSetSigns(srcList, pushList);
-			int srcMaxIdx = Relatable.checkLinePresenceInIdenticalListsAndGetMaxIndex(identSrcList, identPushList, srcList.getFirst());
-			int pushMaxIdx = Relatable.checkLinePresenceInIdenticalListsAndGetMaxIndex(identSrcList, identPushList, pushList.getFirst());
-			Relatable.checkLinesComparisonCasesAndSetSignesWithChangingOrder(srcList, pushList, srcMaxIdx, pushMaxIdx);
+			Relatable.checkLinesComparisonCasesAndSetSignesWithChangingOrder(srcList, pushList);
+			
 			Line srcLn = srcList.pollFirst();
 			Line pushLn = pushList.pollFirst();
 			
@@ -45,14 +41,16 @@ public class Diff implements Relatable{
 			CompareLine compareLine = new CompareLine(srcLn, pushLn);
 			compareLine.setPatch("ph.");
 			processList.add(compareLine);
+			
 			if(Relatable.checkLineNumber(compareLine.getSrcLine()))
 				countMinus++;
 			if(Relatable.checkLineNumber(compareLine.getPushLine()))
 				countPlus++;
+			
 			int proSize = Relatable.checkProcessListSize(processList);
-			Relatable.checkLinesOverStopToSetSigns(compareLine.getSrcLine(), compareLine.getPushLine());
 			int checkStopNull = Relatable.checkLinesForNullStop(compareLine.getSrcLine(), compareLine.getPushLine());
 			int checkSigns = Relatable.checkLinesSign(compareLine.getSrcLine(), compareLine.getPushLine());
+			
 			if(proSize <= 3 && checkSigns == SIGN_OR_SIGN) {
 				if(count <= 3) {
 					anchorLine = new AnchorLine();
@@ -92,6 +90,7 @@ public class Diff implements Relatable{
 			}
 			int checkOverStops = Relatable.checkLinesForOverStopToCompleteProcessing(compareLine.getSrcLine(), compareLine.getPushLine());
 			int checkStops = Relatable.checkLinesForStopToCompleteProcessing(compareLine.getSrcLine(), compareLine.getPushLine());
+			
 			if(checkOverStops == OVER_STOP_AND_OVER_STOP) {
 				if(!formatList.isEmpty()) {
 					countMinus -= processList.size();
@@ -115,11 +114,10 @@ public class Diff implements Relatable{
 			}
 			count++;
 		}
-		anchorsList.getLast().setGenStop("");
-		return anchorsList;
+		Relatable.printList(anchorsList);
 	}
 	
-	public static LinkedList<CompareLine> getAnchorsList() {
+	public LinkedList<CompareLine> getAnchorsList() {
 		return anchorsList;
 	}
 }

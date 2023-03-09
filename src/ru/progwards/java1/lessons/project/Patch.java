@@ -1,78 +1,58 @@
 package ru.progwards.java1.lessons.project;
 
-import java.util.*;
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
+import java.util.LinkedList;
+import java.util.List;
+
+import static java.nio.file.StandardOpenOption.*;
 
 public class Patch implements Relatable {
-	
+
+	private Path path;
 	private Diff diff;
 	SrcFileCurrent srcFileCurr;
-	LinkedList<CompareLine> currAnchorList;
-	//LinkedList<CompareLine> currDiffList;
-	
-	public Patch(Diff diff, SrcFileCurrent srcFileCurr) {
+	LinkedList<Line> patchLinesList;
+
+	public Patch(Diff diff, SrcFileCurrent srcFileCurr, String patchFile) {
 		this.diff = diff;
 		this.srcFileCurr = srcFileCurr;
-		currAnchorList = new LinkedList<>(this.srcFileCurr.getDiffList());
+		patchLinesList = new LinkedList<>(srcFileCurr.getLinesList());
+		compareSrcFileStates();
+		path = Paths.get(patchFile.trim());
+		applyPatch(path);
 	}
-	
-	public LinkedList<CompareLine> compareSrcFileStates() throws RuntimeException {
+
+	public void compareSrcFileStates() throws RuntimeException {
+		
 		LinkedList<CompareLine> anchorsList = diff.getAnchorsList();
-		LinkedList<CompareLine> processList = new LinkedList<>();
+		LinkedList<Line> processList = new LinkedList<>();
+		
 		int i = 0;
-		int count = 0;
 		int firstIndex = 0;
-		int lastIndex = 0;
-		int anchIdx = 0;
+		int newIndex = 0;
 		String anchor = "";
-		long newSrcNum = 0L;
-		long newPushNum = 0L;
-		long currSrcNum = 0L;
-		long currPushNum = 0;
 		try {
 			while(i < anchorsList.size()) {
 				CompareLine patchLn = anchorsList.pollFirst();
 				try {
 					if(patchLn.hasAnchorLine()) {
-						processList.add(patchLn);
+						processList.add(patchLn.getAnchorLine());
 						anchor = patchLn.getAnchorLine().getLine();
-						if(lastIndex != 0)
-							anchIdx++;
-						count--;
 					}	else {
-						//Relatable.checkLinesForStopAndAlignDiffList(currAnchorList, currAnchorList.get(count), patchLn);
 						if(patchLn.hasPatch()) {
-							String[] idxNum = Relatable.checkForMatchingLinesMarkedWithAnchor(currAnchorList, patchLn, lastIndex, anchIdx);
-							long srcNum = patchLn.getSrcLine().getLineNumber();
-							long pushNum = patchLn.getPushLine().getLineNumber();
-							//long diffNum = srcNum - pushNum;
+							if(!patchLn.getSrcLine().hasEmpty()) {
+								newIndex = Relatable.checkForMatchingLinesMarkedWithAnchor(patchLinesList, patchLn, firstIndex);
+							}
 							if(processList.size() == 1) {
-								newSrcNum = Long.parseLong(idxNum[1]);
-								newPushNum = newSrcNum - (srcNum - pushNum);
-								firstIndex = Integer.parseInt(idxNum[0]);
-								processList.get(0).getAnchorLine().setAnchorNumber(newSrcNum);
-								patchLn.getSrcLine().setLineNumber(newSrcNum);
-								patchLn.getPushLine().setLineNumber(newPushNum);
-								currSrcNum = newSrcNum;
-								currPushNum = newPushNum;
+								firstIndex = newIndex;
 							}
-							if(processList.size() > 1) {
-								if(srcNum > 0L) {
-									currSrcNum++;
-									patchLn.getSrcLine().setLineNumber(currSrcNum);
-								}
-								if(pushNum > 0L) {
-									currPushNum++;
-									patchLn.getPushLine().setLineNumber(currPushNum);
-								}
-							}
-							processList.add(patchLn);
-							if(processList.getLast().hasEnd()) {
-								lastIndex = firstIndex + (processList.size() - 1);
-								currAnchorList.addAll(firstIndex, processList);
-								currSrcNum = 0L;
-								currPushNum = 0L;
-								processList.clear();
-							}
+							Relatable.checkPatchLineForEndAndSetEndToLines(patchLn);
+							Relatable.checkPatchLineAndAddLinesToProcessList(patchLn, processList);
+							Relatable.checkProcessListEndAndTransferToPatchList( processList, patchLinesList, firstIndex);
 						}
 					}
 				} catch(RuntimeException rte) {
@@ -81,46 +61,37 @@ public class Patch implements Relatable {
 					pce.getMessage();
 					throw pce;
 				}
-				count++;
 			}
 		} catch(RuntimeException rte) {
 			throw rte;
 		}
-		return currAnchorList;
+		Relatable.checkAndChangePatchListNumbersOrder(patchLinesList);
+		Relatable.printList(patchLinesList);
+	}
+
+	public LinkedList<Line> getPatchLinesList() {
+		return patchLinesList;
 	}
 	
-	public LinkedList<CompareLine> getCurrAnchorList() {
-		return currAnchorList;
-	}
-	
-	public static void main(String[] args) {
-		ProcessFile srcFile = new ProcessFile("srcFile3.txt");
-		ProcessFile pushFile = new ProcessFile("pushFile3.txt");
-		SrcFileCurrent srcFileCurr = new SrcFileCurrent("srcFileCurr2.txt");
-		//printList(srcFile.getLinesList());
-		//System.out.println("----------------------------------------");
-		//printList(pushFile.getLinesList());
-		//System.out.println("----------------------------------------");
-		try {
-			Diff diff = new Diff(srcFile, pushFile);
-			diff.compareFiles();
-			printList(diff.getAnchorsList());
-			System.out.println("----------------------------------------");
-			Patch patch = new Patch(diff, srcFileCurr);
-			//patch.compareSrcFileStates();
-			//printList(patch.getCurrAnchorList());
-		} catch(RuntimeException rte) {
-			rte.printStackTrace();
-			//System.out.println(rte);
+	public void applyPatch(Path path) {
+		try (BufferedWriter bfw = Files.newBufferedWriter(path, CREATE, WRITE, TRUNCATE_EXISTING)) {
+			String line = "";
+			String sign = " /* + */";
+			int count = 1;
+			for(Line ln : getPatchLinesList()) {
+				line = ln.getLine();
+				if(ln.hasSign())
+					line += sign;
+				bfw.write(line, 0, line.length());
+				if(count < getPatchLinesList().size())
+					bfw.newLine();
+				count++;
+			}
+		} catch(IOException e) {
+			e.printStackTrace();
 		}
 	}
-	
-	public static void printList(List<?extends Object> list) {
-		for(Object line : list){
-			System.out.println(line);
-		}
-	}
-	
+
 	public static class PatchConflictException extends RuntimeException {
 		public String className;
 		public String anchor;
@@ -128,7 +99,7 @@ public class Patch implements Relatable {
 			className = this.getClass().getName();
 			this.anchor = anchor;
 		}
-		
+
 		@Override
 		public String getMessage() {
 			if(className.indexOf("$") != -1 )
@@ -137,10 +108,52 @@ public class Patch implements Relatable {
 							"Lines marked with this anchor \"" + anchor + "\" have already been changed.\n" +
 							"Patch implementation is not possible.";
 		}
-		
+
 		@Override
 		public String toString() {
 			return getMessage();
+		}
+	}
+	
+	public static void main(String[] args) {
+		/*
+		* Создаются экземпляры класса ProcessFile
+		* srcFile - исходный файл
+		* pushFile - файл, который вносит изменения в исходный файл, которые пока в этом файле не зафиксированы
+		* Выводятся в виде упорядоченных пронумерованных списков строк файлов.
+		* Создается экземпляр класса SrcFileCurrent
+		* srcFileCurr - исходный файл в текущем состоянии, уже получивший зафиксированные в нем изменения из других источников
+		* Выводится также в виде упорядоченного пронумерованного списка строк файла.
+		 */
+		ProcessFile srcFile = new ProcessFile("srcFile.java");
+		ProcessFile pushFile = new ProcessFile("pushFile.java");
+		SrcFileCurrent srcFileCurr = new SrcFileCurrent("srcFileCurr.java");
+		
+		try {
+			/*
+			* При создании экемпляра Diff	выводится объединенный список построчного сравнения
+			* списков строк объектов исходного файла (srcFile)
+			 * и файла который вносит пока не зафиксированные изменения в исходный файл (pushFile).
+			 * В этот сравнительный список внедрены анкоры, которые обозначают места (патчи), где строки исходного
+			 * файла (со знаком "-" ) должны быть заменены строками файла вносящего изменения (со знаком "+")
+			*/
+			System.out.println("DiffList with Anchors:");
+			Diff diff = new Diff(srcFile, pushFile);
+			
+			System.out.println("----------------------------------------");
+			/*
+			* При создании экземпляра Patch:
+			* - В случае успешной проверки выводится список строк объекта srcFileCurr с уже внедренными строками объекта pushFile (со знаком "+") из патчей,
+			* а также создается новый файл (в данном случае patchFile.java) куда записывается исходный файл в текущем состоянии с внедренными патчами.
+			* Строки из патча в файле помечены комментами со знаком "+".
+			* - В случае если при проверке выяснится, что строки объекта srcFile из патча, подлежащие замене строками объекта pushFile,
+			* уже изменены в списке объекта srcFileCurr выбрасывается пользовательское исключение PatchConflictException
+			*/
+			System.out.println("PatchList with Signs:");
+			Patch patch = new Patch(diff, srcFileCurr,"patchFile.java");
+			
+		} catch(RuntimeException rte) {
+			System.out.println(rte);
 		}
 	}
 }

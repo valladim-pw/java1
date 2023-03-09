@@ -13,7 +13,6 @@ public class ProcessFile {
 	
 	private Path path;
 	private LinkedList<Line> linesList = new LinkedList<>();
-	private LinkedList<String> stringsList = new LinkedList<>();
 	private int maxLnLength;
 	private int maxLnIndent;
 	public Comparator lengthComparator = new Comparator<Line>() {
@@ -29,11 +28,27 @@ public class ProcessFile {
 		path = Paths.get(file.trim());
 		long num = 1;
 		String line = "";
+		int methodStartInd = 0;
+		int methodEndLen = 0;
 		try(BufferedReader bfr = Files.newBufferedReader(path)) {
 			while ((line = bfr.readLine()) != null) {
-				if(!line.isBlank())
-					stringsList.add(line);
+				if(line.indexOf("{") != -1) {
+					if(methodStartInd == 0)
+						methodStartInd = line.length() - line.trim().length();
+				}
+				if(line.trim().equals("}")) {
+					if(line.length() - line.trim().length() == methodStartInd && methodEndLen == 0)
+						methodEndLen = line.length();
+				}
 				Line ln = new Line(num, line);
+				if(ln.getLine().indexOf("{") != -1 &&
+								ln.getLine().length() - ln.getLine().trim().length() == methodStartInd)
+					ln.setMethodStart(".ms.");
+				if(ln.getLine().trim().equals("}") && ln.getLine().length() == methodEndLen)
+					ln.setMethodEnd(".me.");
+				if(ln.getLine().indexOf("@") != -1 &&
+								ln.getLine().length() - ln.getLine().trim().length() == methodStartInd)
+					ln.setAnnotation(".a.");
 				linesList.add(ln);
 				num++;
 			}
@@ -71,9 +86,4 @@ public class ProcessFile {
 	public LinkedList<Line> getLinesList() {
 		return linesList;
 	}
-	
-	public LinkedList<String> getStringsList() {
-		return stringsList;
-	}
-	
 }

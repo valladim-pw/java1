@@ -6,9 +6,13 @@ public class Line {
 	private long lineNumber;
 	private String sign;
 	private String overStop;
-	private String alignment;
 	private String stop;
 	private String empty;
+	private String end;
+	private String alignment;
+	private String methodEnd;
+	private String methodStart;
+	private String annotation;
 	
 	public Line() {}
 	
@@ -38,10 +42,6 @@ public class Line {
 			default:
 				this.setSign("");
 		}
-	}
-	
-	public String getSign(){
-		return sign;
 	}
 	
 	public boolean hasSign() {
@@ -93,10 +93,6 @@ public class Line {
 			overStop = overStopValue;
 	}
 	
-//	public String getOverStop(){
-//		return overStop;
-//	}
-	
 	public boolean hasOverStop() {
 		if(overStop != null)
 			return true;
@@ -105,10 +101,6 @@ public class Line {
 	
 	public void setStop(String stopValue){
 		stop = stopValue;
-	}
-	
-	public String getStop(){
-		return stop;
 	}
 	
 	public boolean hasStop() {
@@ -120,17 +112,23 @@ public class Line {
 	public void setEmpty(String empty) {
 		this.empty = empty;
 	}
-	
-	public String getEmpty() {
-		return empty;
-	}
-	
+
 	public boolean hasEmpty() {
 		if(empty != null)
 			return true;
 		return false;
 	}
-
+	
+	public void setEnd(String endValue){
+		end = endValue;
+	}
+	
+	public boolean hasEnd() {
+		if(end != null)
+			return true;
+		return false;
+	}
+	
 	public void setAlignment(int len) {
 		alignment = "";
 		for(int i = 0; i < len ; i++){
@@ -140,6 +138,36 @@ public class Line {
 	
 	public boolean hasAlignment() {
 		if(alignment != null)
+			return true;
+		return false;
+	}
+	
+	public void setMethodEnd(String methodEnd) {
+		this.methodEnd = methodEnd;
+	}
+	
+	public boolean hasMethodEnd() {
+		if(methodEnd != null)
+			return true;
+		return false;
+	}
+	
+	public void setMethodStart(String methodStart) {
+		this.methodStart = methodStart;
+	}
+	
+	public boolean hasMethodStart() {
+		if(methodStart != null)
+			return true;
+		return false;
+	}
+	
+	public void setAnnotation(String annotation) {
+		this.annotation = annotation;
+	}
+	
+	public boolean hasAnnotation() {
+		if(annotation != null)
 			return true;
 		return false;
 	}
@@ -176,6 +204,6 @@ public class Line {
 			strContent += getLine() + alignment;
 		else
 			strContent += getLine();
-		return strInfo + strContent ;
+		return strInfo + strContent;
 	}
 }
