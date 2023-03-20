@@ -1,17 +1,27 @@
 package ru.progwards.java1.lessons.project;
 
+import java.io.BufferedWriter;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.LinkedList;
+
+import static java.nio.file.StandardOpenOption.*;
 
 public class Diff implements Relatable{
 	
+	private Path path;
 	private LinkedList<CompareLine> anchorsList = new LinkedList<>();
 	private ProcessFile srcFile;
 	private ProcessFile pushFile;
 	
-	public Diff(ProcessFile srcFile, ProcessFile pushFile) {
+	public Diff(ProcessFile srcFile, ProcessFile pushFile, String diffFile) {
 		this.srcFile = srcFile;
 		this.pushFile = pushFile;
 		compareFiles();
+		path = Paths.get(diffFile.trim());
+		outputDiffToFile(path);
 	}
 
 	public void compareFiles() {
@@ -119,5 +129,21 @@ public class Diff implements Relatable{
 	
 	public LinkedList<CompareLine> getAnchorsList() {
 		return anchorsList;
+	}
+	
+	public void outputDiffToFile(Path path) {
+		try (BufferedWriter bfw = Files.newBufferedWriter(path, CREATE, WRITE, TRUNCATE_EXISTING)) {
+			String line = "";
+			int count = 1;
+			for(CompareLine compareLn : getAnchorsList()) {
+				line = compareLn.toString();
+				bfw.write(line, 0, line.length());
+				if(count < getAnchorsList().size())
+					bfw.newLine();
+				count++;
+			}
+		} catch(IOException e) {
+			e.printStackTrace();
+		}
 	}
 }

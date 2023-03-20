@@ -136,9 +136,10 @@ public class Patch implements Relatable {
 			 * и файла который вносит пока не зафиксированные изменения в исходный файл (pushFile).
 			 * В этот сравнительный список внедрены анкоры, которые обозначают места (патчи), где строки исходного
 			 * файла (со знаком "-" ) должны быть заменены строками файла вносящего изменения (со знаком "+")
+			 * Также создается файл (в данном случае diffFile.txt) куда записывается объединенный список построчного сравнения.
 			*/
 			System.out.println("DiffList with Anchors:");
-			Diff diff = new Diff(srcFile, pushFile);
+			Diff diff = new Diff(srcFile, pushFile, "diffFile.txt");
 			
 			System.out.println("----------------------------------------");
 			/*
@@ -147,7 +148,7 @@ public class Patch implements Relatable {
 			* а также создается новый файл (в данном случае patchFile.java) куда записывается исходный файл в текущем состоянии с внедренными патчами.
 			* Строки из патча в файле помечены комментами со знаком "+".
 			* - В случае если при проверке выяснится, что строки объекта srcFile из патча, подлежащие замене строками объекта pushFile,
-			* уже изменены в списке объекта srcFileCurr выбрасывается пользовательское исключение PatchConflictException
+			* уже изменены в списке объекта srcFileCurr выбрасывается пользовательское исключение PatchConflictException.
 			*/
 			System.out.println("PatchList with Signs:");
 			Patch patch = new Patch(diff, srcFileCurr,"patchFile.java");
