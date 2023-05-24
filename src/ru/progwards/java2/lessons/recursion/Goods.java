@@ -12,6 +12,7 @@ public class Goods {
 	int available;
 	double price;
 	Instant expired;
+	
 	public Goods(String name, String number, int available, double price, String time) {
 		this.name = name;
 		this.number = number;
