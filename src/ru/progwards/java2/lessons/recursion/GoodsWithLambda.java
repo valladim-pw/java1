@@ -22,7 +22,6 @@ public class GoodsWithLambda {
 						new Goods("Молоко сгущеное", "МЛ_РГ_БЛ_СГ_КН", 30, 110.0, "2025-06-06"),
 						new Goods("Масло оливковое", "МС_ОЛ_РО_ОЧ_СТ", 10, 250.0, "2023-12-15")
 		));
-		
 		GoodsWithLambda gwl = new GoodsWithLambda();
 		gwl.setGoods(goods);
 	}
