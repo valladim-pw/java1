@@ -7,7 +7,6 @@ import java.time.ZonedDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class Goods {
-	
 	String name;
 	String number;
 	int available;
