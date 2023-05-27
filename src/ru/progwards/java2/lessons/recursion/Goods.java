@@ -1,9 +1,6 @@
 package ru.progwards.java2.lessons.recursion;
 
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.time.ZonedDateTime;
+import java.time.*;
 import java.time.format.DateTimeFormatter;
 
 public class Goods {
@@ -12,6 +9,8 @@ public class Goods {
 	int available;
 	double price;
 	Instant expired;
+	
+	public Goods(){}
 	
 	public Goods(String name, String number, int available, double price, String time) {
 		this.name = name;
