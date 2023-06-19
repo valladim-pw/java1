@@ -47,6 +47,7 @@ public class GoodsWithLambda {
 						.sorted(Comparator.comparingInt(x -> x.available)).collect(Collectors.toList());
 		
 		printGoods("sortByAvailabilityAndNumber:", list);
+		
 		return list;
 	}
 	
