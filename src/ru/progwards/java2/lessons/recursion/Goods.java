@@ -24,7 +24,6 @@ public class Goods {
 	
 	@Override
 	public String toString() {
-		
 		return 	"name: " + name +
 						", number: " + number +
 						", available: " + available +
