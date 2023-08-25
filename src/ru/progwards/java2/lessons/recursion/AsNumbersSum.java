@@ -1,9 +1,11 @@
 package ru.progwards.java2.lessons.recursion;
 
 public class AsNumbersSum {
+	
 	public static String asNumbersSum(int number) {
 		return number + findCombination(number - 1, 1, "");
 	}
+	
 	public static String findCombination(int N, int i, String str) {
 			String res = "";
 			if (N <= 0) {

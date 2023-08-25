@@ -6,6 +6,7 @@ import java.util.List;
 import java.util.TreeSet;
 
 public class HanoiTower {
+	
 	int size;
 	int pos;
 	int fromRod;
