@@ -3,6 +3,7 @@ package ru.progwards.java2.lessons.generics;
 import java.util.Arrays;
 
 public class DynamicArray<T> {
+	
 	private T[] array;
 	private int count;
 	
@@ -13,13 +14,8 @@ public class DynamicArray<T> {
 	
 	public void add(T t){
 		array[count++] = t;
-		//System.out.println("arr-0: " + Arrays.toString(array));
 		T[] copyArray = (T[])new Object[count * 2];
-		//System.out.println("copyAr: " + Arrays.toString(copyArray));
 		array = Arrays.copyOf(array, copyArray.length);
-		//System.out.println("arr-1: " + Arrays.toString(array));
-		//array[array.length - 1] = t;
-		//System.out.println("arr-2: " + Arrays.toString(array));
 	}
 	
 	public void insert(int pos, T t){
@@ -29,18 +25,10 @@ public class DynamicArray<T> {
 		else
 			arrLength = pos + 1;
 		T[] copyArray = (T[])new Object[arrLength];
-		//System.out.println("copyAr-0: " + Arrays.toString(copyArray));
 		array  = Arrays.copyOf(array, copyArray.length + 1);
-		//System.out.println("arr-1: " + Arrays.toString(array));
-		//System.out.println("copyAr-1: " + Arrays.toString(copyArray));
 		System.arraycopy(array, pos, copyArray, pos + 1, arrLength - pos - 1);
-		//System.out.println("arr-2: " + Arrays.toString(array));
-		//System.out.println("copyAr-2: " + Arrays.toString(copyArray));
 		System.arraycopy(copyArray, pos, array, pos, copyArray.length - pos);
-		//System.out.println("arr-3: " + Arrays.toString(array));
-		//System.out.println("copyAr-3: " + Arrays.toString(copyArray));
 		array[pos] = t;
-		//System.out.println("arr-4: " + Arrays.toString(array));
 	}
 	
 	public void remove(int pos){
@@ -76,23 +64,22 @@ public class DynamicArray<T> {
 		ints.add(5);
 		ints.add(4);
 		System.out.println(Arrays.toString(ints.array));
-		System.out.println(ints.size());
 		ints.insert(0, 10);
 		System.out.println(Arrays.toString(ints.array));
-		System.out.println(ints.size());
 		ints.remove(0);
 		System.out.println(Arrays.toString(ints.array));
 		System.out.println(ints.size());
 		System.out.println(ints.get(2));
-		DynamicArray<String> str = new DynamicArray<>();
-		str.add("B");
-		str.add("C");
-		str.add("D");
-		System.out.println(Arrays.toString(str.array));
-		str.insert(0, "A");
-		System.out.println(Arrays.toString(str.array));
-		str.remove(2);
-		System.out.println(Arrays.toString(str.array));
-		System.out.println(str.get(2));
+		DynamicArray<String> strings = new DynamicArray<>();
+		strings.add("B");
+		strings.add("C");
+		strings.add("D");
+		System.out.println(Arrays.toString(strings.array));
+		strings.insert(0, "A");
+		System.out.println(Arrays.toString(strings.array));
+		strings.remove(2);
+		System.out.println(Arrays.toString(strings.array));
+		System.out.println(strings.size());
+		System.out.println(strings.get(2));
 	}
 }
