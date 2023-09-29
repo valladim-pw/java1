@@ -29,14 +29,12 @@ public class FruitBox<T extends Fruit & Serializable> extends ArrayList<T> {
 		return boxWeight;
 	}
 	
-	public void moveTo(FruitBox box) {
+	public void moveTo(FruitBox box) throws UnsupportedOperationException{
 		if(box.getType().equals(this.getType())) {
 			box.addAll(this);
 			this.removeAll(this);
 		}	else {
-			UnsupportedOperationException e =
-							new UnsupportedOperationException(this.getType() + " incompatible " + box.getType());
-			System.out.println(e);
+			throw new UnsupportedOperationException("Коробки разных типов");
 		}
 	}
 	

@@ -14,8 +14,10 @@ public class DynamicArray<T> {
 	
 	public void add(T t){
 		array[count++] = t;
-		T[] copyArray = (T[])new Object[count * 2];
-		array = Arrays.copyOf(array, copyArray.length);
+		if(count == array.length) {
+			T[] copyArray = (T[])new Object[size() * 2];
+			array = Arrays.copyOf(array, copyArray.length);
+		}
 	}
 	
 	public void insert(int pos, T t){
