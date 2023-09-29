@@ -60,6 +60,7 @@ public class DynamicArray<T> {
 	}
 	
 	public static void main(String[] args) {
+		
 		DynamicArray<Integer> ints = new DynamicArray<>();
 		System.out.println(ints.size());
 		ints.add(3);

@@ -4,7 +4,6 @@ import java.io.Serializable;
 import java.util.ArrayList;
 
 public class FruitBox<T extends Fruit & Serializable> extends ArrayList<T> {
-	
 	private String type = "undefine";
 	
 	public FruitBox() {

@@ -3,6 +3,7 @@ package ru.progwards.java2.lessons.generics;
 import java.util.Arrays;
 
 public class ArraySort {
+	
 	public static<T extends Comparable> void sort(T[] arr) {
 		if(arr == null || arr.length == 0) {
 			return;
