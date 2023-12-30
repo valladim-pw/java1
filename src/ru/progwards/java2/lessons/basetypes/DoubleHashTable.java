@@ -258,7 +258,6 @@ class DoubleHashTable<K, V> implements UtilityFunctions, Iterable<V> {
 				iter.remove();
 				size--;
 				removeCount++;
-				break;
 			}
 		}
 	}
@@ -275,7 +274,7 @@ class DoubleHashTable<K, V> implements UtilityFunctions, Iterable<V> {
 	}
 	
 	public void displayTable() {
-		System.out.println("display********");
+		System.out.println("display table********");
 		HashItemList<HashItem<K, V>>[] pTable = new HashItemList[capacity];
 		for(int i = 0; i < pTable.length; i++) {
 			pTable[i] = new HashItemList<>(i);
@@ -319,24 +318,33 @@ class DoubleHashTable<K, V> implements UtilityFunctions, Iterable<V> {
 		for(int i = 0; i < strs.length; i++) {
 			dht.add(strs[i], i * 2);
 		}
-		
+		System.out.println("......create hash table.........................");
 		dht.displayTable();
+		
 		dht.remove("sapien.");
 		dht.remove("arcu");
-		dht.remove("pretium.");
+		dht.remove("nec");
 		dht.remove("vitae");
+		System.out.println("......after remove.........................");
+		dht.displayTable();
 		
-		System.out.println("after remove.........................");
+		dht.add("ADD1", 1000);
+		dht.add("ADD2", 1000);
+		dht.add("ADD3", 1000);
+		dht.add("ADD4", 1000);
+		dht.add("ADD5", 1000);
+		System.out.println("......add after remove.........................");
 		dht.displayTable();
-		dht.add("vitae", 1000);
-		dht.add("sapien.", 1000);
-		dht.add("arcu", 1000);
-		dht.add("pretium.", 1000);
-		dht.add("pretium2.", 3000);
+		
+		
+		dht.add("REHASH", 3000);
+		System.out.println("......create new rehash table.........................");
 		dht.displayTable();
-		dht.change("pretium2.", "change");
-		System.out.println("after change.........................");
+		
+		dht.change("REHASH", "CHANGE");
+		System.out.println("......after change.........................");
 		dht.displayTable();
+		
 		int[] ints = new Random().ints(18, 0, 125).toArray();
 //		for(int i = 0; i < ints.length; i++) {
 //			dht.add(ints[i], strs[i]);
