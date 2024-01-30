@@ -26,7 +26,7 @@ public class DIntArray {
 	}
 	public void add(int num){
 		int[] copyIntegers = new int[integers.length + 1];
-		integers  = Arrays. copyOf(integers, copyIntegers.length);
+		integers  = Arrays.copyOf(integers, copyIntegers.length);
 		integers[integers.length - 1] = num;
 	}
 	public void atInsert(int pos, int num){

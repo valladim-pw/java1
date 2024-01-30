@@ -6,6 +6,7 @@ import java.util.function.Predicate;
 import java.util.stream.Collectors;
 
 public class GoodsWithLambda {
+	
 	List<Goods> goods = new ArrayList<>();
 	
 	public GoodsWithLambda(){}

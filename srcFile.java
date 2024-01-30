@@ -8,14 +8,14 @@ public class Line {
 	
 	public Line() {}
 	
-	public Line(long lineNumber, String line) {
-		this.lineNumber = lineNumber;
-		this.line = line;
-	}
-	
 	enum Sign {
 		PLUS,
 		MINUS
+	}
+	
+	public Line(long lineNumber, String line) {
+		this.lineNumber = lineNumber;
+		this.line = line;
 	}
 	
 	public void setSign(String signValue) {

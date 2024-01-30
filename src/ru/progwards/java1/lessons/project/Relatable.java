@@ -185,6 +185,9 @@ public interface Relatable {
 		
 		if(patchLine.hasEnd()) {
 			patchLine.getSrcLine().setEnd(".ed.");
+			
+			
+			
 			patchLine.getPushLine().setEnd(".ed.");
 		}
 	}
@@ -194,6 +197,7 @@ public interface Relatable {
 		if(!patchLn.getSrcLine().hasEmpty()) {
 			if(patchLn.getSrcLine().hasSign())
 				processList.add(patchLn.getPushLine());
+			
 			else
 				processList.add(patchLn.getSrcLine());
 		} else

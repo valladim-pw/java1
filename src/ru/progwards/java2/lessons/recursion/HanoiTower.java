@@ -1,9 +1,6 @@
 package ru.progwards.java2.lessons.recursion;
 
-import java.util.ArrayList;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.TreeSet;
+import java.util.*;
 
 public class HanoiTower {
 	
@@ -115,7 +112,7 @@ public class HanoiTower {
 	}
 	
 	public static void main(String[] args) {
-		HanoiTower tower = new HanoiTower(5, 0);
+		HanoiTower tower = new HanoiTower(4, 0);
 		tower.move(0, 1);
 	}
 }

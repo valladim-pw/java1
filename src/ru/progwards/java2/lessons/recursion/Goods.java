@@ -4,6 +4,7 @@ import java.time.*;
 import java.time.format.DateTimeFormatter;
 
 public class Goods {
+	
 	String name;
 	String number;
 	int available;
