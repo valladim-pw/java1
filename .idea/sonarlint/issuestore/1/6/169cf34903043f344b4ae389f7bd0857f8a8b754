@@ -1,0 +1,17 @@
+
+•
+java:S21599"zRemove this call to "equals"; comparisons against null always return false; consider using '== null' to check for nullity.(Ï‚õ“øÿÿÿÿ
+N	java:S106G"9Replace this use of System.out or System.err by a logger.(Ø«Î’
+S	java:S106J"9Replace this use of System.out or System.err by a logger.(‹Áýšøÿÿÿÿ
+U	java:S106U"9Replace this use of System.out or System.err by a logger.(‹µüù8–Ÿ›Ñª1
+N	java:S106T"9Replace this use of System.out or System.err by a logger.(ˆ±Êà
+S	java:S106V"9Replace this use of System.out or System.err by a logger.(‹½úáþÿÿÿÿ
+R
+java:S25899"7Remove this expression which always evaluates to "true"(Ï‚õ“øÿÿÿÿ
+M	java:S106K"9Replace this use of System.out or System.err by a logger.(ß°„
+
+S	java:S106A"9Replace this use of System.out or System.err by a logger.(‹Áýšøÿÿÿÿ
+N	java:S106E"9Replace this use of System.out or System.err by a logger.(Ø«Î’
+N	java:S106P"9Replace this use of System.out or System.err by a logger.(ˆ±Êà
+N	java:S106I"9Replace this use of System.out or System.err by a logger.(Ø«Î’
+N	java:S106R"9Replace this use of System.out or System.err by a logger.(ˆ±Êà

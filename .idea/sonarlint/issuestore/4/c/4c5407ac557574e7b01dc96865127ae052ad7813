@@ -1,0 +1,51 @@
+
+V	java:S106Õ"9Replace this use of System.out or System.err by a logger.(ÒÇ—ÿ8¬ÓóØË1
+L
+java:S3740œ"/Provide the parametrized type for this generic.(¯é†}8…ŒØÖË1
+L
+java:S3740z"/Provide the parametrized type for this generic.(Š¾8…ŒØÖË1
+Y	java:S125İ"<This block of commented-out lines of code should be removed.(½ë„Ä8…ŒØÖË1
+t
+java:S2737u"WAdd logic to this catch clause or eliminate it and rethrow the exception automatically.(ö™û8…ŒØÖË1
+Z
+java:S4977"=Rename "K" which hides a type parameter from the outer scope.(Â­ü8…ŒØÖË1
+V	java:S106Á"9Replace this use of System.out or System.err by a logger.(ğ¥êÊ8¬ÓóØË1
+M
+java:S3740½"/Provide the parametrized type for this generic.(ÙÚ¹î8¬ÓóØË1
+V	java:S106•"9Replace this use of System.out or System.err by a logger.(ÙƒÉ¨8¬ÓóØË1
+M
+java:S3740š"/Provide the parametrized type for this generic.(°‡Öá8…ŒØÖË1
+M
+java:S3740½"/Provide the parametrized type for this generic.(ÙÚ¹î8¬ÓóØË1
+v	java:S135 "YReduce the total number of break and continue statements in this loop to use at most one.(ñøç»8¬ÓóØË1
+s
+java:S1104F"QMake index a static final constant or non-public and provide accessors if needed.(×´úÕúÿÿÿÿ8…ŒØÖË1
+Z
+java:S4977"=Rename "V" which hides a type parameter from the outer scope.(Â­ü8…ŒØÖË1
+[	java:S106Ù"9Replace this use of System.out or System.err by a logger.(»²”êúÿÿÿÿ8¬ÓóØË1
+[	java:S106Ğ"9Replace this use of System.out or System.err by a logger.(È±øÑøÿÿÿÿ8¬ÓóØË1
+M
+java:S2160E"+Override the "equals" method in this class.(Š¿ñİşÿÿÿÿ8…ŒØÖË1
+Z
+java:S4977"=Rename "K" which hides a type parameter from the outer scope.(“õŠ«8…ŒØÖË1
+_
+java:S4977"=Rename "K" which hides a type parameter from the outer scope.(¡·°èûÿÿÿÿ8…ŒØÖË1
+[	java:S106­"9Replace this use of System.out or System.err by a logger.(‚é€Şûÿÿÿÿ8¬ÓóØË1
+R
+java:S1066"/Merge this if statement with the enclosing one.(¶ß’ıüÿÿÿÿ8¬ÓóØË1
+[	java:S106È"9Replace this use of System.out or System.err by a logger.(‰ı¸˜ıÿÿÿÿ8¬ÓóØË1
+o
+java:S1104‚"QMake table a static final constant or non-public and provide accessors if needed.(íèÌ8…ŒØÖË1
+R
+java:S1066õ"/Merge this if statement with the enclosing one.(ˆ”­Üıÿÿÿÿ8…ŒØÖË1
+U
+java:S2589Û"7Remove this expression which always evaluates to "true"(ŒëãÃ8…ŒØÖË1
+G
+java:S1481Ü")Remove this unused "ints" local variable.(Œşä8…ŒØÖË1
+k
+java:S2272d"NAdd a "NoSuchElementException" for iteration beyond the end of the collection.(ÓÔç8…ŒØÖË1
+c
+java:S1126`"AReplace this if-then-else statement by a single return statement.(ÓàÌûÿÿÿÿ8…ŒØÖË1
+V	java:S106²"9Replace this use of System.out or System.err by a logger.(åéæ8¬ÓóØË1
+\
+java:S1161q":Add the "@Override" annotation above this method signature(¦³üëûÿÿÿÿ8…ŒØÖË1

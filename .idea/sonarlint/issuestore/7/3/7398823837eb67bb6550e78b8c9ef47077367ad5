@@ -1,0 +1,8 @@
+
+\	java:S112’"FDefine and throw a dedicated exception instead of using a generic one.(«ä­
+a	java:S112®"FDefine and throw a dedicated exception instead of using a generic one.(¯åÕøÿÿÿÿ
+\
+java:S1126O"AReplace this if-then-else statement by a single return statement.(ãÃªøÿÿÿÿ
+h
+java:S3776"RRefactor this method to reduce its Cognitive Complexity from 48 to the 15 allowed.(É”á›
+T	java:S106è"9Replace this use of System.out or System.err by a logger.(ñ—¸½úÿÿÿÿ

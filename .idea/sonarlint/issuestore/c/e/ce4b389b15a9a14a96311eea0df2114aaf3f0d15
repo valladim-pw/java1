@@ -1,0 +1,31 @@
+
+E
+java:S3740"/Provide the parametrized type for this generic.(çİ©ë
+F
+java:S2160"+Override the "equals" method in this class.(Œ¡í½ûÿÿÿÿ
+S	java:S106I"9Replace this use of System.out or System.err by a logger.(Ë¯‘ƒıÿÿÿÿ
+D
+java:S3740("/Provide the parametrized type for this generic.(íû€L
+N	java:S1064"9Replace this use of System.out or System.err by a logger.(¼‹ßî
+Z	java:S106:"9Replace this use of System.out or System.err by a logger.(Æ§ä•ÿÿÿÿÿ8Ş¦×Ñª1
+S	java:S106B"9Replace this use of System.out or System.err by a logger.(·÷äæıÿÿÿÿ
+S	java:S106;"9Replace this use of System.out or System.err by a logger.(ŠŠœÙüÿÿÿÿ
+U	java:S106L"9Replace this use of System.out or System.err by a logger.(¬òÊÿ8—ô³Ñª1
+U	java:S106P"9Replace this use of System.out or System.err by a logger.(àºëĞ8ÄÛÑª1
+t
+java:S22936"YReplace the type specification in this constructor call with the diamond operator ("<>").(İ ”Éıÿÿÿÿ
+Z	java:S106Q"9Replace this use of System.out or System.err by a logger.(Æ§ä•ÿÿÿÿÿ8òÃÉÑª1
+t
+java:S2293="YReplace the type specification in this constructor call with the diamond operator ("<>").(šµåÓøÿÿÿÿ
+U	java:S106A"9Replace this use of System.out or System.err by a logger.(êƒ’Î8Í•ØÑª1
+n
+java:S2293D"YReplace the type specification in this constructor call with the diamond operator ("<>").(ã‡
+Z	java:S106H"9Replace this use of System.out or System.err by a logger.(Úò¨—ùÿÿÿÿ8¿‰ÙÑª1
+U
+java:S1161":Add the "@Override" annotation above this method signature(ü±±Ûıÿÿÿÿ
+t
+java:S2293/"YReplace the type specification in this constructor call with the diamond operator ("<>").(¹¤ŒÒüÿÿÿÿ
+J
+java:S2114""(Remove or correct this "removeAll" call.(îáÈúıÿÿÿÿ8úÙ¦…®1
+N	java:S106K"9Replace this use of System.out or System.err by a logger.(äàğµ
+U	java:S1063"9Replace this use of System.out or System.err by a logger.(àºëĞ8²âÕÑª1

@@ -1,0 +1,38 @@
+
+Š
+java:S1319"tThe type of the "listInfo" object should be an interface such as "List" rather than the implementation "LinkedList".(·Ú©é
+Š
+java:S1319"tThe type of the "listTest" object should be an interface such as "List" rather than the implementation "LinkedList".(üìÛß
+D
+java:S1444".Make this "public static listInfo" field final(·Ú©é
+D
+java:S1444".Make this "public static listTest" field final(üìÛß
+D
+java:S1444")Make this "public static num" field final(ó”ÆÖüÿÿÿÿ
+D
+java:S1444	")Make this "public static sum" field final(ñÂ±£ýÿÿÿÿ
+E
+java:S3740"/Provide the parametrized type for this generic.(äº
+E
+java:S10665"/Merge this if statement with the enclosing one.(á…õ•
+>
+java:S1604{"(Make this anonymous inner class a lambda(èì×´
+j
+java:S1104"TMake listInfo a static final constant or non-public and provide accessors if needed.(·Ú©é
+j
+java:S1104"TMake listTest a static final constant or non-public and provide accessors if needed.(üìÛß
+j
+java:S1104"OMake num a static final constant or non-public and provide accessors if needed.(ó”ÆÖüÿÿÿÿ
+j
+java:S1104	"OMake sum a static final constant or non-public and provide accessors if needed.(ñÂ±£ýÿÿÿÿ
+3
+java:S2386"Make this member "protected".(·Ú©é
+3
+java:S2386"Make this member "protected".(üìÛß
+m
+java:S3776%"RRefactor this method to reduce its Cognitive Complexity from 60 to the 15 allowed.(•¬«¹þÿÿÿÿ
+m
+java:S3776h"RRefactor this method to reduce its Cognitive Complexity from 16 to the 15 allowed.(³©¯øÿÿÿÿÿ
+O	java:S106ƒ"9Replace this use of System.out or System.err by a logger.(èâÌ…
+T	java:S106…"9Replace this use of System.out or System.err by a logger.(¾šÓœúÿÿÿÿ
+W	java:S125³"<This block of commented-out lines of code should be removed.(Õ¯Ç½üÿÿÿÿ

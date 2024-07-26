@@ -1,0 +1,11 @@
+
+N	java:S106Y"9Replace this use of System.out or System.err by a logger.(Þòœµ
+T
+java:S4973"9Use the "equals" method if value comparison was intended.(ó™·ßúÿÿÿÿ
+t
+java:S3012T"YUse "Arrays.copyOf", "Arrays.asList", "Collections.addAll" or "System.arraycopy" instead.(¢ö¢×ÿÿÿÿÿ
+N	java:S106X"9Replace this use of System.out or System.err by a logger.(¯í÷ô
+o
+java:S3012O"YUse "Arrays.copyOf", "Arrays.asList", "Collections.addAll" or "System.arraycopy" instead.(ëˆ±‘
+M	java:S106W"9Replace this use of System.out or System.err by a logger.(«üãc
+S	java:S106V"9Replace this use of System.out or System.err by a logger.(ú›½œùÿÿÿÿ

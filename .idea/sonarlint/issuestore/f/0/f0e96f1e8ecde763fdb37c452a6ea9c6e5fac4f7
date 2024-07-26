@@ -1,0 +1,35 @@
+
+f
+java:S1104"PMake num1 a static final constant or non-public and provide accessors if needed.(®©ğë
+e
+java:S1104"PMake num2 a static final constant or non-public and provide accessors if needed.(Æğ‘"
+j
+java:S11049"TMake expected a static final constant or non-public and provide accessors if needed.(Ş–Ãß
+f
+java:S1104["PMake num1 a static final constant or non-public and provide accessors if needed.(®©ğë
+e
+java:S1104\"PMake num2 a static final constant or non-public and provide accessors if needed.(Æğ‘"
+f
+java:S11047"PMake num1 a static final constant or non-public and provide accessors if needed.(®©ğë
+j
+java:S1104"TMake expected a static final constant or non-public and provide accessors if needed.(Ş–Ãß
+f
+java:S1104"PMake num1 a static final constant or non-public and provide accessors if needed.(®©ğë
+f
+java:S1104€"PMake num2 a static final constant or non-public and provide accessors if needed.(Æğ‘"
+N
+java:S3878g"8Remove this array creation and simply pass the elements.(Ğş´ã
+N
+java:S3878C"8Remove this array creation and simply pass the elements.(Ğş´ã
+j
+java:S1104]"TMake expected a static final constant or non-public and provide accessors if needed.(Ş–Ãß
+k
+java:S1104"TMake expected a static final constant or non-public and provide accessors if needed.(Ş–Ãß
+N
+java:S3878"8Remove this array creation and simply pass the elements.(Ğş´ã
+e
+java:S11048"PMake num2 a static final constant or non-public and provide accessors if needed.(Æğ‘"
+O
+java:S3878‹"8Remove this array creation and simply pass the elements.(Ğş´ã
+P
+java:S1118":Add a private constructor to hide the implicit public one.(“Ùôã

@@ -1,0 +1,19 @@
+
+n
+java:S1104"SMake orderId a static final constant or non-public and provide accessors if needed.(ÓùßÄúÿÿÿÿ
+C
+java:S1604"(Make this anonymous inner class a lambda(©é €şÿÿÿÿ
+q
+java:S1104	"VMake customerId a static final constant or non-public and provide accessors if needed.(«Õ„úÿÿÿÿ
+m
+java:S1104"RMake shopId a static final constant or non-public and provide accessors if needed.(øÒ’öúÿÿÿÿ
+l
+java:S1104"QMake items a static final constant or non-public and provide accessors if needed.(Ü§êÕÿÿÿÿÿ
+P
+java:S1141&"5Extract this nested try block into a separate method.(¡»¢üùÿÿÿÿ
+j
+java:S1104"OMake sum a static final constant or non-public and provide accessors if needed.(í’Ìóÿÿÿÿÿ
+j
+java:S1104
+"TMake datetime a static final constant or non-public and provide accessors if needed.(ŞÁÔè
+Q	java:S125"<This block of commented-out lines of code should be removed.(›±Şë

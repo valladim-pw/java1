@@ -1,0 +1,15 @@
+
+S	java:S106"9Replace this use of System.out or System.err by a logger.(’è¦²üÿÿÿÿ
+S	java:S106"9Replace this use of System.out or System.err by a logger.(©¢›¥şÿÿÿÿ
+f
+java:S1206s"PThis class overrides "equals()" and should therefore also override "hashCode()".(Ú¶±ª
+S	java:S106"9Replace this use of System.out or System.err by a logger.(“ÑÄÊùÿÿÿÿ
+S	java:S106
+"9Replace this use of System.out or System.err by a logger.(‘÷Ë›ûÿÿÿÿ
+
+java:S4165F"fRemove this useless assignment; "foodKind" already holds the assigned value along all execution paths.(àö÷»üÿÿÿÿ
+V
+java:S1126w"AReplace this if-then-else statement by a single return statement.(°¹©n
+N	java:S106"9Replace this use of System.out or System.err by a logger.(Ü»í¢
+~
+java:S41658"hRemove this useless assignment; "animalKind" already holds the assigned value along all execution paths.(´Ù÷¨
