@@ -1,0 +1,28 @@
+1) Tue Oct 29 20:38:37 MSK 2024
+Test Process:
+ >>SORT_BY_ADDRESS..1 >>SORT_BY_SIZE..1 >>SORT_BY_TWO_INDEXES..1 >>PERIODIC_COMPACT..1 >>PERIODIC_DEFRAG..1
+
+Performance Leaderboard 
+(Strategy repeat: 1, Heap max size: 100735283, Heap min size: 50000, Defrag periodically coeff: 60, Number of iterations in free cycle: 5):
+
+1. Defrag Periodically - Average Time: 1960 ms (Allocate Time: 255 ms, Free Time: 1621 ms), Average Allocate Cycles: 221743, Average Free Cycles: 8883
+2. Sort by Size - Average Time: 2405 ms (Allocate Time: 533 ms, Free Time: 1790 ms), Average Allocate Cycles: 222360, Average Free Cycles: 8722
+3. Compact Periodically - Average Time: 2643 ms (Allocate Time: 994 ms, Free Time: 1570 ms), Average Allocate Cycles: 223207, Average Free Cycles: 8851
+4. Sort by Address - Average Time: 4100 ms (Allocate Time: 2081 ms, Free Time: 1835 ms), Average Allocate Cycles: 222704, Average Free Cycles: 8699
+5. Sort by Two Indexes - Average Time: 7105 ms (Allocate Time: 5493 ms, Free Time: 1564 ms), Average Allocate Cycles: 221982, Average Free Cycles: 8754
+
+
+2) Tue Oct 29 20:41:06 MSK 2024
+Test Process:
+ >>SORT_BY_ADDRESS..1..2 >>SORT_BY_SIZE..1..2 >>SORT_BY_TWO_INDEXES..1..2 >>PERIODIC_COMPACT..1..2 >>PERIODIC_DEFRAG..1..2
+
+Performance Leaderboard 
+(Strategy repeat: 2, Heap max size: 150735283, Heap min size: 50000, Defrag periodically coeff: 60, Number of iterations in free cycle: 3):
+
+1. Defrag Periodically - Average Time: 2122 ms (Allocate Time: 184 ms, Free Time: 1881 ms), Average Allocate Cycles: 302360, Average Free Cycles: 12038
+2. Sort by Size - Average Time: 2260 ms (Allocate Time: 209 ms, Free Time: 1977 ms), Average Allocate Cycles: 303226, Average Free Cycles: 12260
+3. Sort by Two Indexes - Average Time: 2571 ms (Allocate Time: 584 ms, Free Time: 1929 ms), Average Allocate Cycles: 306479, Average Free Cycles: 12268
+4. Compact Periodically - Average Time: 2670 ms (Allocate Time: 623 ms, Free Time: 1951 ms), Average Allocate Cycles: 302647, Average Free Cycles: 12047
+5. Sort by Address - Average Time: 2766 ms (Allocate Time: 391 ms, Free Time: 2232 ms), Average Allocate Cycles: 301286, Average Free Cycles: 12092
+
+

@@ -1,0 +1,1471 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AnalysisUIOptions">
+    <option name="SCOPE_TYPE" value="8" />
+    <option name="CUSTOM_SCOPE_NAME" value="Current File" />
+  </component>
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="a7918ae5-0d46-40a8-95cf-741fbc7b2962" name="Default Changelist" comment="builders step2">
+      <change afterPath="$PROJECT_DIR$/src/ru/progwards/java2/lessons/gc/Heap.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/ru/progwards/java2/lessons/gc/HeapTest.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ErrorTreeViewConfiguration">
+    <option name="hideWarnings" value="true" />
+    <option name="HIDE_WARNINGS" value="true" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ru/progwards/java2/lessons/basetypes/DoubleHashTable.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="682">
+              <caret line="324" column="23" selection-start-line="324" selection-start-column="23" selection-end-line="324" selection-end-column="23" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ru/progwards/java1/lessons/files/OrderItem.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="42">
+              <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/ru/progwards/java1/lessons/files/Order.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="462">
+              <caret line="28" column="89" selection-start-line="28" selection-start-column="46" selection-end-line="28" selection-end-column="89" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ru/progwards/java1/lessons/files/OrderProcessor.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="231">
+              <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+              <folding>
+                <element signature="e#410#411#0" expanded="true" />
+                <element signature="e#438#439#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/ru/progwards/java2/lessons/basetypes/HashValue.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="63">
+              <caret line="3" column="16" selection-start-line="3" selection-start-column="16" selection-end-line="3" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Interface" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="FindInProjectRecents">
+    <findStrings>
+      <find>1</find>
+      <find>range3</find>
+      <find>method</find>
+      <find>time</find>
+      <find>priQueue</find>
+      <find>addOrder</find>
+      <find>list</find>
+      <find>add</find>
+      <find>queue</find>
+      <find>orderQueue</find>
+    </findStrings>
+    <replaceStrings>
+      <replace>2</replace>
+      <replace>3</replace>
+      <replace>sumRange</replace>
+      <replace>time</replace>
+      <replace>method</replace>
+      <replace>arrayDeque</replace>
+      <replace>addNum</replace>
+      <replace>orderQueue</replace>
+      <replace>order</replace>
+      <replace>list</replace>
+      <replace>ordQ</replace>
+      <replace>queue</replace>
+    </replaceStrings>
+  </component>
+  <component name="Git.Settings">
+    <option name="PUSH_AUTO_UPDATE" value="true" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+    <option name="PUSH_TAGS">
+      <GitPushTagMode />
+    </option>
+  </component>
+  <component name="GroovyConsoleState">
+    <option name="list">
+      <list>
+        <Entry>
+          <option name="moduleName" value="00_homework" />
+          <option name="url" value="file://$APPLICATION_CONFIG_DIR$/consoles/groovy/groovy_console_1.groovy" />
+        </Entry>
+      </list>
+    </option>
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/src/ru/progwards/java1/lessons/project/noUse.txt" />
+        <option value="$PROJECT_DIR$/PushFile.txt" />
+        <option value="$PROJECT_DIR$/inoutFile.txt" />
+        <option value="$PROJECT_DIR$/SourceFile.txt" />
+        <option value="$PROJECT_DIR$/SourceFile.java" />
+        <option value="$PROJECT_DIR$/PushFile1.java" />
+        <option value="$PROJECT_DIR$/PushFile2.java" />
+        <option value="$PROJECT_DIR$/src/ru/progwards/java1/lessons/test/Test1.java" />
+        <option value="$PROJECT_DIR$/SrcFileTemplate.txt" />
+        <option value="$PROJECT_DIR$/SrcFile.java" />
+        <option value="$PROJECT_DIR$/SrcFile.txt" />
+        <option value="$PROJECT_DIR$/src/ru/progwards/java1/lessons/project/Push.java" />
+        <option value="$PROJECT_DIR$/src/ru/progwards/java1/lessons/project/SourceFile.java" />
+        <option value="$PROJECT_DIR$/src/ru/progwards/java1/lessons/project/PushFile.java" />
+        <option value="$PROJECT_DIR$/PushFile2.txt" />
+        <option value="$PROJECT_DIR$/PushFile1.txt" />
+        <option value="$PROJECT_DIR$/srcFileCopy.txt" />
+        <option value="$PROJECT_DIR$/srcFile.txt" />
+        <option value="$PROJECT_DIR$/pushFile1.txt" />
+        <option value="$PROJECT_DIR$/src/ru/progwards/java1/lessons/project/AnchorLine.java" />
+        <option value="$PROJECT_DIR$/src/ru/progwards/java1/lessons/project/CompareLine.java" />
+        <option value="$PROJECT_DIR$/src/ru/progwards/java1/lessons/project/EmptyLine.java" />
+        <option value="$PROJECT_DIR$/src/ru/progwards/java1/lessons/project/Line.java" />
+        <option value="$PROJECT_DIR$/src/ru/progwards/java1/lessons/project/ProcessFile.java" />
+        <option value="$PROJECT_DIR$/src/ru/progwards/java1/lessons/project/SrcFileCurrent.java" />
+        <option value="$PROJECT_DIR$/src/ru/progwards/java1/lessons/project/Diff.java" />
+        <option value="$PROJECT_DIR$/src/ru/progwards/java1/lessons/project/Patch.java" />
+        <option value="$PROJECT_DIR$/src/ru/progwards/java1/lessons/files/Order.java" />
+        <option value="$PROJECT_DIR$/srcFile.java" />
+        <option value="$PROJECT_DIR$/src/ru/progwards/java1/lessons/bitsworld/CheckBit.java" />
+        <option value="$PROJECT_DIR$/src/ru/progwards/java2/lessons/Goods.java" />
+        <option value="$PROJECT_DIR$/src/ru/progwards/java2/lessons/GoodsWithLambda.java" />
+        <option value="$PROJECT_DIR$/src/ru/progwards/java1/lessons/project/Relatable.java" />
+        <option value="$PROJECT_DIR$/src/ru/progwards/java1/lessons/arrays/DIntArray.java" />
+        <option value="$PROJECT_DIR$/src/ru/progwards/java2/lessons/generics/HanoiTower.java" />
+        <option value="$PROJECT_DIR$/src/ru/progwards/java2/lessons/recursion/HanoiTower.java" />
+        <option value="$PROJECT_DIR$/src/ru/progwards/java2/lessons/recursion/GoodsWithLambda.java" />
+        <option value="$PROJECT_DIR$/src/ru/progwards/java2/lessons/recursion/Goods.java" />
+        <option value="$PROJECT_DIR$/src/ru/progwards/java2/lessons/recursion/AsNumbersSum.java" />
+        <option value="$PROJECT_DIR$/src/ru/progwards/java2/lessons/generics/ArraySort.java" />
+        <option value="$PROJECT_DIR$/src/ru/progwards/java2/lessons/generics/DynamicArray.java" />
+        <option value="$PROJECT_DIR$/src/ru/progwards/java2/lessons/generics/FruitBox.java" />
+        <option value="$PROJECT_DIR$/src/ru/progwards/java1/lessons/arrays/Eratosthenes.java" />
+        <option value="$PROJECT_DIR$/src/ru/progwards/java2/lessons/basetypes/BiDirList.java" />
+        <option value="$PROJECT_DIR$/src/ru/progwards/java2/lessons/basetypes/HashValue.java" />
+        <option value="$PROJECT_DIR$/src/ru/progwards/java2/lessons/basetypes/UtilityFunctions.java" />
+        <option value="$PROJECT_DIR$/src/ru/progwards/java2/lessons/basetypes/DoubleHashTable.java" />
+        <option value="$PROJECT_DIR$/src/ru/progwards/java2/lessons/Calculator.java" />
+        <option value="$PROJECT_DIR$/src/ru/progwards/java2/lessons/calculator/Calculator.java" />
+        <option value="$PROJECT_DIR$/src/ru/progwards/java2/lessons/tests/test/test.java" />
+        <option value="$PROJECT_DIR$/src/ru/progwards/java2/lessons/tests/test/calc/SimpleCalculatorTest.java" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="2" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 0
+}</component>
+  <component name="ProjectFrameBounds">
+    <option name="x" value="85" />
+    <option name="y" value="53" />
+    <option name="width" value="1470" />
+    <option name="height" value="942" />
+  </component>
+  <component name="ProjectId" id="2jn5GrIuG2zEaNhtBE2bnenDlJn" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="00_homework" type="b2602c69:ProjectViewProjectNode" />
+              <item name="00_homework" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="00_homework" type="b2602c69:ProjectViewProjectNode" />
+              <item name="00_homework" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="00_homework" type="b2602c69:ProjectViewProjectNode" />
+              <item name="00_homework" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="progwards" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="00_homework" type="b2602c69:ProjectViewProjectNode" />
+              <item name="00_homework" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="progwards" type="462c0819:PsiDirectoryNode" />
+              <item name="lessons" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="00_homework" type="b2602c69:ProjectViewProjectNode" />
+              <item name="00_homework" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="progwards" type="462c0819:PsiDirectoryNode" />
+              <item name="lessons" type="462c0819:PsiDirectoryNode" />
+              <item name="files" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="00_homework" type="b2602c69:ProjectViewProjectNode" />
+              <item name="00_homework" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="progwards" type="462c0819:PsiDirectoryNode" />
+              <item name="lessons" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="00_homework" type="b2602c69:ProjectViewProjectNode" />
+              <item name="00_homework" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="progwards" type="462c0819:PsiDirectoryNode" />
+              <item name="lessons" type="462c0819:PsiDirectoryNode" />
+              <item name="basetypes" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="00_homework" type="b2602c69:ProjectViewProjectNode" />
+              <item name="00_homework" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="progwards" type="462c0819:PsiDirectoryNode" />
+              <item name="lessons" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="00_homework" type="b2602c69:ProjectViewProjectNode" />
+              <item name="00_homework" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="progwards" type="462c0819:PsiDirectoryNode" />
+              <item name="lessons" type="462c0819:PsiDirectoryNode" />
+              <item name="tests" type="462c0819:PsiDirectoryNode" />
+              <item name="calc" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+      <pane id="PackagesPane" />
+    </panes>
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "Application.Binary.executor": "Run",
+    "Application.CheckBit.executor": "Debug",
+    "Application.HeapTest.executor": "Run",
+    "Maven.MavenCalculator [clean].executor": "Run",
+    "Maven.MavenCalculator [install].executor": "Run",
+    "Maven.email-maven-plugin [install].executor": "Run",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
+    "SONARLINT_PRECOMMIT_ANALYSIS": "false",
+    "git-widget-placeholder": "master",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "D:/JAVAProgwards/1.00_JavaBase0121_lessons/00_homework",
+    "project.structure.last.edited": "Libraries",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.3345164",
+    "settings.editor.selected.configurable": "reference.settings.project.maven.repository.indices"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\JAVAProgwards\1.00_JavaBase0121_lessons\00_homework\src\ru\progwards\java2\lessons\builders" />
+      <recent name="D:\JAVAProgwards\1.00_JavaBase0121_lessons\00_homework\src\ru\progwards\java2\lessons\generics" />
+      <recent name="D:\JAVAProgwards\1.00_JavaBase0121_lessons\00_homework\src\ru\progwards\java2\lessons\recursion" />
+      <recent name="D:\JAVAProgwards\1.00_JavaBase0121_lessons\00_homework\src\ru\progwards\java2\lessons" />
+      <recent name="D:\JAVAProgwards\lessons\00_homework" />
+    </key>
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="groovy.util.GroovyTestCase" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="D:\JAVAProgwards\lessons\00_homework" />
+    </key>
+    <key name="ExtractSuperBase.RECENT_KEYS">
+      <recent name="ru.progwards.java1.lessons.queues" />
+      <recent name="ru.progwards.java1.lessons.interfaces" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="ru.progwards.java1.lessons.interfaces" />
+    </key>
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="ru.progwards.java2.lessons.tests.test.calc" />
+      <recent name="ru.progwards.java2.lessons.tests.calc" />
+      <recent name="ru.progwards.java2.lessons.tests.test" />
+      <recent name="ru.progwards.java2.lessons.recursion" />
+      <recent name="ru.progwards.java1.lessons.project" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.HeapTest">
+    <configuration name="Binary" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ru.progwards.java1.lessons.bitsworld.Binary" />
+      <module name="00_homework" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.progwards.java1.lessons.bitsworld.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="CheckBit" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ru.progwards.java1.lessons.bitsworld.CheckBit" />
+      <module name="00_homework" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.progwards.java1.lessons.bitsworld.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DoubleHashTable" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ru.progwards.java2.lessons.basetypes.DoubleHashTable" />
+      <module name="00_homework" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.progwards.java2.lessons.basetypes.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Eratosthenes" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ru.progwards.java1.lessons.arrays.Eratosthenes" />
+      <module name="00_homework" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.progwards.java1.lessons.arrays.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="HeapTest" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="ru.progwards.java2.lessons.gc.HeapTest" />
+      <module name="00_homework" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="ru.progwards.java2.lessons.gc.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Application.HeapTest" />
+        <item itemvalue="Application.CheckBit" />
+        <item itemvalue="Application.Binary" />
+        <item itemvalue="Application.DoubleHashTable" />
+        <item itemvalue="Application.Eratosthenes" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="a7918ae5-0d46-40a8-95cf-741fbc7b2962" name="Default Changelist" comment="" />
+      <created>1612986262932</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1612986262932</updated>
+    </task>
+    <task id="LOCAL-00149" summary="files step48">
+      <created>1662470517975</created>
+      <option name="number" value="00149" />
+      <option name="presentableId" value="LOCAL-00149" />
+      <option name="project" value="LOCAL" />
+      <updated>1662470517975</updated>
+    </task>
+    <task id="LOCAL-00150" summary="files step49">
+      <created>1662481126341</created>
+      <option name="number" value="00150" />
+      <option name="presentableId" value="LOCAL-00150" />
+      <option name="project" value="LOCAL" />
+      <updated>1662481126341</updated>
+    </task>
+    <task id="LOCAL-00151" summary="files step50">
+      <created>1662482824656</created>
+      <option name="number" value="00151" />
+      <option name="presentableId" value="LOCAL-00151" />
+      <option name="project" value="LOCAL" />
+      <updated>1662482824657</updated>
+    </task>
+    <task id="LOCAL-00152" summary="files step51">
+      <created>1662487856501</created>
+      <option name="number" value="00152" />
+      <option name="presentableId" value="LOCAL-00152" />
+      <option name="project" value="LOCAL" />
+      <updated>1662487856501</updated>
+    </task>
+    <task id="LOCAL-00153" summary="files step52">
+      <created>1662490603292</created>
+      <option name="number" value="00153" />
+      <option name="presentableId" value="LOCAL-00153" />
+      <option name="project" value="LOCAL" />
+      <updated>1662490603292</updated>
+    </task>
+    <task id="LOCAL-00154" summary="files step53">
+      <created>1662492166260</created>
+      <option name="number" value="00154" />
+      <option name="presentableId" value="LOCAL-00154" />
+      <option name="project" value="LOCAL" />
+      <updated>1662492166260</updated>
+    </task>
+    <task id="LOCAL-00155" summary="files step54">
+      <created>1662564281521</created>
+      <option name="number" value="00155" />
+      <option name="presentableId" value="LOCAL-00155" />
+      <option name="project" value="LOCAL" />
+      <updated>1662564281521</updated>
+    </task>
+    <task id="LOCAL-00156" summary="files step55">
+      <created>1662565395500</created>
+      <option name="number" value="00156" />
+      <option name="presentableId" value="LOCAL-00156" />
+      <option name="project" value="LOCAL" />
+      <updated>1662565395500</updated>
+    </task>
+    <task id="LOCAL-00157" summary="files step56">
+      <created>1662566501567</created>
+      <option name="number" value="00157" />
+      <option name="presentableId" value="LOCAL-00157" />
+      <option name="project" value="LOCAL" />
+      <updated>1662566501567</updated>
+    </task>
+    <task id="LOCAL-00158" summary="files step57">
+      <created>1662567805550</created>
+      <option name="number" value="00158" />
+      <option name="presentableId" value="LOCAL-00158" />
+      <option name="project" value="LOCAL" />
+      <updated>1662567805550</updated>
+    </task>
+    <task id="LOCAL-00159" summary="files step58">
+      <created>1663312357386</created>
+      <option name="number" value="00159" />
+      <option name="presentableId" value="LOCAL-00159" />
+      <option name="project" value="LOCAL" />
+      <updated>1663312357387</updated>
+    </task>
+    <task id="LOCAL-00160" summary="arrays step23">
+      <created>1671319420373</created>
+      <option name="number" value="00160" />
+      <option name="presentableId" value="LOCAL-00160" />
+      <option name="project" value="LOCAL" />
+      <updated>1671319420374</updated>
+    </task>
+    <task id="LOCAL-00161" summary="arrays step24">
+      <created>1671319833084</created>
+      <option name="number" value="00161" />
+      <option name="presentableId" value="LOCAL-00161" />
+      <option name="project" value="LOCAL" />
+      <updated>1671319833084</updated>
+    </task>
+    <task id="LOCAL-00162" summary="files step57">
+      <created>1671475039659</created>
+      <option name="number" value="00162" />
+      <option name="presentableId" value="LOCAL-00162" />
+      <option name="project" value="LOCAL" />
+      <updated>1671475039659</updated>
+    </task>
+    <task id="LOCAL-00163" summary="arrays step58">
+      <created>1671704009226</created>
+      <option name="number" value="00163" />
+      <option name="presentableId" value="LOCAL-00163" />
+      <option name="project" value="LOCAL" />
+      <updated>1671704009226</updated>
+    </task>
+    <task id="LOCAL-00164" summary="arrays step59">
+      <created>1671889591996</created>
+      <option name="number" value="00164" />
+      <option name="presentableId" value="LOCAL-00164" />
+      <option name="project" value="LOCAL" />
+      <updated>1671889591996</updated>
+    </task>
+    <task id="LOCAL-00165" summary="arrays step60">
+      <created>1671893352619</created>
+      <option name="number" value="00165" />
+      <option name="presentableId" value="LOCAL-00165" />
+      <option name="project" value="LOCAL" />
+      <updated>1671893352619</updated>
+    </task>
+    <task id="LOCAL-00166" summary="arrays step61">
+      <created>1671893552225</created>
+      <option name="number" value="00166" />
+      <option name="presentableId" value="LOCAL-00166" />
+      <option name="project" value="LOCAL" />
+      <updated>1671893552225</updated>
+    </task>
+    <task id="LOCAL-00167" summary="arrays step62">
+      <created>1672175803914</created>
+      <option name="number" value="00167" />
+      <option name="presentableId" value="LOCAL-00167" />
+      <option name="project" value="LOCAL" />
+      <updated>1672175803914</updated>
+    </task>
+    <task id="LOCAL-00168" summary="arrays step63">
+      <created>1672179304028</created>
+      <option name="number" value="00168" />
+      <option name="presentableId" value="LOCAL-00168" />
+      <option name="project" value="LOCAL" />
+      <updated>1672179304028</updated>
+    </task>
+    <task id="LOCAL-00169" summary="project step1">
+      <created>1674220506516</created>
+      <option name="number" value="00169" />
+      <option name="presentableId" value="LOCAL-00169" />
+      <option name="project" value="LOCAL" />
+      <updated>1674220506518</updated>
+    </task>
+    <task id="LOCAL-00170" summary="project step2">
+      <created>1674718501932</created>
+      <option name="number" value="00170" />
+      <option name="presentableId" value="LOCAL-00170" />
+      <option name="project" value="LOCAL" />
+      <updated>1674718501933</updated>
+    </task>
+    <task id="LOCAL-00171" summary="project step3">
+      <created>1674733551098</created>
+      <option name="number" value="00171" />
+      <option name="presentableId" value="LOCAL-00171" />
+      <option name="project" value="LOCAL" />
+      <updated>1674733551098</updated>
+    </task>
+    <task id="LOCAL-00172" summary="test step1">
+      <created>1676314722216</created>
+      <option name="number" value="00172" />
+      <option name="presentableId" value="LOCAL-00172" />
+      <option name="project" value="LOCAL" />
+      <updated>1676314722216</updated>
+    </task>
+    <task id="LOCAL-00173" summary="test step2">
+      <created>1676315046886</created>
+      <option name="number" value="00173" />
+      <option name="presentableId" value="LOCAL-00173" />
+      <option name="project" value="LOCAL" />
+      <updated>1676315046886</updated>
+    </task>
+    <task id="LOCAL-00174" summary="test step3">
+      <created>1676318141293</created>
+      <option name="number" value="00174" />
+      <option name="presentableId" value="LOCAL-00174" />
+      <option name="project" value="LOCAL" />
+      <updated>1676318141293</updated>
+    </task>
+    <task id="LOCAL-00175" summary="test step4">
+      <created>1676370189464</created>
+      <option name="number" value="00175" />
+      <option name="presentableId" value="LOCAL-00175" />
+      <option name="project" value="LOCAL" />
+      <updated>1676370189464</updated>
+    </task>
+    <task id="LOCAL-00176" summary="test2 step1">
+      <created>1676370384519</created>
+      <option name="number" value="00176" />
+      <option name="presentableId" value="LOCAL-00176" />
+      <option name="project" value="LOCAL" />
+      <updated>1676370384519</updated>
+    </task>
+    <task id="LOCAL-00177" summary="test2 step2">
+      <created>1676370616489</created>
+      <option name="number" value="00177" />
+      <option name="presentableId" value="LOCAL-00177" />
+      <option name="project" value="LOCAL" />
+      <updated>1676370616489</updated>
+    </task>
+    <task id="LOCAL-00178" summary="project step4">
+      <created>1676621621567</created>
+      <option name="number" value="00178" />
+      <option name="presentableId" value="LOCAL-00178" />
+      <option name="project" value="LOCAL" />
+      <updated>1676621621567</updated>
+    </task>
+    <task id="LOCAL-00179" summary="project step5">
+      <created>1677273575041</created>
+      <option name="number" value="00179" />
+      <option name="presentableId" value="LOCAL-00179" />
+      <option name="project" value="LOCAL" />
+      <updated>1677273575041</updated>
+    </task>
+    <task id="LOCAL-00180" summary="project step6">
+      <created>1678351903420</created>
+      <option name="number" value="00180" />
+      <option name="presentableId" value="LOCAL-00180" />
+      <option name="project" value="LOCAL" />
+      <updated>1678351903420</updated>
+    </task>
+    <task id="LOCAL-00181" summary="project step7">
+      <created>1679339118239</created>
+      <option name="number" value="00181" />
+      <option name="presentableId" value="LOCAL-00181" />
+      <option name="project" value="LOCAL" />
+      <updated>1679339118239</updated>
+    </task>
+    <task id="LOCAL-00182" summary="recursion step1">
+      <created>1684914768492</created>
+      <option name="number" value="00182" />
+      <option name="presentableId" value="LOCAL-00182" />
+      <option name="project" value="LOCAL" />
+      <updated>1684914768493</updated>
+    </task>
+    <task id="LOCAL-00183" summary="arrays step60">
+      <created>1684915134713</created>
+      <option name="number" value="00183" />
+      <option name="presentableId" value="LOCAL-00183" />
+      <option name="project" value="LOCAL" />
+      <updated>1684915134713</updated>
+    </task>
+    <task id="LOCAL-00184" summary="arrays step60">
+      <created>1684915255526</created>
+      <option name="number" value="00184" />
+      <option name="presentableId" value="LOCAL-00184" />
+      <option name="project" value="LOCAL" />
+      <updated>1684915255526</updated>
+    </task>
+    <task id="LOCAL-00185" summary="recursion step3">
+      <created>1684915319449</created>
+      <option name="number" value="00185" />
+      <option name="presentableId" value="LOCAL-00185" />
+      <option name="project" value="LOCAL" />
+      <updated>1684915319449</updated>
+    </task>
+    <task id="LOCAL-00186" summary="recursion step4">
+      <created>1685178031642</created>
+      <option name="number" value="00186" />
+      <option name="presentableId" value="LOCAL-00186" />
+      <option name="project" value="LOCAL" />
+      <updated>1685178031642</updated>
+    </task>
+    <task id="LOCAL-00187" summary="recursion step9">
+      <created>1687167118356</created>
+      <option name="number" value="00187" />
+      <option name="presentableId" value="LOCAL-00187" />
+      <option name="project" value="LOCAL" />
+      <updated>1687167118357</updated>
+    </task>
+    <task id="LOCAL-00188" summary="arrays step60">
+      <created>1692997019474</created>
+      <option name="number" value="00188" />
+      <option name="presentableId" value="LOCAL-00188" />
+      <option name="project" value="LOCAL" />
+      <updated>1692997019477</updated>
+    </task>
+    <task id="LOCAL-00189" summary="recursion step10">
+      <created>1692997403185</created>
+      <option name="number" value="00189" />
+      <option name="presentableId" value="LOCAL-00189" />
+      <option name="project" value="LOCAL" />
+      <updated>1692997403185</updated>
+    </task>
+    <task id="LOCAL-00190" summary="generics step1">
+      <created>1695071338335</created>
+      <option name="number" value="00190" />
+      <option name="presentableId" value="LOCAL-00190" />
+      <option name="project" value="LOCAL" />
+      <updated>1695071338335</updated>
+    </task>
+    <task id="LOCAL-00191" summary="generics step2">
+      <created>1695073449017</created>
+      <option name="number" value="00191" />
+      <option name="presentableId" value="LOCAL-00191" />
+      <option name="project" value="LOCAL" />
+      <updated>1695073449017</updated>
+    </task>
+    <task id="LOCAL-00192" summary="generics step3">
+      <created>1695986451105</created>
+      <option name="number" value="00192" />
+      <option name="presentableId" value="LOCAL-00192" />
+      <option name="project" value="LOCAL" />
+      <updated>1695986451105</updated>
+    </task>
+    <task id="LOCAL-00193" summary="generics step3">
+      <created>1695986623348</created>
+      <option name="number" value="00193" />
+      <option name="presentableId" value="LOCAL-00193" />
+      <option name="project" value="LOCAL" />
+      <updated>1695986623348</updated>
+    </task>
+    <task id="LOCAL-00194" summary="basetypes step1">
+      <created>1703941807033</created>
+      <option name="number" value="00194" />
+      <option name="presentableId" value="LOCAL-00194" />
+      <option name="project" value="LOCAL" />
+      <updated>1703941807033</updated>
+    </task>
+    <task id="LOCAL-00195" summary="basetypes step2">
+      <created>1703946364656</created>
+      <option name="number" value="00195" />
+      <option name="presentableId" value="LOCAL-00195" />
+      <option name="project" value="LOCAL" />
+      <updated>1703946364656</updated>
+    </task>
+    <task id="LOCAL-00196" summary="calculator step1">
+      <created>1704747674849</created>
+      <option name="number" value="00196" />
+      <option name="presentableId" value="LOCAL-00196" />
+      <option name="project" value="LOCAL" />
+      <updated>1704747674851</updated>
+    </task>
+    <task id="LOCAL-00197" summary="tests step1">
+      <created>1706609293383</created>
+      <option name="number" value="00197" />
+      <option name="presentableId" value="LOCAL-00197" />
+      <option name="project" value="LOCAL" />
+      <updated>1706609293398</updated>
+    </task>
+    <option name="localTasksCounter" value="201" />
+    <servers />
+  </component>
+  <component name="TodoView">
+    <todo-panel id="selected-file">
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+    <todo-panel id="all">
+      <are-packages-shown value="true" />
+      <is-autoscroll-to-source value="true" />
+    </todo-panel>
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="85" y="53" width="1470" height="942" extended-state="0" />
+    <editor active="true" />
+    <layout>
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49871793" visible="true" weight="0.25931233" />
+      <window_info id="Structure" order="1" sideWeight="0.50128204" weight="0.14144534" />
+      <window_info id="Designer" order="2" />
+      <window_info id="Image Layers" order="3" />
+      <window_info id="Capture Tool" order="4" />
+      <window_info id="UI Designer" order="5" />
+      <window_info id="Learn" order="6" weight="0.32983324" />
+      <window_info id="Favorites" order="7" sideWeight="0.50119615" side_tool="true" weight="0.24079755" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32439336" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.63681287" weight="0.4827586" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4989899" weight="0.41634738" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.3299748" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32894737" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.36318716" side_tool="true" weight="0.31673053" />
+      <window_info anchor="bottom" id="Log Viewer" order="10" />
+      <window_info anchor="bottom" id="SOQL Query" order="11" />
+      <window_info anchor="bottom" id="Anonymous Apex" order="12" />
+      <window_info anchor="bottom" id="Inspection Results" order="13" sideWeight="0.49923313" weight="0.32894737" />
+      <window_info anchor="bottom" id="Dependency Viewer" order="14" sideWeight="0.49923313" weight="0.32894737" />
+      <window_info anchor="bottom" id="Messages" internal_type="SLIDING" order="15" type="SLIDING" weight="0.326555" />
+      <window_info anchor="bottom" id="SonarLint" order="16" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.24935952" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Maven" order="4" />
+      <window_info anchor="right" id="Theme Preview" order="5" />
+      <window_info anchor="right" id="Capture Analysis" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+      <window_info anchor="right" id="make" order="8" />
+    </layout>
+    <layout-to-restore>
+      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49871793" visible="true" weight="0.14329833" />
+      <window_info id="Structure" order="1" sideWeight="0.50128204" weight="0.14144534" />
+      <window_info id="Designer" order="2" />
+      <window_info id="Image Layers" order="3" />
+      <window_info id="Capture Tool" order="4" />
+      <window_info id="UI Designer" order="5" />
+      <window_info id="Learn" order="6" weight="0.32983324" />
+      <window_info id="Favorites" order="7" sideWeight="0.50119615" side_tool="true" weight="0.24079755" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info anchor="bottom" id="Find" order="1" weight="0.32564104" />
+      <window_info anchor="bottom" id="Run" order="2" sideWeight="0.63681287" visible="true" weight="0.31794873" />
+      <window_info anchor="bottom" id="Debug" order="3" sideWeight="0.4989899" weight="0.41666666" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" weight="0.3299748" />
+      <window_info anchor="bottom" id="Version Control" order="7" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.32894737" />
+      <window_info anchor="bottom" id="Event Log" order="9" sideWeight="0.36318716" side_tool="true" weight="0.31923077" />
+      <window_info anchor="bottom" id="Log Viewer" order="10" />
+      <window_info anchor="bottom" id="SOQL Query" order="11" />
+      <window_info anchor="bottom" id="Anonymous Apex" order="12" />
+      <window_info anchor="bottom" id="Inspection Results" order="13" sideWeight="0.49923313" weight="0.32894737" />
+      <window_info anchor="bottom" id="Dependency Viewer" order="14" sideWeight="0.49923313" weight="0.32894737" />
+      <window_info anchor="bottom" id="Messages" internal_type="SLIDING" order="15" type="SLIDING" weight="0.326555" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.24935952" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="Palette" order="3" />
+      <window_info anchor="right" id="Maven" order="4" />
+      <window_info anchor="right" id="Theme Preview" order="5" />
+      <window_info anchor="right" id="Capture Analysis" order="6" />
+      <window_info anchor="right" id="Palette&#9;" order="7" />
+    </layout-to-restore>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <option name="CHECK_CODE_SMELLS_BEFORE_PROJECT_COMMIT" value="false" />
+    <option name="CHECK_NEW_TODO" value="false" />
+    <MESSAGE value="test step1" />
+    <MESSAGE value="test step2" />
+    <MESSAGE value="test step3" />
+    <MESSAGE value="test step4" />
+    <MESSAGE value="test2 step1" />
+    <MESSAGE value="test2 step2" />
+    <MESSAGE value="project step4" />
+    <MESSAGE value="project step5" />
+    <MESSAGE value="project step6" />
+    <MESSAGE value="project step7" />
+    <MESSAGE value="recursion step1" />
+    <MESSAGE value="recursion step3" />
+    <MESSAGE value="recursion step4" />
+    <MESSAGE value="recursion step9" />
+    <MESSAGE value="arrays step60" />
+    <MESSAGE value="recursion step10" />
+    <MESSAGE value="generics step1" />
+    <MESSAGE value="generics step2" />
+    <MESSAGE value="generics step3" />
+    <MESSAGE value="basetypes step1" />
+    <MESSAGE value="basetypes step2" />
+    <MESSAGE value="calculator step1" />
+    <MESSAGE value="tests step1" />
+    <MESSAGE value="builders step1" />
+    <MESSAGE value="builders step2" />
+    <option name="LAST_COMMIT_MESSAGE" value="builders step2" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-field">
+          <url>file://$PROJECT_DIR$/src/ru/progwards/java1/lessons/bigints/AbsInteger.java</url>
+          <line>5</line>
+          <properties field="number" class="ru.progwards.java1.lessons.bigints.AbsInteger" />
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/ru/progwards/java1/lessons/bigints/BigAlgebra.java</url>
+          <line>7</line>
+          <option name="timeStamp" value="9" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/ru/progwards/java1/lessons/bigints/AbsInteger.java</url>
+          <line>81</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/ru/progwards/java1/lessons/io1/LineCount.java</url>
+          <line>9</line>
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/ru/progwards/java1/lessons/io2/PhoneNumber.java</url>
+          <line>14</line>
+          <option name="timeStamp" value="25" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/ru/progwards/java1/lessons/io2/Translator.java</url>
+          <line>14</line>
+          <option name="timeStamp" value="27" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/ru/progwards/java1/lessons/io2/Censor.java</url>
+          <line>9</line>
+          <option name="timeStamp" value="30" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/ru/progwards/java1/lessons/collections/Creator.java</url>
+          <line>6</line>
+          <option name="timeStamp" value="31" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/ru/progwards/java1/lessons/sets/ProductAnalytics.java</url>
+          <line>43</line>
+          <option name="timeStamp" value="41" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/ru/progwards/java1/lessons/interfaces/ArraySort.java</url>
+          <line>7</line>
+          <option name="timeStamp" value="43" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/ru/progwards/java1/lessons/arrays/ArraySort.java</url>
+          <line>6</line>
+          <option name="timeStamp" value="46" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/ru/progwards/java1/lessons/queues/CollectionsSort.java</url>
+          <line>24</line>
+          <option name="timeStamp" value="62" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/ru/progwards/java1/lessons/queues/Order.java</url>
+          <line>9</line>
+          <option name="timeStamp" value="71" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/ru/progwards/java1/lessons/maps/UsageFrequency.java</url>
+          <line>7</line>
+          <option name="timeStamp" value="72" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/ru/progwards/java1/lessons/datetime/Insurance.java</url>
+          <line>17</line>
+          <option name="timeStamp" value="82" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/ru/progwards/java1/lessons/files/OrderProcessor.java</url>
+          <line>188</line>
+          <option name="timeStamp" value="92" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/ru/progwards/java1/lessons/files/OrderTest.java</url>
+          <line>10</line>
+          <option name="timeStamp" value="93" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/ru/progwards/java1/lessons/bitsworld/Binary.java</url>
+          <line>5</line>
+          <option name="timeStamp" value="94" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/ru/progwards/java1/lessons/bitsworld/CheckBit.java</url>
+          <line>4</line>
+          <option name="timeStamp" value="95" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="antWorkspaceConfiguration">
+    <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
+    <option name="FILTER_TARGETS" value="false" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/src/ru/progwards/java1/lessons/project/SrcFileCurrent.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="17" column="3" selection-start-line="17" selection-start-column="3" selection-end-line="17" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/patchFile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-252" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/diffFile.txt">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1869">
+          <caret line="89" column="119" selection-start-line="89" selection-start-column="119" selection-end-line="89" selection-end-column="119" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pushFile.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/srcFileCurr.java">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/srcFile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="378">
+          <caret line="18" column="3" selection-start-line="18" selection-start-column="3" selection-end-line="18" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/progwards/java1/lessons/project/Line.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="678">
+          <caret line="206" column="32" selection-start-line="206" selection-start-column="32" selection-end-line="206" selection-end-column="32" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/progwards/java1/lessons/project/AnchorLine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="6" column="25" selection-start-line="2" selection-end-line="29" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/progwards/java1/lessons/project/CompareLine.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="693">
+          <caret line="43" column="18" selection-start-line="2" selection-end-line="68" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/progwards/java1/lessons/project/Diff.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="2709">
+          <caret line="129" column="31" selection-start-line="129" selection-start-column="2" selection-end-line="131" selection-end-column="3" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#4645#4646#0" expanded="true" />
+            <element signature="e#4670#4671#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/progwards/java1/lessons/basics/AccuracyDoubleFloat.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/progwards/java1/lessons/basics/Astronomy.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/progwards/java1/lessons/basics/ReverseDigits.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/progwards/java1/lessons/bitsworld/Binary.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="8" selection-start-line="8" selection-end-line="8" />
+          <folding>
+            <element signature="e#232#233#0" expanded="true" />
+            <element signature="e#253#254#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/progwards/java2/lessons/Test.java" />
+    <entry file="file://$PROJECT_DIR$/src/ru/progwards/java1/lessons/bitsworld/CheckBit.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="4" column="43" selection-start-line="4" selection-start-column="43" selection-end-line="4" selection-end-column="43" />
+          <folding>
+            <element signature="e#111#112#0" expanded="true" />
+            <element signature="e#159#160#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/progwards/java1/lessons/bitsworld/SumBits.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/progwards/java1/lessons/bigints/AbsInteger.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/progwards/java1/lessons/bigints/ArrayInteger.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/progwards/java1/lessons/bigints/BigAlgebra.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="924">
+          <caret line="45" column="5" selection-start-line="6" selection-start-column="2" selection-end-line="57" selection-end-column="3" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/progwards/java1/lessons/project/Relatable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="359">
+          <caret line="201" column="46" selection-start-line="201" selection-start-column="46" selection-end-line="201" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/progwards/java1/lessons/arrays/DIntArray.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="273">
+          <caret line="28" column="23" selection-start-line="28" selection-start-column="23" selection-end-line="28" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/progwards/java1/lessons/arrays/ArraySort.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/progwards/java2/lessons/recursion/HanoiTower.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/progwards/java2/lessons/recursion/GoodsWithLambda.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="9" column="2" selection-start-line="9" selection-start-column="2" selection-end-line="9" selection-end-column="2" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/progwards/java2/lessons/recursion/Goods.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="6" column="2" selection-start-line="6" selection-start-column="2" selection-end-line="6" selection-end-column="2" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/progwards/java2/lessons/recursion/AsNumbersSum.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="546">
+          <caret line="26" column="4" selection-start-line="26" selection-start-column="4" selection-end-line="26" selection-end-column="4" />
+          <folding>
+            <element signature="e#124#125#0" expanded="true" />
+            <element signature="e#181#182#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/progwards/java2/lessons/generics/ArraySort.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="6" column="2" selection-start-line="6" selection-start-column="2" selection-end-line="6" selection-end-column="2" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/progwards/java2/lessons/generics/DynamicArray.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1323">
+          <caret line="63" column="4" selection-start-line="63" selection-start-column="4" selection-end-line="63" selection-end-column="4" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/progwards/java2/lessons/generics/FruitBox.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="6" column="2" selection-start-line="6" selection-start-column="2" selection-end-line="6" selection-end-column="2" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/progwards/java1/lessons/project/ProcessFile.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="19" column="40" selection-start-line="19" selection-start-column="40" selection-end-line="19" selection-end-column="40" />
+          <folding>
+            <element signature="e#629#630#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/progwards/java1/lessons/project/Patch.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1470">
+          <caret line="80" column="42" selection-start-line="80" selection-start-column="42" selection-end-line="80" selection-end-column="42" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/progwards/java1/lessons/collections/Finder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="3" column="13" selection-start-line="3" selection-start-column="13" selection-end-line="3" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/progwards/java1/lessons/collections/Creator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/progwards/java1/lessons/collections/ArrayIterator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="4" column="13" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/progwards/java1/lessons/arrays/Eratosthenes.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="168">
+          <caret line="8" column="41" selection-start-line="8" selection-start-column="41" selection-end-line="8" selection-end-column="41" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/progwards/java1/lessons/interfaces/Animal.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1260">
+          <caret line="62" column="15" selection-start-line="61" selection-start-column="4" selection-end-line="64" selection-end-column="14" />
+          <folding>
+            <element signature="e#2270#2271#0" expanded="true" />
+            <element signature="e#2342#2343#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/progwards/java2/lessons/tests/test.java" />
+    <entry file="file://$PROJECT_DIR$/src/ru/progwards/java2/lessons/tests/test/test.java" />
+    <entry file="file://$PROJECT_DIR$/src/ru/progwards/java1/lessons/interfaces/CompareWeight.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="2" column="17" selection-start-line="2" selection-start-column="17" selection-end-line="2" selection-end-column="17" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/progwards/java2/lessons/basetypes/BiDirList.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="3549">
+          <caret line="197" column="1" selection-start-line="197" selection-start-column="1" selection-end-line="197" selection-end-column="1" />
+          <folding>
+            <element signature="e#244#245#0" expanded="true" />
+            <element signature="e#269#270#0" expanded="true" />
+            <element signature="e#285#286#0" expanded="true" />
+            <element signature="e#305#306#0" expanded="true" />
+            <element signature="e#340#341#0" expanded="true" />
+            <element signature="e#360#361#0" expanded="true" />
+            <element signature="e#393#394#0" expanded="true" />
+            <element signature="e#413#414#0" expanded="true" />
+            <element signature="e#448#449#0" expanded="true" />
+            <element signature="e#468#469#0" expanded="true" />
+            <element signature="e#501#502#0" expanded="true" />
+            <element signature="e#521#522#0" expanded="true" />
+            <element signature="e#565#566#0" expanded="true" />
+            <element signature="e#590#591#0" expanded="true" />
+            <element signature="e#729#730#0" expanded="true" />
+            <element signature="e#763#764#0" expanded="true" />
+            <element signature="e#792#793#0" expanded="true" />
+            <element signature="e#823#824#0" expanded="true" />
+            <element signature="e#1128#1129#0" expanded="true" />
+            <element signature="e#1164#1165#0" expanded="true" />
+            <element signature="e#1199#1200#0" expanded="true" />
+            <element signature="e#1218#1219#0" expanded="true" />
+            <element signature="e#1251#1252#0" expanded="true" />
+            <element signature="e#1268#1269#0" expanded="true" />
+            <element signature="e#2333#2334#0" expanded="true" />
+            <element signature="e#2358#2359#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/progwards/java1/lessons/test/Test1.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/progwards/java2/lessons/basetypes/UtilityFunctions.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1008">
+          <caret line="48" column="1" selection-start-line="48" selection-start-column="1" selection-end-line="48" selection-end-column="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/progwards/java2/lessons/tests/test/calc/SimpleCalculatorTest.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="42" column="5" selection-start-line="42" selection-start-column="5" selection-end-line="42" selection-end-column="5" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/progwards/java2/lessons/tests/calc/SimpleCalculator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-147">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/progwards/java2/lessons/calculator/Calculator.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-608">
+          <caret line="16" column="7" lean-forward="true" selection-start-line="16" selection-start-column="7" selection-end-line="16" selection-end-column="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/progwards/java2/lessons/basetypes/DoubleHashTable.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="682">
+          <caret line="324" column="23" selection-start-line="324" selection-start-column="23" selection-end-line="324" selection-end-column="23" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/progwards/java2/lessons/basetypes/HashValue.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="63">
+          <caret line="3" column="16" selection-start-line="3" selection-start-column="16" selection-end-line="3" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/progwards/java1/lessons/files/OrderProcessor.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="16" column="13" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+          <folding>
+            <element signature="e#410#411#0" expanded="true" />
+            <element signature="e#438#439#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/progwards/java1/lessons/files/OrderItem.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="2" column="13" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/ru/progwards/java1/lessons/files/Order.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="462">
+          <caret line="28" column="89" selection-start-line="28" selection-start-column="46" selection-end-line="28" selection-end-column="89" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ArtifactsStructureConfigurable.UI">
+        <settings>
+          <artifact-editor />
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.09199632" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="FacetStructureConfigurable.UI">
+        <settings>
+          <last-edited>No facets are configured</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="GlobalLibrariesConfigurable.UI">
+        <settings>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="JdkListConfigurable.UI">
+        <settings>
+          <last-edited>15</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ModuleStructureConfigurable.UI">
+        <settings>
+          <last-edited>00_homework</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+                <option value="0.6" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+      <state key="ProjectLibrariesConfigurable.UI">
+        <settings>
+          <last-edited>hamcrest-core-1.3</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.09199632" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

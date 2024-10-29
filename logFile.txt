@@ -1,0 +1,12 @@
+inFile1.txt (Не удается найти указанный файл)
+????? (Синтаксическая ошибка в имени файла, имени папки или метке тома)
+null
+Index 0 out of bounds for length 0
+???? (Синтаксическая ошибка в имени файла, имени папки или метке тома)
+inFile1.txt (Не удается найти указанный файл)
+???? (Синтаксическая ошибка в имени файла, имени папки или метке тома)
+null
+Index -48 out of bounds for length 256
+Index -48 out of bounds for length 256
+Index -48 out of bounds for length 256
+Index -48 out of bounds for length 256
