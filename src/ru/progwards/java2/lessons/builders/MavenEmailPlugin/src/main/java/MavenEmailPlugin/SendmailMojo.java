@@ -236,7 +236,7 @@ public class SendmailMojo extends AbstractMojo {
 		Пароль приложения - это 16-значный код, сгенерированный на вашем устройстве.
 		Нажмите "Готово".
 		*/
-		final String password = "fnefzuokbwfgjcmi";
+		final String password = "***********";
 		
 		if (!target.exists()) {
 			target.mkdirs();
