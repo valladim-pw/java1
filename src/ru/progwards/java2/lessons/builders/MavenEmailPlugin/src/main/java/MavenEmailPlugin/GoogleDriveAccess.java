@@ -31,8 +31,8 @@ public final class GoogleDriveAccess {
 	// - можно положить секретный файл (client_secret.json) где-либо на компьютере или в сети и считывать данные из него
 	// - в данном классе значения CLIENT_ID и CLIENT_SECRET уже взяты из секретного файла и являются свойства класса,
 	// а процесс авторизации и верификации проходит в режиме онлайн.
-	private static final String CLIENT_ID = "568884029640-ljk5jgp02u6jnl3866hsfvg4ifkd1iaf.apps.googleusercontent.com";
-	private static final String CLIENT_SECRET = "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";
+	private static final String CLIENT_ID = "******************";
+	private static final String CLIENT_SECRET = "*****************************";
 	// адрес перенаправления предоставляемый Google API для внеполосной (Out Of Band) авторизации,
 	// т.е. копирования и вставки вручную.
 	// Метод устаревший но наглядный и для учебного приложения вполне подходит
